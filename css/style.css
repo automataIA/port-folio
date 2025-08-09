@@ -1,0 +1,67 @@
+/* Main CSS file that imports all other CSS files */
+@import 'reset.css';
+@import 'variables.css';
+@import 'common.css';
+
+/* Section-specific styles */
+@import 'sections/header.css';
+@import 'sections/hero.css';
+@import 'sections/about.css';
+@import 'sections/skills.css';
+@import 'sections/projects.css';
+@import 'sections/publications.css';
+@import 'sections/certifications.css';
+@import 'sections/testimonials.css';
+@import 'sections/contact.css';
+
+/* Footer styles */
+.footer {
+    background: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* Light mode footer */
+[data-theme="light"] .footer {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

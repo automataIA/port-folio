@@ -1,0 +1,228 @@
+/* Skills Section */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light mode skill categories */
+[data-theme="light"] .skill-category {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skill-category:hover::before {
+    opacity: 1;
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-header h3 {
+    color: var(--text-primary);
+    margin-bottom: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.skill-icon {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-right: auto;
+}
+
+.skill-level {
+    width: 150px;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+}
+
+/* Modern Skill Tags */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.skill-tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 18px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    letter-spacing: 0.02em;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.skill-tag:hover::before {
+    left: 100%;
+}
+
+/* Expert Level - Blue gradient */
+.skill-tag.expert {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.skill-tag.expert:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Advanced Level - Purple gradient */
+.skill-tag.advanced {
+    background: linear-gradient(135deg, #9C27B0, #E91E63);
+    color: white;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+}
+
+.skill-tag.advanced:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(156, 39, 176, 0.3);
+}
+
+/* Intermediate Level - Orange gradient */
+.skill-tag.intermediate {
+    background: linear-gradient(135deg, #FF9800, #FF5722);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.skill-tag.intermediate:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .skill-category {
+        padding: 1.5rem;
+    }
+    
+    .skill-tags {
+        gap: 0.6rem;
+    }
+    
+    .skill-tag {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Staggered animation for skill categories */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.skill-category {
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.skill-category:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.skill-category:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.skill-category:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.skill-category:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.skill-category:nth-child(6) {
+    animation-delay: 0.5s;
+}

@@ -1,0 +1,40 @@
+/* Variabili CSS per Dark/Light Mode */
+:root {
+    /* Variabili comuni per entrambi i temi */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --primary-color: #00d4ff;
+    --secondary-color: #0066ff;
+    --dark-bg: #0a0a0a;
+    --dark-card: #1a1a1a;
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent: #ff6b35;
+    --success: #00ff88;
+    --border-color: #333;
+    --navbar-bg: rgba(10, 10, 10, 0.95);
+    --shadow-color: rgba(0, 212, 255, 0.1);
+}
+
+/* Light Mode Variables */
+[data-theme="light"] {
+    --primary-color: #0066cc;
+    --secondary-color: #0033aa;
+    --dark-bg: #f8f9fa;
+    --dark-card: #ffffff;
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --accent: #e74c3c;
+    --success: #27ae60;
+    --border-color: #e9ecef;
+    --navbar-bg: rgba(248, 249, 250, 0.95);
+    --shadow-color: rgba(0, 102, 204, 0.1);
+}
