@@ -1,0 +1,216 @@
+/* Theme Controls Styles - Navbar Integration */
+.theme-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-left: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.theme-icon-sun,
+.theme-icon-moon {
+    position: absolute;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.theme-icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+[data-theme="dark"] .theme-icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+[data-theme="dark"] .theme-icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    /* Ensure Lucide moon icon is pure white in dark mode */
+    color: #ffffff;
+}
+
+/* Palette Selector Styles */
+.palette-selector {
+    position: relative;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.palette-toggle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-color);
+}
+
+.palette-toggle:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.palette-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 8px;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.palette-selector:hover .palette-dropdown,
+.palette-dropdown:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.palette-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.palette-option:hover {
+    background: var(--hover-bg);
+    transform: translateX(2px);
+}
+
+.palette-option.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.palette-preview {
+    display: flex;
+    gap: 4px;
+}
+
+.color-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button Styles - Remove Glow Effect */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 14px;
+    /* Remove any box-shadow/glow effects */
+    box-shadow: none !important;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    /* Ensure no glow on hover */
+    box-shadow: none !important;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    /* Ensure no glow on hover */
+    box-shadow: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .theme-controls {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+    
+    .theme-toggle,
+    .palette-toggle {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .palette-dropdown {
+        right: -10px;
+        min-width: 140px;
+    }
+}

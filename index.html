@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Rossi - AI & Machine Learning Engineer</title>
-    <meta name="description" content="Portfolio of Marco Rossi, specialist in Artificial Intelligence, Data Science and Machine Learning Engineering">
+    <meta name="description"
+        content="Portfolio of Marco Rossi, specialist in Artificial Intelligence, Data Science and Machine Learning Engineering">
     <meta name="theme-color" content="#0a0a0a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
+
     <!-- Link to main CSS file (which imports all other CSS files) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/palette-system.css">
+    <link rel="stylesheet" href="css/theme-controls.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body data-theme="dark">
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
-    <!-- Theme Toggle Switch -->
-    <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
-        <div class="theme-icon-sun">
-            <i data-lucide="sun" class="lucide"></i>
-        </div>
-        <div class="theme-icon-moon">
-            <i data-lucide="moon" class="lucide"></i>
-        </div>
-    </button>
-    
+
+
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-content">
@@ -39,13 +37,77 @@
                 <li><a href="#about"><i data-lucide="user" class="lucide"></i> About</a></li>
                 <li><a href="#skills"><i data-lucide="settings" class="lucide"></i> Skills</a></li>
                 <li><a href="#projects"><i data-lucide="rocket" class="lucide"></i> Projects</a></li>
-                <li><a href="#publications"><i data-lucide="book-open" class="lucide"></i> Publications</a></li>
+                <li><a href="#publications"><i data-lucide="book-open" class="lucide"></i> Scientific Publications</a>
+                </li>
                 <li><a href="#certifications"><i data-lucide="award" class="lucide"></i> Certifications</a></li>
-                <li><a href="#testimonials"><i data-lucide="message-circle" class="lucide"></i> Testimonials</a></li>
             </ul>
+
+            <!-- Theme Controls in Navbar -->
+            <div class="theme-controls">
+                <!-- Palette Selector (left) -->
+                <div class="palette-selector">
+                    <button class="palette-toggle" aria-label="Change color palette" title="Color Palette">
+                        <i data-lucide="palette" class="lucide"></i>
+                    </button>
+                    <div class="palette-dropdown">
+                        <div class="palette-option" data-palette="default">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #0ea5e9"></span>
+                                <span class="color-dot" style="background: #3b82f6"></span>
+                            </div>
+                            <span>Sky</span>
+                        </div>
+                        <div class="palette-option" data-palette="sunset">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #ea580c"></span>
+                                <span class="color-dot" style="background: #dc2626"></span>
+                            </div>
+                            <span>Sunset</span>
+                        </div>
+                        <div class="palette-option" data-palette="forest">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #3ba76b"></span>
+                                <span class="color-dot" style="background: #2f7d53"></span>
+                            </div>
+                            <span>Forest</span>
+                        </div>
+                        <div class="palette-option" data-palette="cyberpunk">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #a855f7"></span>
+                                <span class="color-dot" style="background: #ec4899"></span>
+                            </div>
+                            <span>Cyberpunk</span>
+                        </div>
+                        <div class="palette-option" data-palette="minimal">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #6b7280"></span>
+                                <span class="color-dot" style="background: #374151"></span>
+                            </div>
+                            <span>Minimal</span>
+                        </div>
+                        <div class="palette-option" data-palette="blackwhite">
+                            <div class="palette-preview">
+                                <span class="color-dot" style="background: #000000"></span>
+                                <span class="color-dot" style="background: #ffffff"></span>
+                            </div>
+                            <span>Black&White</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Theme Toggle Switch (right) -->
+                <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+                    <div class="theme-icon-sun">
+                        <i data-lucide="sun" class="lucide"></i>
+                    </div>
+                    <div class="theme-icon-moon">
+                        <i data-lucide="moon" class="lucide"></i>
+                    </div>
+                </button>
+            </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section id="hero" class="hero section">
         <div id="particles-js"></div>
@@ -57,59 +119,59 @@
                         <span>AI & ML Expert</span>
                     </div>
                     <h1>
-                        <span class="hero-name">Marco Rossi</span>
+                        <div class="hero-name-row">
+                            <span class="hero-name">Marco Rossi</span>
+                            <div class="hero-name-social">
+                                <a href="#" class="hero-name-social-link" title="LinkedIn" aria-label="LinkedIn">
+                                    <i data-lucide="linkedin" class="lucide"></i>
+                                </a>
+                                <a href="#" class="hero-name-social-link" title="GitHub" aria-label="GitHub">
+                                    <i data-lucide="github" class="lucide"></i>
+                                </a>
+                                <a href="#" class="hero-name-social-link" title="ResearchGate"
+                                    aria-label="ResearchGate">
+                                    <i data-lucide="graduation-cap" class="lucide"></i>
+                                </a>
+                            </div>
+                        </div>
                         <span class="hero-title">Machine Learning Engineer</span>
                     </h1>
                     <div class="hero-quote">
                         <i data-lucide="quote" class="lucide quote-icon"></i>
-                        <span class="quote-text">Transforming complex data into intelligent, scalable solutions that drive business innovation</span>
+                        <span class="quote-text">μηδὲν ἄγαν</span>
                     </div>
                     <p class="hero-description">
-                        Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of experience. 
+                        Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of
+                        experience.
                         From computer vision to NLP, I architect solutions that solve real-world problems at scale.
                     </p>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div class="stat-number">340+</div>
-                            <div class="stat-label">GitHub Stars</div>
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years<br>Experience</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">82+</div>
-                            <div class="stat-label">Citations</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">15+</div>
+                        <a class="stat-item" href="https://autognosi.medium.com/" target="_blank"
+                            rel="noopener noreferrer">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Articles</div>
+                        </a>
+                        <a class="stat-item" href="#projects">
+                            <div class="stat-number">20+</div>
                             <div class="stat-label">Projects</div>
-                        </div>
-                    </div>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i data-lucide="rocket" class="lucide"></i>
-                            Explore My Work
                         </a>
-                        <a href="#publications" class="btn btn-secondary">
-                            <i data-lucide="book-open" class="lucide"></i>
-                            Research Papers
+                        <a class="stat-item" href="#certifications">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Professional<br>Certifications</div>
                         </a>
                     </div>
-                    <div class="social-proof">
-                        <div class="social-links-hero">
-                            <a href="#" class="social-link-hero" title="LinkedIn">
-                                <i data-lucide="linkedin" class="lucide"></i>
-                            </a>
-                            <a href="#" class="social-link-hero" title="GitHub">
-                                <i data-lucide="github" class="lucide"></i>
-                            </a>
-                            <a href="#" class="social-link-hero" title="Research Gate">
-                                <i data-lucide="graduation-cap" class="lucide"></i>
-                            </a>
-                        </div>
-                    </div>
+                    
+
                 </div>
                 <div class="hero-visual">
                     <div class="profile-container">
                         <div class="profile-image">
-                            <div class="profile-initials">MR</div>
+                            <img src="assets/images/canvas.png" alt="Profile Image" class="profile-photo"
+                                data-zoom="110" data-position-x="0" data-position-y="0">
                             <div class="profile-ring"></div>
                             <div class="profile-dots">
                                 <div class="dot dot-1"></div>
@@ -142,7 +204,7 @@
             <span>Scroll</span>
         </div>
     </section>
-    
+
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
@@ -153,13 +215,19 @@
             <div class="about-grid">
                 <div class="about-text">
                     <p>
-                        Hi, I'm <strong>Marco Rossi</strong>, an engineer specialized in AI and Machine Learning with a passion for solving complex problems through data analysis and intelligent algorithms.
+                        Hi, I'm <strong>Marco Rossi</strong>, an engineer specialized in AI and Machine Learning with a
+                        passion for solving complex problems through data analysis and intelligent algorithms.
                     </p>
                     <p>
-                        I hold a Master's degree in Computer Engineering from Politecnico di Milano and a Master's in Data Science from Stanford University. Over the past 5 years, I've worked with various Fortune 500 companies and innovative startups to implement AI solutions that have transformed their decision-making processes.
+                        I hold a Master's degree in Computer Engineering from Politecnico di Milano and a Master's in
+                        Data Science from Stanford University. Over the past 5 years, I've worked with various Fortune
+                        500 companies and innovative startups to implement AI solutions that have transformed their
+                        decision-making processes.
                     </p>
                     <p>
-                        La mia esperienza spazia dall'elaborazione del linguaggio naturale (NLP) alla computer vision, dal deep learning al reinforcement learning. Sono particolarmente interessato alle applicazioni dell'AI nell'healthcare, nella finanza e nella sostenibilità ambientale.
+                        La mia esperienza spazia dall'elaborazione del linguaggio naturale (NLP) alla computer vision,
+                        dal deep learning al reinforcement learning. Sono particolarmente interessato alle applicazioni
+                        dell'AI nell'healthcare, nella finanza e nella sostenibilità ambientale.
                     </p>
                 </div>
                 <div class="about-stats">
@@ -195,7 +263,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="container">
@@ -210,14 +278,18 @@
                         <h3>Machine Learning & AI</h3>
                     </div>
                     <div class="skill-tags">
+                        <!-- Expert -->
                         <span class="skill-tag expert">Deep Learning</span>
                         <span class="skill-tag expert">Neural Networks</span>
-                        <span class="skill-tag expert">Computer Vision</span>
+                        <!-- Advanced -->
+                        <span class="skill-tag advanced">Computer Vision</span>
                         <span class="skill-tag advanced">Natural Language Processing</span>
-                        <span class="skill-tag advanced">Reinforcement Learning</span>
-                        <span class="skill-tag expert">Time Series Forecasting</span>
+                        <span class="skill-tag advanced">Time Series Forecasting</span>
+                        <span class="skill-tag advanced">Transformers</span>
+                        <span class="skill-tag advanced">Model Optimization</span>
                         <span class="skill-tag advanced">MLOps</span>
-                        <span class="skill-tag expert">Model Optimization</span>
+                        <!-- Intermediate -->
+                        <span class="skill-tag intermediate">Reinforcement Learning</span>
                     </div>
                 </div>
 
@@ -227,16 +299,20 @@
                         <h3>Programming & Frameworks</h3>
                     </div>
                     <div class="skill-tags">
+                        <!-- Expert -->
                         <span class="skill-tag expert">Python</span>
                         <span class="skill-tag expert">PyTorch</span>
-                        <span class="skill-tag expert">TensorFlow</span>
                         <span class="skill-tag expert">Scikit-learn</span>
-                        <span class="skill-tag advanced">R</span>
-                        <span class="skill-tag expert">SQL</span>
-                        <span class="skill-tag intermediate">Scala</span>
-                        <span class="skill-tag expert">FastAPI</span>
-                        <span class="skill-tag advanced">Flask</span>
+                        <!-- Advanced -->
+                        <span class="skill-tag advanced">TensorFlow</span>
+                        <span class="skill-tag advanced">FastAPI</span>
+                        <span class="skill-tag advanced">ONNX</span>
+                        <span class="skill-tag advanced">ONNX Runtime</span>
+                        <!-- Intermediate -->
+                        <span class="skill-tag intermediate">Flask</span>
                         <span class="skill-tag intermediate">Rust</span>
+                        <span class="skill-tag intermediate">Leptos</span>
+                        <span class="skill-tag intermediate">Active-web</span>
                     </div>
                 </div>
 
@@ -246,70 +322,69 @@
                         <h3>Cloud & DevOps</h3>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag expert">AWS</span>
-                        <span class="skill-tag advanced">Google Cloud</span>
+                        <!-- Expert -->
                         <span class="skill-tag expert">Docker</span>
-                        <span class="skill-tag expert">Kubernetes</span>
-                        <span class="skill-tag advanced">Terraform</span>
-                        <span class="skill-tag expert">CI/CD</span>
+                        <!-- Advanced -->
+                        <span class="skill-tag advanced">AWS</span>
+                        <span class="skill-tag advanced">Kubernetes</span>
+                        <span class="skill-tag advanced">CI/CD</span>
                         <span class="skill-tag advanced">MLflow</span>
-                        <span class="skill-tag expert">Git</span>
+                        <span class="skill-tag advanced">Argo</span>
+                        <!-- Intermediate -->
+                        <span class="skill-tag intermediate">Google Cloud</span>
+                        <span class="skill-tag intermediate">Terraform</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <div class="skill-header">
                         <i data-lucide="database" class="lucide lucide-large skill-icon"></i>
-                        <h3>Data Engineering</h3>
+                        <h3>Data Engineering & Databases</h3>
                     </div>
                     <div class="skill-tags">
-                        <span class="skill-tag expert">Apache Spark</span>
-                        <span class="skill-tag expert">PostgreSQL</span>
-                        <span class="skill-tag advanced">MongoDB</span>
+                        <!-- Expert -->
+                        <span class="skill-tag expert">SQL</span>
                         <span class="skill-tag expert">ETL Pipelines</span>
-                        <span class="skill-tag advanced">Apache Kafka</span>
-                        <span class="skill-tag expert">Data Warehousing</span>
-                        <span class="skill-tag advanced">Redis</span>
-                        <span class="skill-tag expert">MinIO</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <div class="skill-header">
-                        <i data-lucide="globe" class="lucide lucide-large skill-icon"></i>
-                        <h3>Web Development</h3>
-                    </div>
-                    <div class="skill-tags">
-                        <span class="skill-tag advanced">React</span>
-                        <span class="skill-tag advanced">Next.js</span>
-                        <span class="skill-tag expert">JavaScript</span>
-                        <span class="skill-tag advanced">TypeScript</span>
-                        <span class="skill-tag expert">HTML/CSS</span>
-                        <span class="skill-tag expert">Streamlit</span>
-                        <span class="skill-tag intermediate">Vue.js</span>
+                        <!-- Advanced -->
+                        <span class="skill-tag advanced">PostgreSQL</span>
+                        <span class="skill-tag advanced">Apache Spark</span>
+                        <span class="skill-tag advanced">DuckDB</span>
+                        <span class="skill-tag advanced">Data Warehousing</span>
+                        <span class="skill-tag advanced">MinIO</span>
+                        <span class="skill-tag advanced">Rasterio</span>
+                        <span class="skill-tag advanced">GDAL</span>
+                        <!-- Intermediate -->
+                        <span class="skill-tag intermediate">MongoDB</span>
+                        <span class="skill-tag intermediate">Redis</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
                     <div class="skill-header">
                         <i data-lucide="tools" class="lucide lucide-large skill-icon"></i>
-                        <h3>Tools & Platforms</h3>
+                        <h3>Tools & MLOps Ecosystem</h3>
                     </div>
                     <div class="skill-tags">
+                        <!-- Expert -->
                         <span class="skill-tag expert">Jupyter</span>
                         <span class="skill-tag expert">VS Code</span>
-                        <span class="skill-tag advanced">Weights & Biases</span>
+                        <span class="skill-tag expert">Git</span>
                         <span class="skill-tag expert">GitHub</span>
-                        <span class="skill-tag advanced">Optuna</span>
                         <span class="skill-tag expert">Pandas</span>
                         <span class="skill-tag expert">NumPy</span>
+                        <!-- Advanced -->
+                        <span class="skill-tag advanced">Streamlit</span>
+                        <span class="skill-tag advanced">GitLab</span>
+                        <span class="skill-tag advanced">Weights & Biases</span>
+                        <span class="skill-tag advanced">Optuna</span>
+                        <span class="skill-tag advanced">SciPy</span>
                         <span class="skill-tag advanced">RAPIDS</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Projects Section -->
     <section id="projects" class="section">
         <div class="container">
@@ -330,7 +405,8 @@
                             <span class="project-tag">Python</span>
                         </div>
                         <p class="project-description">
-                            Conversational AI system for medical support, capable of analyzing symptoms and providing preliminary recommendations. Integrated with medical databases and HIPAA security protocols.
+                            Conversational AI system for medical support, capable of analyzing symptoms and providing
+                            preliminary recommendations. Integrated with medical databases and HIPAA security protocols.
                         </p>
                         <div class="project-links">
                             <a href="#" class="project-link">
@@ -339,7 +415,7 @@
                             </a>
                             <a href="#" class="project-link">
                                 <i data-lucide="external-link" class="lucide"></i>
-                                Demo
+                                Live Demo
                             </a>
                         </div>
                     </div>
@@ -356,7 +432,8 @@
                             <span class="project-tag">TensorFlow</span>
                         </div>
                         <p class="project-description">
-                            Deep learning model for stock price prediction using LSTM and Transformer architectures. 87% accuracy on 5 years of historical Italian market data.
+                            Deep learning model for stock price prediction using LSTM and Transformer architectures. 87%
+                            accuracy on 5 years of historical Italian market data.
                         </p>
                         <div class="project-links">
                             <a href="#" class="project-link">
@@ -364,8 +441,8 @@
                                 Code
                             </a>
                             <a href="#" class="project-link">
-                                <i data-lucide="file-text" class="lucide"></i>
-                                Paper
+                                <i data-lucide="external-link" class="lucide"></i>
+                                Live Demo
                             </a>
                         </div>
                     </div>
@@ -382,16 +459,17 @@
                             <span class="project-tag">PyTorch</span>
                         </div>
                         <p class="project-description">
-                            Automated system for object recognition and classification in satellite imagery. Used for environmental monitoring and precision agriculture applications.
+                            Automated system for object recognition and classification in satellite imagery. Used for
+                            environmental monitoring and precision agriculture applications.
                         </p>
                         <div class="project-links">
                             <a href="#" class="project-link">
-                                <i data-lucide="external-link" class="lucide"></i>
-                                Live Demo
-                            </a>
-                            <a href="#" class="project-link">
                                 <i data-lucide="github" class="lucide"></i>
                                 Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i data-lucide="external-link" class="lucide"></i>
+                                Live Demo
                             </a>
                         </div>
                     </div>
@@ -400,7 +478,7 @@
         </div>
     </section>
 
-    <!-- Publications Section -->
+    <!-- Projects Section -->
     <section id="publications" class="section">
         <div class="container">
             <div class="section-header">
@@ -413,15 +491,13 @@
                         <div class="publication-type">Journal Article</div>
                         <div class="publication-year">2023</div>
                     </div>
-                    <h3 class="publication-title">Deep Learning Approaches for Financial Time Series Forecasting: A Comparative Study</h3>
+                    <h3 class="publication-title">Deep Learning Approaches for Financial Time Series Forecasting: A
+                        Comparative Study</h3>
                     <div class="publication-authors">E. Marchetti, M. Bianchi, A. Rossi</div>
                     <div class="publication-journal">Journal of Financial Data Science, Vol. 4</div>
                     <div class="publication-abstract">
-                        Comprehensive analysis of deep learning architectures for financial time series prediction, comparing LSTM, GRU, and Transformer models across multiple market conditions.
-                    </div>
-                    <div class="publication-metrics">
-                        <span class="metric"><i data-lucide="eye" class="lucide"></i> 1,247 views</span>
-                        <span class="metric"><i data-lucide="quote" class="lucide"></i> 23 citations</span>
+                        Comprehensive analysis of deep learning architectures for financial time series prediction,
+                        comparing LSTM, GRU, and Transformer models across multiple market conditions.
                     </div>
                 </div>
 
@@ -430,15 +506,13 @@
                         <div class="publication-type">Journal Article</div>
                         <div class="publication-year">2023</div>
                     </div>
-                    <h3 class="publication-title">Transformer-Based Models for Medical Text Classification: A Multi-Language Analysis</h3>
+                    <h3 class="publication-title">Transformer-Based Models for Medical Text Classification: A
+                        Multi-Language Analysis</h3>
                     <div class="publication-authors">E. Marchetti, L. Ferrari, G. Colombo</div>
                     <div class="publication-journal">IEEE Transactions on Biomedical Engineering</div>
                     <div class="publication-abstract">
-                        Novel approach to medical text classification using multilingual transformer models, achieving state-of-the-art results across Italian, English, and Spanish medical corpora.
-                    </div>
-                    <div class="publication-metrics">
-                        <span class="metric"><i data-lucide="eye" class="lucide"></i> 892 views</span>
-                        <span class="metric"><i data-lucide="quote" class="lucide"></i> 18 citations</span>
+                        Novel approach to medical text classification using multilingual transformer models, achieving
+                        state-of-the-art results across Italian, English, and Spanish medical corpora.
                     </div>
                 </div>
 
@@ -451,11 +525,8 @@
                     <div class="publication-authors">E. Marchetti, P. Verdi</div>
                     <div class="publication-journal">International Conference on Machine Learning (ICML)</div>
                     <div class="publication-abstract">
-                        Development of interpretable ML models for credit risk assessment, combining SHAP explanations with ensemble methods to improve both accuracy and regulatory compliance.
-                    </div>
-                    <div class="publication-metrics">
-                        <span class="metric"><i data-lucide="eye" class="lucide"></i> 2,156 views</span>
-                        <span class="metric"><i data-lucide="quote" class="lucide"></i> 41 citations</span>
+                        Development of interpretable ML models for credit risk assessment, combining SHAP explanations
+                        with ensemble methods to improve both accuracy and regulatory compliance.
                     </div>
                 </div>
             </div>
@@ -471,135 +542,99 @@
             </div>
             <div class="certifications-grid">
                 <div class="certification-card">
-                    <div class="cert-icon aws">
-                        <i data-lucide="cloud" class="lucide"></i>
+                    <div class="cert-icon">
+                        <i data-lucide="pie-chart" class="lucide"></i>
                     </div>
-                    <h3>AWS Certified Machine Learning</h3>
-                    <div class="cert-issuer">Amazon Web Services</div>
-                    <div class="cert-date">December 2025</div>
+                    <h3>Google Data Analytics Professional Certificate</h3>
+                    <div class="cert-issuer">Google (via Coursera)</div>
+                    <div class="cert-date">—</div>
                     <div class="cert-description">
-                        Specialization in designing, implementing and maintaining ML solutions on AWS
+                        Job-ready training in spreadsheets, SQL, R, and data visualization for entry-level data analyst roles.
                     </div>
                     <div class="cert-badge">
-                        <span class="badge-text">Specialty</span>
+                        <span class="badge-text">Analytics</span>
                     </div>
                 </div>
 
                 <div class="certification-card">
-                    <div class="cert-icon tensorflow">
+                    <div class="cert-icon">
+                        <i data-lucide="terminal" class="lucide"></i>
+                    </div>
+                    <h3>Google IT Automation with Python Professional Certificate</h3>
+                    <div class="cert-issuer">Google (via Coursera)</div>
+                    <div class="cert-date">—</div>
+                    <div class="cert-description">
+                        Python scripting, Git/GitHub, troubleshooting, and automation of IT tasks including OS and cloud workflows.
+                    </div>
+                    <div class="cert-badge">
+                        <span class="badge-text">Python</span>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i data-lucide="bar-chart-3" class="lucide"></i>
+                    </div>
+                    <h3>Google Business Intelligence Professional Certificate</h3>
+                    <div class="cert-issuer">Google (via Coursera)</div>
+                    <div class="cert-date">—</div>
+                    <div class="cert-description">
+                        BI foundations: data modeling, ETL, SQL, and dashboarding to deliver business-ready insights.
+                    </div>
+                    <div class="cert-badge">
+                        <span class="badge-text">BI</span>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-icon">
                         <i data-lucide="brain" class="lucide"></i>
                     </div>
-                    <h3>TensorFlow Developer Certificate</h3>
-                    <div class="cert-issuer">Google</div>
-                    <div class="cert-date">April 2025</div>
+                    <h3>Machine Learning Specialization</h3>
+                    <div class="cert-issuer">DeepLearning.AI & Stanford Online (Coursera)</div>
+                    <div class="cert-date">—</div>
                     <div class="cert-description">
-                        Advanced skills in developing ML models with TensorFlow and Keras
+                        Supervised ML, classification, regression and neural networks with hands-on Python implementations.
                     </div>
                     <div class="cert-badge">
-                        <span class="badge-text">Developer</span>
+                        <span class="badge-text">ML</span>
                     </div>
                 </div>
 
                 <div class="certification-card">
-                    <div class="cert-icon kubernetes">
-                        <i data-lucide="container" class="lucide"></i>
+                    <div class="cert-icon">
+                        <i data-lucide="message-square" class="lucide"></i>
                     </div>
-                    <h3>Certified Kubernetes Application Developer</h3>
-                    <div class="cert-issuer">Cloud Native Computing Foundation</div>
-                    <div class="cert-date">January 2025</div>
+                    <h3>Natural Language Processing Specialization</h3>
+                    <div class="cert-issuer">DeepLearning.AI (Coursera)</div>
+                    <div class="cert-date">—</div>
                     <div class="cert-description">
-                        Expertise in designing and deploying cloud-native applications with Kubernetes
+                        NLP with RNNs, attention, transformers and sequence-to-sequence models for text tasks.
                     </div>
                     <div class="cert-badge">
-                        <span class="badge-text">CKAD</span>
+                        <span class="badge-text">NLP</span>
                     </div>
                 </div>
 
-                <div class="certification-card achievement">
-                    <div class="cert-icon achievement">
-                        <i data-lucide="trophy" class="lucide"></i>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i data-lucide="server-cog" class="lucide"></i>
                     </div>
-                    <h3>ESA IRIS Project Contributor</h3>
-                    <div class="cert-issuer">European Space Agency</div>
-                    <div class="cert-date">2023-Present</div>
+                    <h3>Machine Learning Engineering for Production (MLOps)</h3>
+                    <div class="cert-issuer">DeepLearning.AI (Coursera)</div>
+                    <div class="cert-date">—</div>
                     <div class="cert-description">
-                        Significant contribution to European project for space computer vision dataset automation
+                        End-to-end ML systems: data pipelines, deployment, monitoring, and CI/CD for models in production.
                     </div>
-                    <div class="cert-badge achievement-badge">
-                        <span class="badge-text">ESA</span>
-                    </div>
-                </div>
-
-                <div class="certification-card achievement">
-                    <div class="cert-icon github">
-                        <i data-lucide="github" class="lucide"></i>
-                    </div>
-                    <h3>Open Source Contributions</h3>
-                    <div class="cert-issuer">GitHub Community</div>
-                    <div class="cert-date">2021-Present</div>
-                    <div class="cert-description">
-                        340+ stars on PredictStock, active ML community contributions and junior developer mentoring
-                    </div>
-                    <div class="cert-badge github-badge">
-                        <span class="badge-text">340★</span>
-                    </div>
-                </div>
-
-                <div class="certification-card achievement">
-                    <div class="cert-icon research">
-                        <i data-lucide="microscope" class="lucide"></i>
-                    </div>
-                    <h3>Peer-Reviewed Publications</h3>
-                    <div class="cert-issuer">Academic Journals</div>
-                    <div class="cert-date">2022-2023</div>
-                    <div class="cert-description">
-                        3 publications in international journals with 82+ total citations in ML and AI
-                    </div>
-                    <div class="cert-badge research-badge">
-                        <span class="badge-text">82 Citations</span>
+                    <div class="cert-badge">
+                        <span class="badge-text">MLOps</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section">
-        <div class="container">
-            <div class="section-header">
-                <i data-lucide="message-circle" class="lucide lucide-large section-icon"></i>
-                <h2>Testimonials</h2>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        Marco transformed our approach to data analysis. His demand forecasting system improved our operational efficiency by 30% and reduced inventory costs by 25%. An exceptional professional with deep AI knowledge.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">LB</div>
-                        <div class="testimonial-info">
-                            <h4>Laura Bianchi</h4>
-                            <div class="testimonial-position">CTO, TechSolutions SpA</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        Working with Marco was an enlightening experience. His ability to translate complex machine learning concepts into practical solutions is impressive. The chatbot he developed for us revolutionized our customer service.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">MV</div>
-                        <div class="testimonial-info">
-                            <h4>Marco Verdi</h4>
-                            <div class="testimonial-position">CEO, InnovateSrl</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -610,15 +645,19 @@
                 <div class="footer-links">
                     <a href="#" class="footer-link">Privacy Policy</a>
                     <a href="#" class="footer-link">Terms of Service</a>
-                </div>    <a href="#" class="footer-link">Cookies</a>
-                </div>
+                </div> <a href="#" class="footer-link">Cookies</a>
             </div>
         </div>
+        </div>
     </footer>
-    
+
     <!-- JavaScript files -->
     <script src="js/theme.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/theme-controls.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
+
 </html>

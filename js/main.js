@@ -13,9 +13,78 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('particles-js')) {
         let particlesInstance = null;
         
-        // Funzione per ottenere la configurazione delle particelle in base al tema
+        // Function to convert HSL to hex
+        function hslToHex(hslString) {
+            // Parse HSL string like "hsl(195, 100%, 55%)"
+            const match = hslString.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/);
+            if (!match) return hslString;
+            
+            const h = parseInt(match[1]) / 360;
+            const s = parseInt(match[2]) / 100;
+            const l = parseInt(match[3]) / 100;
+            
+            const hue2rgb = (p, q, t) => {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1/6) return p + (q - p) * 6 * t;
+                if (t < 1/2) return q;
+                if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+                return p;
+            };
+            
+            let r, g, b;
+            if (s === 0) {
+                r = g = b = l; // achromatic
+            } else {
+                const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+                const p = 2 * l - q;
+                r = hue2rgb(p, q, h + 1/3);
+                g = hue2rgb(p, q, h);
+                b = hue2rgb(p, q, h - 1/3);
+            }
+            
+            const toHex = (c) => {
+                const hex = Math.round(c * 255).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            };
+            
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+        }
+        
+        // Function to get current CSS color values
+        function getCurrentColors() {
+            const computedStyle = getComputedStyle(document.documentElement);
+            let primary = computedStyle.getPropertyValue('--primary-color').trim();
+            let secondary = computedStyle.getPropertyValue('--secondary-color').trim();
+            
+            console.log('Raw CSS colors:', { primary, secondary });
+            
+            // Convert HSL to hex if needed
+            if (primary && primary.startsWith('hsl(')) {
+                const converted = hslToHex(primary);
+                console.log('HSL to hex conversion:', primary, '->', converted);
+                primary = converted;
+            }
+            if (secondary && secondary.startsWith('hsl(')) {
+                secondary = hslToHex(secondary);
+            }
+            
+            // Fallback colors if conversion failed or colors are empty
+            const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
+            const finalColors = {
+                primary: (primary && primary.startsWith('#')) ? primary : (isDarkTheme ? '#00d4ff' : '#0ea5e9'),
+                secondary: (secondary && secondary.startsWith('#')) ? secondary : (isDarkTheme ? '#0066ff' : '#0033aa')
+            };
+            
+            console.log('Final particle colors:', finalColors);
+            return finalColors;
+        }
+        
+        // Funzione per ottenere la configurazione delle particelle in base al tema e palette
         function getParticlesConfig() {
             const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
+            const colors = getCurrentColors();
+            
             return {
                 particles: {
                     number: {
@@ -26,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     },
                     color: {
-                        value: isDarkTheme ? '#00d4ff' : '#0ea5e9'
+                        value: colors.primary || (isDarkTheme ? '#00d4ff' : '#0ea5e9')
                     },
                     shape: {
                         type: 'circle',
@@ -58,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     line_linked: {
                         enable: true,
                         distance: 150,
-                        color: isDarkTheme ? '#00d4ff' : '#0ea5e9',
+                        color: colors.primary || (isDarkTheme ? '#00d4ff' : '#0ea5e9'),
                         opacity: isDarkTheme ? 0.4 : 0.55,
                         width: isDarkTheme ? 1 : 1.3
                     },
@@ -100,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         bubble: {
                             distance: 400,
                             size: 40,
-                            duration: 2
                         },
                         repulse: {
                             distance: 200,
@@ -118,86 +186,120 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }
         
-        // Funzione per inizializzare le particelle
-        function initParticles() {
-            const particlesContainer = document.getElementById('particles-js');
-            if (!particlesContainer) return;
-            
-            // Pulisci il contenitore prima di inizializzare
-            particlesContainer.innerHTML = '';
-            
-            // Assicurati che pJSDom esista come array
-            if (typeof pJSDom === 'undefined' || pJSDom === null) {
-                window.pJSDom = [];
-            }
-            
-            // Inizializza le particelle
-            particlesJS('particles-js', getParticlesConfig());
-            
-            // Salva il riferimento all'istanza con un piccolo ritardo per assicurarsi che sia inizializzata
-            setTimeout(() => {
-                if (typeof pJSDom !== 'undefined' && pJSDom !== null && Array.isArray(pJSDom) && pJSDom.length > 0) {
-                    particlesInstance = pJSDom[0];
-                }
-            }, 50);
-        }
-        
-        // Funzione per distruggere le particelle
+        // Funzione per distruggere le particelle esistenti
         function destroyParticles() {
             try {
-                // Metodo 1: Usa l'API moderna se disponibile
+                // Metodo 1: Usa l'API particles.js corretta
                 if (particlesInstance && particlesInstance.pJS) {
                     if (particlesInstance.pJS.fn && particlesInstance.pJS.fn.vendors && particlesInstance.pJS.fn.vendors.destroypJS) {
                         particlesInstance.pJS.fn.vendors.destroypJS();
-                    } else if (particlesInstance.pJS.fn && particlesInstance.pJS.fn.vendors && particlesInstance.pJS.fn.vendors.destroy) {
-                        particlesInstance.pJS.fn.vendors.destroy();
                     }
                 }
                 
-                // Metodo 2: Pulisci manualmente il DOM
+                // Metodo 2: Cleanup manuale del DOM
                 const particlesContainer = document.getElementById('particles-js');
                 if (particlesContainer) {
                     // Rimuovi tutti i canvas esistenti
                     const canvases = particlesContainer.querySelectorAll('canvas');
                     canvases.forEach(canvas => canvas.remove());
-                    
-                    // Pulisci il contenuto
                     particlesContainer.innerHTML = '';
                 }
                 
-                // Metodo 3: Rimuovi solo l'istanza specifica dall'array pJSDom
-                if (typeof pJSDom !== 'undefined' && pJSDom !== null && Array.isArray(pJSDom)) {
-                    // Trova e rimuovi l'istanza specifica invece di svuotare tutto l'array
-                    const index = pJSDom.findIndex(instance => instance === particlesInstance);
-                    if (index !== -1) {
-                        pJSDom.splice(index, 1);
-                    }
+                // Metodo 3: Cleanup dell'oggetto globale pJSDom
+                if (window.pJSDom && Array.isArray(window.pJSDom)) {
+                    window.pJSDom.length = 0;
                 }
                 
                 particlesInstance = null;
+                console.log('🗑️ Particles destroyed successfully');
                 
             } catch (error) {
                 console.warn('Errore durante la distruzione delle particelle:', error);
-                // Fallback: pulisci manualmente
+                // Fallback: cleanup manuale forzato
                 const particlesContainer = document.getElementById('particles-js');
                 if (particlesContainer) {
                     particlesContainer.innerHTML = '';
                 }
+                particlesInstance = null;
             }
         }
         
-        // Inizializza le particelle
+        // Funzione per inizializzare le particelle
+        function initParticles() {
+            const container = document.getElementById('particles-js');
+            if (!container) return;
+            
+            // Pulisci il contenitore prima di inizializzare
+            container.innerHTML = '';
+            
+            // Aspetta un momento per assicurarsi che i CSS siano caricati
+            setTimeout(() => {
+                // Inizializza particles.js con la configurazione corrente
+                particlesJS('particles-js', getParticlesConfig());
+                
+                // Salva l'istanza per la distruzione futura
+                setTimeout(() => {
+                    if (window.pJSDom && window.pJSDom.length > 0) {
+                        particlesInstance = window.pJSDom[0];
+                        console.log('✨ Particles initialized with colors:', getCurrentColors());
+                    }
+                }, 100);
+            }, 50);
+        }
+        
+        // Expose functions globally for palette switcher
+        window.destroyParticles = destroyParticles;
+        window.initParticles = initParticles;
+        window.particlesInstance = particlesInstance;
+
+        // Initialize particles when DOM is loaded
         initParticles();
         
+        // Apply profile image data attributes directly to styles
+        const profilePhoto = document.querySelector('.profile-photo');
+        if (profilePhoto) {
+            const zoom = profilePhoto.getAttribute('data-zoom');
+            const posX = profilePhoto.getAttribute('data-position-x');
+            const posY = profilePhoto.getAttribute('data-position-y');
+            
+            if (zoom) {
+                profilePhoto.style.width = zoom + '%';
+                profilePhoto.style.height = zoom + '%';
+            }
+            if (posX) {
+                profilePhoto.style.left = posX + '%';
+            }
+            if (posY) {
+                profilePhoto.style.top = posY + '%';
+            }
+            
+            console.log('Profile image parameters applied:', { zoom, posX, posY });
+        }
+
         // Aggiorna le particelle quando cambia il tema
         document.addEventListener('themeChanged', function() {
-            // Distruggi le particelle esistenti
-            destroyParticles();
+            console.log('🔄 Theme changed, updating particles...');
             
-            // Ricrea con la nuova configurazione dopo un breve ritardo
+            // Prova prima ad aggiornare i colori dinamicamente
+            if (window.pJSDom && window.pJSDom.length > 0) {
+                try {
+                    const colors = getCurrentColors();
+                    const pJS = window.pJSDom[0].pJS;
+                    pJS.particles.color.value = colors.primary;
+                    pJS.particles.line_linked.color = colors.primary;
+                    pJS.fn.particlesRefresh();
+                    console.log('✨ Particles colors updated for theme change:', colors);
+                    return;
+                } catch (error) {
+                    console.warn('Failed to update particles dynamically, reinitializing...', error);
+                }
+            }
+            
+            // Fallback: distruggi e ricrea
+            destroyParticles();
             setTimeout(function() {
                 initParticles();
-            }, 150);
+            }, 200);
         });
     }
     

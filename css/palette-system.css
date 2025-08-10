@@ -1,0 +1,190 @@
+/* Dynamic Palette System - HSL Based */
+/* Base values are now defined in variables.css */
+
+/* Ocean Palette removed as requested */
+/* :root[data-palette="ocean"] { }
+*/
+
+/* Sunset Palette - Warm Oranges and Reds */
+:root[data-palette="sunset"] {
+    --primary-hue: 15 !important;
+    --secondary-hue: 30 !important;
+    --accent-hue: 320 !important;
+    --primary-lightness: 58% !important;
+    --secondary-lightness: 62% !important;
+}
+
+/* Forest Palette - Natural Greens (less saturated) */
+:root[data-palette="forest"] {
+    --primary-hue: 120 !important;
+    --secondary-hue: 90 !important;
+    --accent-hue: 60 !important;
+    /* reduce saturation for a softer, less saturated look */
+    --primary-saturation: 35% !important;
+    --secondary-saturation: 25% !important;
+    --accent-saturation: 30% !important;
+    --primary-lightness: 46% !important;
+    --secondary-lightness: 68% !important;
+}
+
+/* Cyberpunk Palette - Neon Purples and Magentas */
+:root[data-palette="cyberpunk"] {
+    --primary-hue: 300 !important;
+    --secondary-hue: 270 !important;
+    --accent-hue: 50 !important;
+    --primary-lightness: 65% !important;
+    --secondary-lightness: 60% !important;
+    --accent-lightness: 70% !important;
+}
+
+/* Minimal Palette - Sophisticated Grays */
+:root[data-palette="minimal"] {
+    --primary-hue: 210 !important;
+    --secondary-hue: 215 !important;
+    --accent-hue: 25 !important;
+    --primary-saturation: 15% !important;
+    --secondary-saturation: 20% !important;
+    --primary-lightness: 40% !important;
+    --secondary-lightness: 50% !important;
+}
+
+/* Warm Palette - Cozy Oranges and Yellows */
+:root[data-palette="warm"] {
+    --primary-hue: 35 !important;
+    --secondary-hue: 45 !important;
+    --accent-hue: 15 !important;
+    --primary-lightness: 55% !important;
+    --secondary-lightness: 65% !important;
+}
+
+/* Cool Palette - Fresh Blues and Cyans */
+:root[data-palette="cool"] {
+    --primary-hue: 195 !important;
+    --secondary-hue: 200 !important;
+    --accent-hue: 180 !important;
+    --primary-lightness: 52% !important;
+    --secondary-lightness: 70% !important;
+}
+
+/* Vintage Palette - Earthy Browns and Golds */
+:root[data-palette="vintage"] {
+    --primary-hue: 30 !important;
+    --secondary-hue: 40 !important;
+    --accent-hue: 20 !important;
+    --primary-saturation: 70% !important;
+    --secondary-saturation: 60% !important;
+    --primary-lightness: 45% !important;
+    --secondary-lightness: 65% !important;
+}
+
+/* Neon Palette - Electric Greens and Pinks */
+:root[data-palette="neon"] {
+    --primary-hue: 120 !important;
+    --secondary-hue: 330 !important;
+    --accent-hue: 60 !important;
+    --primary-saturation: 100% !important;
+    --secondary-saturation: 100% !important;
+    --primary-lightness: 50% !important;
+    --secondary-lightness: 55% !important;
+}
+
+/* Monochrome Palette - Pure Black and White contrast */
+:root[data-palette="monochrome"] {
+    --primary-hue: 0 !important;
+    --secondary-hue: 0 !important;
+    --accent-hue: 0 !important;
+    --primary-saturation: 0% !important;
+    --secondary-saturation: 0% !important;
+    --accent-saturation: 0% !important;
+    --primary-lightness: 20% !important;
+    --secondary-lightness: 40% !important;
+    --accent-lightness: 60% !important;
+}
+
+/* Black & White Palette */
+:root[data-palette="blackwhite"] {
+    --primary-hue: 0 !important;
+    --secondary-hue: 0 !important;
+    --accent-hue: 0 !important;
+    --primary-saturation: 0% !important;
+    --secondary-saturation: 0% !important;
+    --accent-saturation: 0% !important;
+    --primary-lightness: 15% !important;  /* near black */
+    --secondary-lightness: 85% !important;/* near white */
+    --accent-lightness: 50% !important;   /* mid gray */
+}
+
+/* Light theme adjustments for each palette */
+/* Ocean light adjustments removed */
+
+:root[data-theme="light"][data-palette="sunset"] {
+    --primary-lightness: 45% !important;
+    --secondary-lightness: 50% !important;
+}
+
+:root[data-theme="light"][data-palette="forest"] {
+    --primary-lightness: 38% !important;
+    --secondary-lightness: 55% !important;
+}
+
+:root[data-theme="light"][data-palette="cyberpunk"] {
+    --primary-lightness: 45% !important;
+    --secondary-lightness: 40% !important;
+}
+
+:root[data-theme="light"][data-palette="minimal"] {
+    --primary-lightness: 30% !important;
+    --secondary-lightness: 35% !important;
+}
+
+:root[data-theme="light"][data-palette="warm"] {
+    --primary-lightness: 45% !important;
+    --secondary-lightness: 50% !important;
+}
+
+:root[data-theme="light"][data-palette="cool"] {
+    --primary-lightness: 42% !important;
+    --secondary-lightness: 50% !important;
+}
+
+:root[data-theme="light"][data-palette="vintage"] {
+    --primary-lightness: 35% !important;
+    --secondary-lightness: 45% !important;
+}
+
+:root[data-theme="light"][data-palette="neon"] {
+    --primary-lightness: 40% !important;
+    --secondary-lightness: 45% !important;
+}
+
+:root[data-theme="light"][data-palette="monochrome"] {
+    --primary-lightness: 15% !important;
+    --secondary-lightness: 25% !important;
+    --accent-lightness: 40% !important;
+}
+
+:root[data-theme="light"][data-palette="blackwhite"] {
+    --primary-lightness: 10% !important;   /* deeper black for light theme */
+    --secondary-lightness: 92% !important; /* brighter white */
+    --accent-lightness: 45% !important;
+}
+
+/* Smooth transitions for palette changes */
+* {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Ensure gradients update smoothly */
+.hero-badge,
+.hero-name,
+.stat-number,
+.skill-tag.expert,
+.skill-tag.advanced,
+.skill-tag.intermediate,
+.profile-image {
+    transition: background 0.3s ease, 
+                background-image 0.3s ease;
+}
