@@ -469,8 +469,8 @@ html {
 }
 
 /* ===================================
-   DESKTOP PARTICLES OVERRIDE (1024px+)
-   Ensure particles are always visible on desktop
+   DESKTOP PARTICLES & ANIMATIONS OVERRIDE (1024px+)
+   Ensure particles and animations are always active on desktop
    =================================== */
 
 @media only screen and (min-width: 1024px) {
@@ -486,6 +486,44 @@ html {
     
     [data-theme="dark"] #particles-js {
         opacity: 0.7 !important;
+    }
+    
+    /* Force animations to be active on desktop */
+    .floating-card,
+    .profile-ring,
+    .profile-dots .dot {
+        animation-play-state: running !important;
+    }
+    
+    /* Ensure floating cards have their animations */
+    .card-1 {
+        animation: float 4s ease-in-out infinite !important;
+    }
+    
+    .card-2 {
+        animation: float 4s ease-in-out infinite 1s !important;
+    }
+    
+    .card-3 {
+        animation: float 4s ease-in-out infinite 2s !important;
+    }
+    
+    /* Ensure profile ring rotates */
+    .profile-ring {
+        animation: rotate 20s linear infinite !important;
+    }
+    
+    /* Ensure profile dots pulse */
+    .profile-dots .dot {
+        animation: pulse 2s ease-in-out infinite !important;
+    }
+    
+    .profile-dots .dot:nth-child(2) {
+        animation-delay: 0.5s !important;
+    }
+    
+    .profile-dots .dot:nth-child(3) {
+        animation-delay: 1s !important;
     }
 }
 
@@ -596,14 +634,36 @@ html {
    PERFORMANCE OPTIMIZATIONS
    =================================== */
 
-/* Reduce animations on low-end devices */
+/* Reduce animations on low-end devices - but keep desktop animations */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    /* Only disable animations on mobile and tablet */
+    @media (max-width: 1023px) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+    
+    /* On desktop, keep animations but reduce their intensity */
+    @media (min-width: 1024px) {
+        .floating-card,
+        .profile-ring,
+        .profile-dots .dot {
+            animation-duration: 6s !important; /* Slower animations */
+        }
+        
+        /* Keep essential animations like float but make them gentler */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px); /* Reduced movement */
+            }
+        }
     }
 }
 
