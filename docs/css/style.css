@@ -2,6 +2,8 @@
 @import 'reset.css';
 @import 'variables.css';
 @import 'common.css';
+@import 'responsive.css';
+@import 'mobile-enhancements.css';
 
 /* Section-specific styles */
 @import 'sections/header.css';

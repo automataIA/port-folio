@@ -5,6 +5,13 @@
     padding: 0 2rem;
 }
 
+/* Hidden state when beyond the hero */
+.scroll-down.is-hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+    pointer-events: none;
+}
+
 .section {
     padding: 4rem 0;
     margin-top: 80px;
@@ -65,8 +72,8 @@
 
 /* Scroll down indicator */
 .scroll-down {
-    position: absolute;
-    bottom: 30px;
+    position: fixed; /* stick to viewport */
+    bottom: calc(32px + env(safe-area-inset-bottom, 0px));
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -75,10 +82,10 @@
     gap: 0.5rem;
     color: var(--text-secondary);
     font-size: 0.9rem;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    opacity: 0.9;
+    transition: opacity 0.25s ease, transform 0.25s ease;
     cursor: pointer;
-    z-index: 2;
+    z-index: 100; /* above hero content, below navbar(1000) */
 }
 
 .scroll-down:hover {
@@ -111,13 +118,26 @@
         opacity: 1;
     }
     100% {
-        transform: translateX(-50%) translateY(20px);
+        transform: translateX(-50%) translateY(14px);
         opacity: 0;
     }
 }
 
 /* Responsive Design - Mobile First */
 @media (max-width: 768px) {
+    .scroll-down {
+        bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+        font-size: 0.85rem;
+    }
+    .scroll-down .mouse {
+        width: 26px;
+        height: 44px;
+        border-radius: 13px;
+    }
+    .scroll-down .wheel {
+        top: 5px;
+        height: 9px;
+    }
     .container {
         padding: 0 1rem;
     }

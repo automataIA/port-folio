@@ -57,5 +57,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+
+        // Hide scroll indicator when hero is out of view (robust approach)
+        const heroSection = document.querySelector('.hero');
+        const aboutSection = document.querySelector('#about');
+        const updateScrollIndicator = () => {
+            if (!heroSection) return;
+            const rect = heroSection.getBoundingClientRect();
+            const heroVisible = rect.bottom > 80 && rect.top < window.innerHeight * 0.9;
+            scrollDownBtn.classList.toggle('is-hidden', !heroVisible);
+        };
+        // Initial state
+        updateScrollIndicator();
+        // Update on scroll/resize
+        window.addEventListener('scroll', updateScrollIndicator, { passive: true });
+        window.addEventListener('resize', updateScrollIndicator);
+
+        // Also hide as soon as the about section enters the viewport
+        if (aboutSection && 'IntersectionObserver' in window) {
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        scrollDownBtn.classList.add('is-hidden');
+                    }
+                });
+            }, { threshold: 0.01, rootMargin: '0px 0px -60% 0px' });
+            aboutObserver.observe(aboutSection);
+        }
     }
 });

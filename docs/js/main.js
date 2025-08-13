@@ -85,10 +85,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
             const colors = getCurrentColors();
             
+            // Determina il numero di particelle in base alla dimensione dello schermo
+            const isMobile = window.innerWidth <= 768;
+            const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+            
+            let particleCount = 120; // Desktop default
+            if (isMobile) {
+                particleCount = 30; // Mobile ridotto
+            } else if (isTablet) {
+                particleCount = 60; // Tablet intermedio
+            }
+            
             return {
                 particles: {
                     number: {
-                        value: 80,
+                        value: particleCount,
                         density: {
                             enable: true,
                             value_area: 800
@@ -251,6 +262,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.destroyParticles = destroyParticles;
         window.initParticles = initParticles;
         window.particlesInstance = particlesInstance;
+        
+        // Handle window resize to update particle count
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                // Reinitialize particles with new count based on current screen size
+                if (window.pJSDom && window.pJSDom[0]) {
+                    destroyParticles();
+                    setTimeout(initParticles, 100);
+                }
+            }, 250); // Debounce resize events
+        });
 
         // Initialize particles when DOM is loaded
         initParticles();

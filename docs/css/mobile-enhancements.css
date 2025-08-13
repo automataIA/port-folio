@@ -1,0 +1,297 @@
+/* ===================================
+   MOBILE ENHANCEMENTS & OPTIMIZATIONS
+   Additional improvements for mobile UX
+   =================================== */
+
+/* Improved scroll behavior */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Better tap highlighting */
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+
+/* Improved button and link interactions */
+.btn,
+.nav-menu a,
+.project-card,
+.skill-category {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Text selection for readable content */
+.hero-description,
+.project-description,
+.publication-abstract,
+p {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/* Mobile-specific animations */
+@media only screen and (max-width: 767px) {
+    /* Reduce motion for better performance */
+    .hero-content,
+    .section-header,
+    .project-card,
+    .skill-category {
+        animation-duration: 0.3s;
+    }
+
+    /* Optimize particle container for mobile */
+    #particles-js {
+        opacity: 0.6;
+    }
+
+    /* Better mobile spacing */
+    .section {
+        scroll-margin-top: 80px;
+    }
+
+    /* Improved mobile forms if any */
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        border-radius: 8px;
+        padding: 12px;
+    }
+
+    /* Mobile-optimized cards */
+    .project-card,
+    .skill-category,
+    .certification-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:active,
+    .skill-category:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Better mobile typography */
+    .hero h1 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .section-header h2 {
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+
+    /* Mobile-optimized skill tags */
+    .skill-tag,
+    .tech-tag {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+    }
+
+    /* Improved mobile navigation */
+    .nav-menu.active {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile-friendly palette selector */
+    .palette-options {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Better mobile footer */
+    .footer-links a {
+        padding: 8px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+    }
+
+    .footer-links a:active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+}
+
+/* Tablet-specific optimizations */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Optimize for tablet landscape */
+    @media (orientation: landscape) {
+        .hero {
+            min-height: calc(var(--vh, 1vh) * 70);
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+    }
+
+    /* Optimize for tablet portrait */
+    @media (orientation: portrait) {
+        .hero {
+            min-height: calc(var(--vh, 1vh) * 60);
+        }
+
+        .skills-container {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+}
+
+/* High DPI displays */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi) {
+    /* Optimize for retina displays */
+    .lucide {
+        stroke-width: 1.5;
+    }
+
+    .project-card,
+    .skill-category {
+        border: 0.5px solid var(--border-color);
+    }
+}
+
+/* Landscape phone optimization */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 4rem 0 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 2rem 0;
+        margin-top: 60px;
+    }
+}
+
+/* Print styles for mobile */
+@media print {
+    .navbar,
+    .hamburger,
+    .theme-controls,
+    #particles-js,
+    .scroll-down {
+        display: none !important;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 2rem 0;
+    }
+
+    .section {
+        margin-top: 0;
+        padding: 1rem 0;
+        page-break-inside: avoid;
+    }
+
+    .project-card,
+    .skill-category {
+        page-break-inside: avoid;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Loading states for better perceived performance */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .loading::after {
+        animation: none;
+    }
+
+    /* Keep particles visible but reduce their animation on desktop */
+    @media (min-width: 1024px) {
+        #particles-js {
+            display: block;
+            opacity: 0.5;
+        }
+    }
+    
+    /* Hide particles only on mobile when reduced motion is preferred */
+    @media (max-width: 1023px) {
+        #particles-js {
+            display: none;
+        }
+    }
+}
+
+/* Focus management for mobile */
+.nav-menu a:focus,
+.btn:focus {
+    position: relative;
+    z-index: 1;
+}
+
+/* Better mobile scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+}

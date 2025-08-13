@@ -19,8 +19,19 @@
     /* Behind all content */
     opacity: 0.7;
     transition: opacity 0.3s ease;
-    pointer-events: auto;
-    /* Allow particle interactions */
+    /* Do not capture clicks to ensure navbar/links work */
+    pointer-events: none;
+}
+
+/* Use dynamic viewport units when supported to avoid overflow from browser UI/navbars */
+@supports (min-height: 100dvh) {
+    .hero {
+        min-height: 100dvh;
+    }
+
+    #particles-js {
+        height: 100dvh;
+    }
 }
 
 /* Ensure particles canvas is properly positioned */
@@ -29,6 +40,8 @@
     top: 0 !important;
     left: 0 !important;
     z-index: -1 !important;
+    /* Ensure canvas also doesn't capture pointer events */
+    pointer-events: none !important;
 }
 
 /* Light mode: particles more visible with better contrast */
@@ -93,7 +106,7 @@
 .hero-name-row {
     display: flex;
     align-items: center;
-    gap: 4.00rem;
+    gap: 2.00rem;
     /* increased space between name and icons */
     flex-wrap: wrap;
 }
@@ -114,7 +127,8 @@
     height: 55px;
     /* keep larger size as requested */
     border-radius: 10px;
-    color: var(--primary-color); /* icon color matches primary */
+    color: var(--primary-color);
+    /* icon color matches primary */
     background: rgba(26, 26, 26, 0.6);
     border: 2px solid var(--primary-color);
     transition: all 0.25s ease;
@@ -142,11 +156,15 @@
     font-weight: 400;
     opacity: 0.9;
     animation: fadeInUp 0.8s ease-out 0.4s both;
+    /* Ensure visibility regardless of gradient text rules above */
+    -webkit-text-fill-color: var(--text-primary);
+    background: none !important;
 }
 
 /* Enhanced Hero Quote */
 .hero-quote {
-    display: flex;
+    display: inline-flex;
+    /* shrink to content width */
     align-items: flex-start;
     gap: 1rem;
     margin-bottom: 2rem;
@@ -156,6 +174,10 @@
     border-radius: 15px;
     border-left: 4px solid var(--primary-color);
     animation: fadeInUp 0.8s ease-out 0.6s both;
+    width: fit-content;
+    /* adapt box to content */
+    max-width: 100%;
+    /* prevent overflow on small screens */
 }
 
 [data-theme="light"] .hero-quote {
@@ -325,6 +347,33 @@
     /* Apply requested zoom (50%) and offset (x:10px, y:15px) */
     transform-origin: center center;
     transform: translate(0px, -40px) scale(1.5);
+    transition: filter 0.3s ease;
+}
+
+/* Apply palette-based color filters to the main profile image */
+/* Default (Sky) palette: when no data-palette attribute is set */
+:root:not([data-palette]) .profile-photo {
+    filter: hue-rotate(100deg) brightness(1.53) saturate(1.5);
+}
+
+/* Sunset palette */
+:root[data-palette="sunset"] .profile-photo {
+    filter: hue-rotate(214deg) brightness(1.06) saturate(1.45);
+}
+
+/* Minimal palette: muted, desaturated look */
+:root[data-palette="minimal"] .profile-photo {
+    filter: hue-rotate(0deg) brightness(1.00) saturate(0.30);
+}
+
+/* Cyberpunk palette: neon magenta/purple shift */
+:root[data-palette="cyberpunk"] .profile-photo {
+    filter: hue-rotate(300deg) brightness(1.20) saturate(1.80);
+}
+
+/* Black & White palette: fully desaturated */
+:root[data-palette="blackwhite"] .profile-photo {
+    filter: hue-rotate(0deg) brightness(1.00) saturate(0);
 }
 
 .profile-ring {
