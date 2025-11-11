@@ -44,12 +44,12 @@ function toggleTheme() {
         }
         
         // Controlla le preferenze di sistema
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return 'light';
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
         }
-        
-        // Default: tema scuro
-        return 'dark';
+
+        // Default: tema chiaro
+        return 'light';
     }
     
     // Imposta il tema iniziale

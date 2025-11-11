@@ -103,12 +103,15 @@
    - Open `index.html` in your preferred browser
    - Or use a local server:
    ```bash
+   # Using Python with uv
+   uv run python -m http.server 8000 --directory docs
+
    # Using Python
-   python -m http.server 8000
-   
+   python -m http.server 8000 --directory docs
+
    # Using Node.js
    npx serve .
-   
+
    # Using PHP
    php -S localhost:8000
    ```
