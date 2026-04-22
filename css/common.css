@@ -1,0 +1,170 @@
+/* Common styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hidden state when beyond the hero */
+.scroll-down.is-hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(6px);
+    pointer-events: none;
+}
+
+.section {
+    padding: 4rem 0;
+    margin-top: 80px;
+    position: relative;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+/* Lucide Icons Styling */
+.lucide {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.3s ease;
+}
+
+.lucide-large {
+    width: 32px;
+    height: 32px;
+}
+
+.lucide-xl {
+    width: 48px;
+    height: 48px;
+}
+
+.lucide-2xl {
+    width: 64px;
+    height: 64px;
+}
+
+/* Section headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.section-icon {
+    color: var(--primary-color);
+}
+
+/* Scroll down indicator */
+.scroll-down {
+    position: fixed; /* stick to viewport */
+    bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    opacity: 0.9;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    cursor: pointer;
+    z-index: 100; /* above hero content, below navbar(1000) */
+}
+
+.scroll-down:hover {
+    opacity: 1;
+}
+
+.scroll-down .mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 15px;
+    position: relative;
+}
+
+.scroll-down .wheel {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 10px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    animation: scroll 1.5s ease infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(14px);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 768px) {
+    .scroll-down {
+        bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+        font-size: 0.85rem;
+    }
+    .scroll-down .mouse {
+        width: 26px;
+        height: 44px;
+        border-radius: 13px;
+    }
+    .scroll-down .wheel {
+        top: 5px;
+        height: 9px;
+    }
+    .container {
+        padding: 0 1rem;
+    }
+    
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+    }
+    
+    .nav-menu {
+        display: none;
+    }
+}

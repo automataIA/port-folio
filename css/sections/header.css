@@ -1,0 +1,111 @@
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    /* Push menu to the right so logo + social stay grouped */
+    margin-left: auto;
+}
+
+.nav-menu a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Slide-in underline base */
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Slide-in underline element */
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+    border-radius: 2px;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Nav social icons next to the logo */
+.nav-social {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px between icons */
+    margin-left: 0.75rem; /* small gap from the name */
+}
+
+.nav-social-link {
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-social-link .lucide {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-social-link:hover {
+    color: var(--primary-color);
+    background-color: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+/* Old theme toggle styles removed - now handled by theme-controls.css */
+
+/* Theme icon styles moved to theme-controls.css */
+
+/* All theme toggle styles moved to theme-controls.css */
+
+/* Theme icon animations moved to theme-controls.css */

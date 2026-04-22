@@ -1,0 +1,272 @@
+/* Certifications Section */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.certification-card {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Light mode certification cards */
+[data-theme="light"] .certification-card {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.certification-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px var(--shadow-color);
+    border-color: var(--primary-color);
+}
+
+.certification-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.certification-card:hover::before {
+    opacity: 1;
+}
+
+.cert-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.cert-icon .lucide {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+/* AWS Icon */
+.cert-icon.aws {
+    background: linear-gradient(135deg, #FF9900, #FF6600);
+    box-shadow: 0 10px 20px rgba(255, 153, 0, 0.3);
+}
+
+/* TensorFlow Icon */
+.cert-icon.tensorflow {
+    background: linear-gradient(135deg, #FF6F00, #FF8F00);
+    box-shadow: 0 10px 20px rgba(255, 111, 0, 0.3);
+}
+
+/* Kubernetes Icon */
+.cert-icon.kubernetes {
+    background: linear-gradient(135deg, #326CE5, #4285F4);
+    box-shadow: 0 10px 20px rgba(50, 108, 229, 0.3);
+}
+
+/* Achievement Icons */
+.cert-icon.achievement {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+
+.cert-icon.github {
+    background: linear-gradient(135deg, #333, #555);
+    box-shadow: 0 10px 20px rgba(51, 51, 51, 0.3);
+}
+
+.cert-icon.research {
+    background: linear-gradient(135deg, #9C27B0, #E91E63);
+    box-shadow: 0 10px 20px rgba(156, 39, 176, 0.3);
+}
+
+.certification-card:hover .cert-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+}
+
+.certification-card h3 {
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.certification-card:hover h3 {
+    color: var(--primary-color);
+}
+
+.cert-issuer {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.cert-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.cert-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.cert-badge .badge-text {
+    color: white;
+}
+
+/* Default certification badge */
+.cert-badge {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Achievement badges */
+.achievement-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+}
+
+.github-badge {
+    background: linear-gradient(135deg, #333, #555) !important;
+}
+
+.research-badge {
+    background: linear-gradient(135deg, #9C27B0, #E91E63) !important;
+}
+
+.certification-card:hover .cert-badge {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Achievement cards special styling */
+.certification-card.achievement {
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), 
+                      linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+[data-theme="light"] .certification-card.achievement {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                      linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .certification-card {
+        padding: 1.5rem;
+    }
+    
+    .cert-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .cert-icon .lucide {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .certification-card h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Staggered animation for cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.certification-card {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.certification-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.certification-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.certification-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.certification-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.certification-card:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* Pulse effect for achievement badges */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+    }
+}
+
+.certification-card.achievement:hover .cert-icon {
+    animation: pulse 2s infinite;
+}
