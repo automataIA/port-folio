@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlo Calledda — ML Engineer</title>
+<meta name="description" content="Portfolio of Carlo Calledda, AI & Machine Learning Engineer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+/* ── Palette LLM — Light (default) ── */
+:root{
+  --pri:oklch(0.52 0.18 275);
+  --pri-light:oklch(0.62 0.14 275);
+  --pri-fade:oklch(0.52 0.18 275 / 0.08);
+  --sec:oklch(0.45 0.04 250);
+  --acc:oklch(0.58 0.12 195);
+  --acc-light:oklch(0.58 0.12 195 / 0.10);
+  --fg:oklch(0.20 0.02 260);
+  --fg2:oklch(0.40 0.02 260);
+  --fg3:oklch(0.55 0.01 260);
+  --bg:oklch(0.985 0.003 260);
+  --bg2:oklch(0.97 0.005 260);
+  --bg3:oklch(0.95 0.007 260);
+  --border:oklch(0.90 0.01 260);
+  --card:white;
+  --nav-bg:oklch(0.985 0.003 260 / 0.85);
+  --font: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+  --max: 1120px;
+  --r: 10px;
+}
+/* ── Dark mode ── */
+[data-theme="dark"]{
+  --pri:oklch(0.68 0.16 275);
+  --pri-light:oklch(0.75 0.12 275);
+  --pri-fade:oklch(0.68 0.16 275 / 0.12);
+  --acc:oklch(0.68 0.12 195);
+  --acc-light:oklch(0.68 0.12 195 / 0.12);
+  --fg:oklch(0.93 0.005 260);
+  --fg2:oklch(0.75 0.01 260);
+  --fg3:oklch(0.58 0.01 260);
+  --bg:oklch(0.13 0.01 260);
+  --bg2:oklch(0.16 0.012 260);
+  --bg3:oklch(0.19 0.014 260);
+  --border:oklch(0.24 0.015 260);
+  --card:oklch(0.17 0.012 260);
+  --nav-bg:oklch(0.13 0.01 260 / 0.88);
+}
+
+html{color-scheme:light}
+[data-theme="dark"]{color-scheme:dark}
+body{transition:background-color .3s,color .3s;
+
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--pri);text-decoration:none;transition:color .2s}
+a:hover{color:var(--pri-light)}
+img{display:block;max-width:100%}
+
+/* ── Layout ── */
+.w{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ── Nav ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+}
+.nav-logo{font-weight:600;font-size:15px;color:var(--fg);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--fg3);letter-spacing:0.01em;transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-social{display:flex;gap:12px}
+.nav-social a{
+  color:var(--fg3);display:flex;align-items:center;
+  transition:color .2s;
+}
+.nav-social a:hover{color:var(--pri)}
+.nav-social svg{width:18px;height:18px}
+
+/* ── Theme toggle ── */
+.theme-toggle{
+  background:none;border:1px solid var(--border);border-radius:8px;
+  width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--fg3);transition:color .2s,border-color .2s;
+}
+.theme-toggle:hover{color:var(--fg);border-color:var(--fg3)}
+.theme-toggle svg{width:16px;height:16px}
+.theme-toggle .icon-moon{display:none}
+[data-theme="dark"] .theme-toggle .icon-sun{display:none}
+[data-theme="dark"] .theme-toggle .icon-moon{display:block}
+
+/* ── Hero ── */
+.hero-section{padding:0;border-top:none}
+.hero-section + section{border-top:1px solid var(--border)}
+.hero{
+  padding:72px 0;
+  max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  color:var(--pri);background:var(--pri-fade);
+  padding:5px 12px;border-radius:100px;margin-bottom:20px;
+  letter-spacing:0.02em;
+}
+.hero h1{
+  font-size:clamp(36px, 5vw, 52px);font-weight:700;
+  line-height:1.1;letter-spacing:-0.03em;color:var(--fg);
+  margin-bottom:8px;
+}
+.hero-title{
+  font-size:clamp(18px, 2.5vw, 22px);font-weight:400;
+  color:var(--fg2);margin-bottom:20px;display:block;
+}
+.hero-quote{
+  font-style:italic;color:var(--fg3);font-size:14px;
+  margin-bottom:24px;padding-left:16px;
+  border-left:2px solid var(--border);
+}
+.hero p{color:var(--fg2);font-size:15px;max-width:540px;margin-bottom:32px}
+.hero p strong{color:var(--fg);font-weight:600}
+
+.hero-stats{display:flex;gap:32px}
+.hero-stat{text-align:left}
+.hero-stat-num{font-size:28px;font-weight:700;color:var(--fg);letter-spacing:-0.02em}
+.hero-stat-label{font-size:12px;color:var(--fg3);letter-spacing:0.02em;text-transform:uppercase;font-weight:500}
+
+
+/* ── Section ── */
+section{padding:72px 0}
+section + section{border-top:1px solid var(--border)}
+.sec-title{
+  font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
+  color:var(--pri);margin-bottom:8px;
+}
+.sec-heading{
+  font-size:clamp(24px, 3vw, 32px);font-weight:700;letter-spacing:-0.02em;
+  margin-bottom:40px;color:var(--fg);
+}
+
+/* ── About ── */
+.about-content{
+  display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start;
+}
+.about-text{color:var(--fg2);font-size:15px}
+.about-text p + p{margin-top:16px}
+.about-text strong{color:var(--fg);font-weight:600}
+.about-sidebar{display:flex;flex-direction:column;gap:16px}
+.about-stat{
+  padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  transition:border-color .2s;
+}
+.about-stat:hover{border-color:var(--pri-light)}
+.about-stat-num{font-size:22px;font-weight:700;color:var(--fg);letter-spacing:-0.02em}
+.about-stat-label{font-size:12px;color:var(--fg3);text-transform:uppercase;letter-spacing:0.04em;font-weight:500}
+
+/* ── Skills ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.skill-group{
+  padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  transition:border-color .2s;
+}
+.skill-group:hover{border-color:var(--pri-light)}
+.skill-group h3{font-size:14px;font-weight:600;color:var(--fg);margin-bottom:16px;letter-spacing:-0.01em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px;
+  background:var(--bg2);color:var(--fg2);border:1px solid var(--border);
+  transition:all .2s;
+}
+.tag.expert{background:var(--pri-fade);color:var(--pri);border-color:oklch(0.52 0.18 275 / 0.15)}
+.tag.adv{background:var(--acc-light);color:oklch(0.40 0.10 195);border-color:oklch(0.58 0.12 195 / 0.15)}
+
+/* ── Projects ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.proj{
+  padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  display:flex;flex-direction:column;gap:12px;transition:border-color .2s,box-shadow .2s;
+}
+.proj:hover{border-color:var(--pri-light);box-shadow:0 2px 16px oklch(0.52 0.18 275 / 0.06)}
+.proj h3{font-size:15px;font-weight:600;color:var(--fg);letter-spacing:-0.01em}
+.proj p{font-size:13px;color:var(--fg2);line-height:1.6;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px}
+.proj-tag{
+  font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;
+  background:var(--bg3);color:var(--fg3);
+}
+.proj-links{display:flex;gap:12px;margin-top:4px}
+.proj-links a{
+  font-size:12px;font-weight:600;color:var(--pri);
+  display:inline-flex;align-items:center;gap:4px;
+  transition:color .2s;
+}
+.proj-links a:hover{color:var(--pri-light)}
+.proj-links svg{width:13px;height:13px}
+
+/* ── Publications ── */
+.pubs{display:flex;flex-direction:column;gap:20px}
+.pub{
+  padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  transition:border-color .2s;
+}
+.pub:hover{border-color:var(--pri-light)}
+.pub-meta{display:flex;gap:12px;align-items:center;margin-bottom:8px}
+.pub-type{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  background:var(--pri-fade);color:var(--pri);padding:3px 10px;border-radius:100px;
+}
+.pub-date{font-size:12px;color:var(--fg3)}
+.pub h3{font-size:15px;font-weight:600;color:var(--fg);margin-bottom:8px;letter-spacing:-0.01em}
+.pub p{font-size:13px;color:var(--fg2);line-height:1.6}
+
+/* ── Certs ── */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.cert{
+  padding:24px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  transition:border-color .2s;
+}
+.cert:hover{border-color:var(--pri-light)}
+.cert-badge{
+  display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;
+  background:var(--acc-light);color:oklch(0.40 0.10 195);
+  padding:3px 10px;border-radius:100px;margin-bottom:12px;
+}
+.cert h3{font-size:14px;font-weight:600;color:var(--fg);margin-bottom:4px}
+.cert-issuer{font-size:12px;color:var(--fg3);margin-bottom:8px}
+.cert p{font-size:13px;color:var(--fg2);line-height:1.55}
+
+/* ── Footer ── */
+footer{
+  padding:40px 0;border-top:1px solid var(--border);
+  text-align:center;
+}
+footer p{font-size:13px;color:var(--fg3)}
+
+/* ── Micro-animations ── */
+
+/* Subtle dot-grid background */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:radial-gradient(var(--fg3) .6px, transparent .6px);
+  background-size:24px 24px;
+  opacity:.08;
+  transition:opacity .3s;
+}
+[data-theme="dark"] body::before{opacity:.06}
+
+/* Nav link hover underline slide */
+.nav-links a{position:relative}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
+  background:var(--pri);border-radius:1px;
+  transition:width .25s cubic-bezier(.4,0,.2,1);
+}
+.nav-links a:hover::after{width:100%}
+
+/* Hero badge subtle pulse */
+.hero-badge{animation:badge-glow 3s ease-in-out infinite}
+@keyframes badge-glow{
+  0%,100%{box-shadow:0 0 0 0 var(--pri-fade)}
+  50%{box-shadow:0 0 0 8px transparent}
+}
+
+/* Hero stat hover lift */
+.hero-stat{transition:transform .2s ease}
+.hero-stat:hover{transform:translateY(-2px)}
+
+/* Cards: lift + shadow on hover */
+.about-stat,.skill-group,.proj,.pub,.cert{
+  transition:border-color .2s, box-shadow .25s cubic-bezier(.4,0,.2,1), transform .25s cubic-bezier(.4,0,.2,1);
+}
+.about-stat:hover,.skill-group:hover,.pub:hover,.cert:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px oklch(0.52 0.18 275 / 0.07);
+}
+.proj:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px oklch(0.52 0.18 275 / 0.07);
+}
+[data-theme="dark"] .about-stat:hover,[data-theme="dark"] .skill-group:hover,
+[data-theme="dark"] .pub:hover,[data-theme="dark"] .cert:hover,
+[data-theme="dark"] .proj:hover{
+  box-shadow:0 8px 24px oklch(0.68 0.16 275 / 0.12);
+}
+
+/* Tags micro-scale on hover */
+.tag{transition:all .15s ease}
+.tag:hover{transform:scale(1.06)}
+.proj-tag{transition:background .15s ease,color .15s ease}
+.proj-tag:hover{background:var(--pri-fade);color:var(--pri)}
+
+/* Section headings: border-left accent slide-in */
+.sec-title{position:relative;padding-left:12px}
+.sec-title::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--pri);border-radius:2px;
+  transform:scaleY(0);transform-origin:bottom;
+  animation:sec-line .4s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes sec-line{to{transform:scaleY(1)}}
+
+/* Fade-in on scroll (pure CSS using animation-timeline where supported, fallback: just visible) */
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:translateY(0)}
+}
+section > .w > *{animation:fade-up .5s cubic-bezier(.4,0,.2,1) both}
+section:nth-of-type(1) > .w > *{animation-delay:0s}
+section:nth-of-type(2) > .w > *{animation-delay:.05s}
+section:nth-of-type(3) > .w > *{animation-delay:.08s}
+section:nth-of-type(4) > .w > *{animation-delay:.1s}
+section:nth-of-type(5) > .w > *{animation-delay:.12s}
+
+/* Theme toggle spin */
+.theme-toggle{transition:color .2s,border-color .2s,transform .3s cubic-bezier(.4,0,.2,1)}
+.theme-toggle:active{transform:rotate(30deg) scale(.9)}
+
+/* Project link arrow nudge */
+.proj-links a svg{transition:transform .2s ease}
+.proj-links a:hover svg{transform:translateX(2px)}
+
+/* Cert badge shimmer */
+.cert-badge{position:relative;overflow:hidden}
+.cert-badge::after{
+  content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,oklch(1 0 0 / .15),transparent);
+  transition:none;
+}
+.cert:hover .cert-badge::after{
+  animation:shimmer .6s ease forwards;
+}
+@keyframes shimmer{to{left:150%}}
+
+/* Pub type pill hover */
+.pub-type{transition:background .2s,transform .15s}
+.pub:hover .pub-type{transform:scale(1.04)}
+
+/* ── Mobile ── */
+@media(max-width:768px){
+  .hero{padding:48px 0 40px}
+  body::before{background-size:20px 20px}
+  .hero-stats{justify-content:center;flex-wrap:wrap;gap:24px}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-quote{text-align:left}
+  .about-content{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .projects-grid,.certs-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  section{padding:48px 0}
+}
+@media(max-width:480px){
+  .hero h1{font-size:32px}
+  .hero-stats{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+<div class="w nav-inner">
+  <span class="nav-logo">Carlo Calledda</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://www.linkedin.com/in/carlo-calledda/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/automataIA" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      <a href="https://www.researchgate.net/profile/Carlo-Calledda" target="_blank" rel="noopener" aria-label="ResearchGate">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 6 3 12 0v-5"/></svg>
+      </a>
+    </div>
+    <button class="theme-toggle" onclick="var h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');localStorage.setItem('theme',d?'light':'dark')" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-section">
+<header class="w hero">
+  <div class="hero-badge">● AI &amp; ML Engineer</div>
+  <h1>Carlo Calledda</h1>
+  <span class="hero-title">Machine Learning Engineer</span>
+  <div class="hero-quote">μηδὲν ἄγαν — nothing in excess</div>
+  <p>Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of experience. From computer vision to NLP, I architect solutions that solve real-world problems at scale.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">5+</div><div class="hero-stat-label">Years</div></div>
+    <a href="https://autognosi.medium.com/" target="_blank" rel="noopener" class="hero-stat" style="text-decoration:none;color:inherit"><div class="hero-stat-num">100+</div><div class="hero-stat-label">Articles</div></a>
+    <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-label">Projects</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">Certs</div></div>
+  </div>
+</header>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="w">
+  <div class="sec-title">About</div>
+  <h2 class="sec-heading">Background</h2>
+  <div class="about-content">
+    <div class="about-text">
+      <p>Hi, I'm <strong>Carlo Calledda</strong>. I started with a thesis on neural networks for seismic design and academic research in data science and machine learning engineering, which I turned into specialized experience developing end‑to‑end MLOps solutions and computer vision systems.</p>
+      <p>Today I'm a Data Scientist specialized in MLOps implementations and microservice systems: I design automated ML pipelines, build REST APIs with FastAPI, and deliver containerized deployments. I have proven experience delivering end‑to‑end solutions, from dataset automation tools to production‑ready services.</p>
+      <p>I have a solid foundation in structural engineering and growing expertise in NLP and large language model applications, with a strong passion for Rust. I aspire to lead projects that combine my MLOps background with emerging ML/NLP/LLM technologies.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="about-stat"><div class="about-stat-num">5+</div><div class="about-stat-label">Years experience</div></div>
+      <div class="about-stat"><div class="about-stat-num">50+</div><div class="about-stat-label">Articles</div></div>
+      <div class="about-stat"><div class="about-stat-num">20+</div><div class="about-stat-label">Projects</div></div>
+      <div class="about-stat"><div class="about-stat-num">6</div><div class="about-stat-label">Certifications</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+<div class="w">
+  <div class="sec-title">Expertise</div>
+  <h2 class="sec-heading">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Machine Learning &amp; AI</h3>
+      <div class="tags">
+        <span class="tag expert">Deep Learning</span>
+        <span class="tag expert">Neural Networks</span>
+        <span class="tag adv">Computer Vision</span>
+        <span class="tag adv">NLP</span>
+        <span class="tag adv">Time Series</span>
+        <span class="tag adv">Transformers</span>
+        <span class="tag adv">Model Optimization</span>
+        <span class="tag adv">MLOps</span>
+        <span class="tag">Reinforcement Learning</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Programming &amp; Frameworks</h3>
+      <div class="tags">
+        <span class="tag expert">Python</span>
+        <span class="tag expert">PyTorch</span>
+        <span class="tag expert">Scikit-learn</span>
+        <span class="tag adv">TensorFlow</span>
+        <span class="tag adv">FastAPI</span>
+        <span class="tag adv">ONNX / ONNX Runtime</span>
+        <span class="tag adv">Pydantic</span>
+        <span class="tag adv">OAuth2 / JWT</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Rust</span>
+        <span class="tag">Leptos</span>
+        <span class="tag">WebAssembly</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Cloud &amp; DevOps</h3>
+      <div class="tags">
+        <span class="tag expert">Docker</span>
+        <span class="tag adv">AWS</span>
+        <span class="tag adv">Kubernetes</span>
+        <span class="tag adv">CI/CD</span>
+        <span class="tag adv">MLflow</span>
+        <span class="tag adv">Argo</span>
+        <span class="tag adv">Nginx</span>
+        <span class="tag adv">Keycloak</span>
+        <span class="tag">Google Cloud</span>
+        <span class="tag">Terraform</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Data Engineering</h3>
+      <div class="tags">
+        <span class="tag expert">SQL</span>
+        <span class="tag expert">ETL Pipelines</span>
+        <span class="tag adv">PostgreSQL</span>
+        <span class="tag adv">Apache Spark</span>
+        <span class="tag adv">DuckDB</span>
+        <span class="tag adv">MinIO</span>
+        <span class="tag adv">PostGIS / GeoPandas</span>
+        <span class="tag adv">PyArrow</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Redis</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Tools &amp; Ecosystem</h3>
+      <div class="tags">
+        <span class="tag expert">Git / GitHub</span>
+        <span class="tag expert">Pandas / NumPy</span>
+        <span class="tag expert">Jupyter</span>
+        <span class="tag adv">Streamlit</span>
+        <span class="tag adv">W&amp;B</span>
+        <span class="tag adv">Optuna</span>
+        <span class="tag adv">RAPIDS</span>
+        <span class="tag adv">Label Studio</span>
+        <span class="tag">MKDocs</span>
+        <span class="tag">UV</span>
+        <span class="tag">marimo</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+<div class="w">
+  <div class="sec-title">Work</div>
+  <h2 class="sec-heading">Featured Projects</h2>
+  <div class="projects-grid">
+
+    <div class="proj">
+      <h3>graphrag-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">GraphRAG</span><span class="proj-tag">Knowledge Graph</span></div>
+      <p>High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and enables natural language queries. ⭐ 230 stars</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/graphrag-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>agent-conductor-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Actix-Web</span><span class="proj-tag">AI Agents</span><span class="proj-tag">WASM</span></div>
+      <p>Lightweight AI agent orchestrator built in Rust. High-performance Actix-web backend for agent lifecycle management and a real-time WASM dashboard.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/agent-conductor-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>agentic-graphrag-rl-trainer</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">RL</span><span class="proj-tag">GRPO</span><span class="proj-tag">QLoRA</span><span class="proj-tag">LLM</span></div>
+      <p>Reinforcement Learning trainer for LLM function calling using GRPO. AST-based reward functions, QLoRA quantization optimized for consumer GPUs.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/agentic-graphrag-rl-trainer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>wasm-knowledge-chatbot-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span class="proj-tag">Leptos</span><span class="proj-tag">WebLLM</span></div>
+      <p>Blazingly fast chat interface built with Rust/WASM and Leptos, featuring local AI model execution via WebLLM. Privacy-first, no backend. ⭐ 12 stars</p>
+      <div class="proj-links">
+        <a href="https://github.com/automataIA/wasm-knowledge-chatbot-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a>
+        <a href="https://automataia.github.io/wasm-knowledge-chatbot-rs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Demo</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>wasm-typst-studio-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span class="proj-tag">Typst</span><span class="proj-tag">PDF</span></div>
+      <p>WASM-powered Typst Studio with real-time compilation to SVG/PDF, IEEE template support, and dynamic bibliography management. ⭐ 41 stars</p>
+      <div class="proj-links">
+        <a href="https://github.com/automataIA/wasm-typst-studio-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a>
+        <a href="https://automataia.github.io/wasm-typst-studio-rs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Demo</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>mcp-py-json-doc</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">MCP</span><span class="proj-tag">Knowledge Graph</span></div>
+      <p>MCP server that transforms Rust documentation into a queryable knowledge graph, enabling semantic search and AI-assisted discovery.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/mcp-py-json-doc" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>mcp-rustdoc-parser</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">MCP</span><span class="proj-tag">Rustdoc</span><span class="proj-tag">Parser</span></div>
+      <p>MCP server for parsing and querying Rust documentation. Extracts details about functions, structs, and enums via a programmable interface.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/mcp-rustdoc-parser" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>python-project-analyzer-mcp</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">MCP</span><span class="proj-tag">Static Analysis</span></div>
+      <p>MCP server that analyzes Python projects, extracts library signatures, and surfaces project information to help AI assistants understand codebases.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/python-project-analyzer-mcp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>Rust-MLOps-predictor-RestAPI</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Actix-Web</span><span class="proj-tag">MLOps</span><span class="proj-tag">Object Detection</span></div>
+      <p>High-performance object detection service built with Rust and Actix-Web, focused on robustness and production-ready APIs.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/Rust-MLOps-predictor-RestAPI" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>wasm-image-studio-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WebAssembly</span><span class="proj-tag">Image Processing</span></div>
+      <p>Web-based image editor built with Rust &amp; WebAssembly. Apply filters, adjust colors, and process images in real-time with near-native performance.</p>
+      <div class="proj-links">
+        <a href="https://github.com/automataIA/wasm-image-studio-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a>
+        <a href="https://automataia.github.io/wasm-image-studio-rs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Demo</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <h3>rust-relations-explorer</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Static Analysis</span><span class="proj-tag">Visualization</span></div>
+      <p>Fast tool to parse Rust projects into a knowledge graph, run queries over code structure, and generate DOT/SVG visualizations.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/rust-relations-explorer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>wasm-rust-llm-chat</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span class="proj-tag">LLM</span><span class="proj-tag">Chat</span></div>
+      <p>WebAssembly-based chat application with local LLM execution in the browser. Privacy-focused with client-side inference.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/wasm-rust-llm-chat" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>vecslide</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">SVG</span><span class="proj-tag">Presentation</span><span class="proj-tag">Audio</span></div>
+      <p>Vector presentation format with synced audio. A .vecslide ZIP contains SVGs and Opus audio via YAML manifest, compiling to standalone zero-dependency HTML. ⭐ 3 stars</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/vecslide" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>devops-assistant-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span class="proj-tag">Chrome Extension</span><span class="proj-tag">DevOps</span></div>
+      <p>Chrome extension (MV3) and multi-agent SRE/DevOps copilot. Offline YAML validation and auto-repair for Kubernetes, Docker Compose, GitLab CI, GitHub Actions, Prometheus.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/devops-assistant-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>agentic-devops-assistant</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PydanticAI</span><span class="proj-tag">DuckDB</span><span class="proj-tag">Iceberg</span></div>
+      <p>Agentic SRE Assistant: local-first AI for log analysis, doc RAG, and YAML validation. Built with PydanticAI, DuckDB, and Apache Iceberg.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/agentic-devops-assistant" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>lodviz-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Leptos</span><span class="proj-tag">WASM</span><span class="proj-tag">Data Viz</span></div>
+      <p>Pure-Rust data visualization library using Leptos and WebAssembly. Automatic Level of Detail management, rendering massive datasets via LTTB and M4 downsampling. ⭐ 5 stars</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/lodviz-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>multilora-hub</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">LoRA</span><span class="proj-tag">QLoRA</span><span class="proj-tag">IBM Granite</span></div>
+      <p>Multi-LoRA fine-tuning of IBM Granite 4.0: 3 specialized adapters (graphrag/synthesizer/agent) on a single 3B base with zero-cost adapter swapping.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/multilora-hub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>api-llm-dataset-generator</h3>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">OpenAPI</span><span class="proj-tag">Ollama</span><span class="proj-tag">Synthetic Data</span></div>
+      <p>Automates creation of production-grade synthetic datasets for function-calling LLMs by ingesting OpenAPI schemas and utilizing local inference via Ollama.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/api-llm-dataset-generator" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>graph-librarian-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">GraphRAG</span><span class="proj-tag">Offline</span><span class="proj-tag">Privacy</span></div>
+      <p>100% offline, privacy-focused GraphRAG system built in Rust for local document intelligence on consumer hardware.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/graph-librarian-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>wasm-plugin-runtime</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASI</span><span class="proj-tag">FaaS</span><span class="proj-tag">Docker</span></div>
+      <p>Production-grade mini-FaaS/Lambda system with WASI 0.2 and Component Model. ~450 LOC delivering hot-reload, Prometheus metrics, Redis/PostgreSQL integration.</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/wasm-plugin-runtime" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+    <div class="proj">
+      <h3>dashboard-studio-rs</h3>
+      <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span class="proj-tag">Data Viz</span><span class="proj-tag">Drag &amp; Drop</span></div>
+      <p>Privacy-first, client-side data visualization powered by Rust + WebAssembly. 11 chart types, drag-and-drop layout, auto-save, undo/redo — all in-browser. ⭐ 8 stars</p>
+      <div class="proj-links"><a href="https://github.com/automataIA/dashboard-studio-rs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Code</a></div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- Publications -->
+<section id="publications">
+<div class="w">
+  <div class="sec-title">Research</div>
+  <h2 class="sec-heading">Scientific Publications</h2>
+  <div class="pubs">
+    <div class="pub">
+      <div class="pub-meta"><span class="pub-type">Research Paper</span><span class="pub-date">May 2021</span></div>
+      <h3>Optimal design of earthquake‑resistant buildings via neural network inversion</h3>
+      <p>Neural-network inversion framework to optimize structural parameters for seismic resilience. Combines simulated ground-motion data, sensitivity analysis and gradient-based search to minimize expected seismic demand.</p>
+    </div>
+    <div class="pub">
+      <div class="pub-meta"><span class="pub-type">Research Grant</span><span class="pub-date">Sep 2021 – Feb 2022</span></div>
+      <h3>Development of a CNN object‑detection algorithm for identifying celestial bodies</h3>
+      <p>Built an astronomy image dataset with Aladin, applied targeted data augmentation, and bootstrapped a detector from an image classifier. Optimized for low-power CubeSat hardware via pruning and quantization.</p>
+    </div>
+    <div class="pub">
+      <div class="pub-meta"><span class="pub-type">Conference Paper</span><span class="pub-date">Nov 2021</span></div>
+      <h3>A SOM‑based method for detecting plastic patches in the sea</h3>
+      <p>Self-Organizing Map approach on multi-spectral remote-sensing imagery to detect marine plastic aggregations, including atmospheric correction, texture features and spatial post-processing.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+<div class="w">
+  <div class="sec-title">Credentials</div>
+  <h2 class="sec-heading">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert">
+      <span class="cert-badge">Analytics</span>
+      <h3>Google Data Analytics Professional Certificate</h3>
+      <div class="cert-issuer">Google · Coursera</div>
+      <p>Job-ready training in spreadsheets, SQL, R, and data visualization.</p>
+    </div>
+    <div class="cert">
+      <span class="cert-badge">Python</span>
+      <h3>Google IT Automation with Python</h3>
+      <div class="cert-issuer">Google · Coursera</div>
+      <p>Python scripting, Git/GitHub, troubleshooting, and automation of IT tasks.</p>
+    </div>
+    <div class="cert">
+      <span class="cert-badge">BI</span>
+      <h3>Google Business Intelligence Professional Certificate</h3>
+      <div class="cert-issuer">Google · Coursera</div>
+      <p>Data modeling, ETL, SQL, and dashboarding for business-ready insights.</p>
+    </div>
+    <div class="cert">
+      <span class="cert-badge">ML</span>
+      <h3>Machine Learning Specialization</h3>
+      <div class="cert-issuer">DeepLearning.AI &amp; Stanford · Coursera</div>
+      <p>Supervised ML, classification, regression and neural networks.</p>
+    </div>
+    <div class="cert">
+      <span class="cert-badge">NLP</span>
+      <h3>Natural Language Processing Specialization</h3>
+      <div class="cert-issuer">DeepLearning.AI · Coursera</div>
+      <p>RNNs, attention, transformers and sequence-to-sequence models.</p>
+    </div>
+    <div class="cert">
+      <span class="cert-badge">MLOps</span>
+      <h3>ML Engineering for Production (MLOps)</h3>
+      <div class="cert-issuer">DeepLearning.AI · Coursera</div>
+      <p>End-to-end ML systems: data pipelines, deployment, monitoring, and CI/CD.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="w">
+    <p>&copy; 2025 Carlo Calledda</p>
+  </div>
+</footer>
+<script>
+var t=localStorage.getItem('theme')||'light';
+document.documentElement.setAttribute('data-theme',t);
+</script>
+</body>
+</html>
