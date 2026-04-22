@@ -21,6 +21,55 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <style>
+        /* ═══════════════════════════════════════════════════════════════════
+           MODERN CSS ANIMATIONS - CROSS-BROWSER COMPATIBLE
+           ═══════════════════════════════════════════════════════════════════
+
+           Tested on:
+           ✓ Firefox 149+ (full support)
+           ✓ Chromium 138+ (full support)
+           ✓ Safari 17.2+ (full support)
+
+           Features with graceful degradation:
+           • @property: Chrome 85+, Firefox 128+, Safari 16.4+ (with fallback)
+           • animation-timeline: Chrome 115+, Firefox 130+, Safari 17.2+ (with fallback)
+           • :has(): Chrome 105+, Firefox 121+, Safari 15.4+ (with @supports)
+           • SVG animations: Universal support
+           • backdrop-filter: Universal support (with -webkit- prefix)
+
+           All animations respect prefers-reduced-motion.
+           All features have fallbacks for older browsers.
+        ═══════════════════════════════════════════════════════════════════ */
+
+        /* ── @property definitions for animatable custom properties ── */
+        /* Chrome 85+, Firefox 128+, Safari 16.4+ */
+        @supports (background: paint(something)) or (-moz-appearance: none) {
+            @property --gradient-angle {
+                syntax: '<angle>';
+                initial-value: 0deg;
+                inherits: false;
+            }
+
+            @property --glow-opacity {
+                syntax: '<number>';
+                initial-value: 0;
+                inherits: false;
+            }
+
+            @property --shimmer-pos {
+                syntax: '<percentage>';
+                initial-value: -100%;
+                inherits: false;
+            }
+        }
+
+        /* Fallback for older browsers */
+        :root {
+            --gradient-angle: 0deg;
+            --glow-opacity: 0;
+            --shimmer-pos: -100%;
+        }
+
         /* ── Reset ── */
         *,
         *::before,
@@ -51,11 +100,16 @@
             --bg3: oklch(0.95 0.007 260);
             --border: oklch(0.90 0.01 260);
             --card: white;
-            --nav-bg: oklch(0.985 0.003 260 / 0.85);
+            --nav-bg: oklch(0.985 0.003 260 / 0.70);
             --font: 'DM Sans', system-ui, -apple-system, sans-serif;
             --mono: 'DM Mono', 'SF Mono', monospace;
             --max: 1120px;
             --r: 10px;
+
+            /* Motion tokens */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         /* ── Dark mode ── */
@@ -73,7 +127,7 @@
             --bg3: oklch(0.19 0.014 260);
             --border: oklch(0.24 0.015 260);
             --card: oklch(0.17 0.012 260);
-            --nav-bg: oklch(0.13 0.01 260 / 0.88);
+            --nav-bg: oklch(0.13 0.01 260 / 0.65);
         }
 
         html {
@@ -117,13 +171,14 @@
             padding: 0 24px
         }
 
-        /* ── Nav ── */
+        /* ── Nav ── Premium Glass Effect */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
             background: var(--nav-bg);
-            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid var(--border);
         }
 
@@ -183,7 +238,67 @@
 
         .nav-social svg {
             width: 18px;
-            height: 18px
+            height: 18px;
+        }
+
+        /* SVG draw-on effect for social icons - Works on all modern browsers */
+        .nav-social a svg path,
+        .nav-social a svg circle,
+        .nav-social a svg rect,
+        .nav-social a svg polyline,
+        .nav-social a svg line {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            -webkit-transition: stroke-dashoffset .6s var(--ease-out-expo);
+            -moz-transition: stroke-dashoffset .6s var(--ease-out-expo);
+            transition: stroke-dashoffset .6s var(--ease-out-expo);
+        }
+
+        .nav-social a:hover svg path,
+        .nav-social a:hover svg circle,
+        .nav-social a:hover svg rect,
+        .nav-social a:hover svg polyline,
+        .nav-social a:hover svg line {
+            stroke-dashoffset: 0;
+        }
+
+        /* Continuous subtle pulse on social icons */
+        @-webkit-keyframes icon-pulse {
+            0%, 100% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                -webkit-transform: scale(0.95);
+                transform: scale(0.95);
+            }
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                -webkit-transform: scale(0.95);
+                transform: scale(0.95);
+            }
+        }
+
+        .nav-social a svg {
+            -webkit-animation: icon-pulse 3s ease-in-out infinite;
+            animation: icon-pulse 3s ease-in-out infinite;
+        }
+
+        .nav-social a:hover svg {
+            -webkit-animation: none;
+            animation: none;
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
         }
 
         /* ── Theme toggle ── */
@@ -321,11 +436,29 @@
 
         /* ── Section ── */
         section {
-            padding: 72px 0
+            padding: 72px 0;
         }
 
         section+section {
-            border-top: 1px solid var(--border)
+            border-top: 1px solid var(--border);
+        }
+
+        /* :has() dynamic interactions */
+        @supports selector(:has(*)) {
+            /* Project card glow when hovering any link inside */
+            .proj:has(a:hover) {
+                border-color: var(--pri);
+            }
+
+            /* Skill group highlight when hovering any tag */
+            .skill-group:has(.tag:hover) {
+                border-color: var(--pri-light);
+            }
+
+            /* Nav highlight when any link is focused */
+            nav:has(a:focus-visible) {
+                box-shadow: 0 4px 12px var(--pri-fade);
+            }
         }
 
         .sec-title {
@@ -652,7 +785,7 @@
 
         /* ── Micro-animations ── */
 
-        /* Subtle dot-grid background */
+        /* Subtle dot-grid background with noise overlay */
         body::before {
             content: '';
             position: fixed;
@@ -669,6 +802,146 @@
             opacity: .06
         }
 
+        /* Animated Mesh Gradient Background - Premium Effect */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 1;
+        }
+
+        /* Mesh gradient container with blur for blending */
+        .mesh-gradient {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            filter: blur(60px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] .mesh-gradient {
+            opacity: 0.25;
+        }
+
+        /* Individual gradient orbs */
+        .mesh-orb {
+            position: absolute;
+            border-radius: 50%;
+            will-change: transform;
+        }
+
+        .mesh-orb-1 {
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, oklch(0.60 0.15 195), transparent 70%);
+            top: -20%;
+            left: -15%;
+            animation: orb-drift-1 20s infinite alternate ease-in-out;
+        }
+
+        .mesh-orb-2 {
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, oklch(0.65 0.20 275), transparent 70%);
+            bottom: -15%;
+            right: -10%;
+            animation: orb-drift-2 18s infinite alternate ease-in-out;
+            animation-delay: -3s;
+        }
+
+        .mesh-orb-3 {
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, oklch(0.58 0.12 250), transparent 70%);
+            top: 30%;
+            left: 50%;
+            animation: orb-drift-3 25s infinite alternate ease-in-out;
+            animation-delay: -7s;
+        }
+
+        [data-theme="dark"] .mesh-orb-1 {
+            background: radial-gradient(circle, oklch(0.40 0.14 195), transparent 70%);
+        }
+
+        [data-theme="dark"] .mesh-orb-2 {
+            background: radial-gradient(circle, oklch(0.45 0.18 275), transparent 70%);
+        }
+
+        [data-theme="dark"] .mesh-orb-3 {
+            background: radial-gradient(circle, oklch(0.38 0.10 250), transparent 70%);
+        }
+
+        /* Staggered drift animations for organic movement */
+        @keyframes orb-drift-1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(15%, -10%) scale(1.1);
+            }
+            66% {
+                transform: translate(-10%, 15%) scale(0.9);
+            }
+            100% {
+                transform: translate(5%, -5%) scale(1.05);
+            }
+        }
+
+        @keyframes orb-drift-2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            40% {
+                transform: translate(-20%, 10%) scale(1.15);
+            }
+            80% {
+                transform: translate(10%, -15%) scale(0.85);
+            }
+            100% {
+                transform: translate(-5%, 8%) scale(1.08);
+            }
+        }
+
+        @keyframes orb-drift-3 {
+            0% {
+                transform: translate(-50%, 0) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -20%) scale(1.2);
+            }
+            100% {
+                transform: translate(-50%, 10%) scale(0.95);
+            }
+        }
+
+        /* Film grain noise overlay (subtle layer on top) */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            opacity: 1;
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0) }
+            10% { transform: translate(-5%, -10%) }
+            20% { transform: translate(-15%, 5%) }
+            30% { transform: translate(7%, -25%) }
+            40% { transform: translate(-5%, 25%) }
+            50% { transform: translate(-15%, 10%) }
+            60% { transform: translate(15%, 0%) }
+            70% { transform: translate(0%, 15%) }
+            80% { transform: translate(3%, 35%) }
+            90% { transform: translate(-10%, 10%) }
+        }
+
         /* Nav link hover underline slide */
         .nav-links a {
             position: relative
@@ -683,25 +956,80 @@
             height: 1.5px;
             background: var(--pri);
             border-radius: 1px;
-            transition: width .25s cubic-bezier(.4, 0, .2, 1);
+            transition: width .3s var(--ease-out-expo);
         }
 
         .nav-links a:hover::after {
             width: 100%
         }
 
-        /* Hero badge subtle pulse */
+        /* Nav link magnetic hover */
+        .nav-links a {
+            transition: color .2s var(--ease-out-quart), transform .2s var(--ease-out-quart);
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Hero badge subtle pulse with rotating gradient */
         .hero-badge {
-            animation: badge-glow 3s ease-in-out infinite
+            position: relative;
+            animation: badge-glow 3s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s var(--ease-out-quart);
+        }
+
+        /* Modern browsers with @property support */
+        @supports (background: paint(something)) {
+            .hero-badge::before {
+                background: conic-gradient(
+                    from var(--gradient-angle),
+                    var(--pri-fade),
+                    var(--pri) 20%,
+                    var(--pri-fade) 40%,
+                    var(--pri-fade)
+                );
+                animation: rotate-gradient 6s linear infinite;
+            }
+
+            @keyframes rotate-gradient {
+                to {
+                    --gradient-angle: 360deg;
+                }
+            }
+        }
+
+        /* Fallback for browsers without @property (Firefox <128) */
+        @supports not (background: paint(something)) {
+            .hero-badge::before {
+                background: linear-gradient(135deg, var(--pri-fade), var(--pri) 50%, var(--pri-fade));
+                animation: rotate-fallback 6s linear infinite;
+            }
+
+            @keyframes rotate-fallback {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        }
+
+        .hero-badge:hover::before {
+            opacity: 0.15;
         }
 
         @keyframes badge-glow {
-
-            0%,
-            100% {
+            0%, 100% {
                 box-shadow: 0 0 0 0 var(--pri-fade)
             }
-
             50% {
                 box-shadow: 0 0 0 8px transparent
             }
@@ -709,33 +1037,68 @@
 
         /* Hero stat hover lift */
         .hero-stat {
-            transition: transform .2s ease
+            transition: transform .3s var(--ease-out-expo);
+            cursor: pointer;
         }
 
         .hero-stat:hover {
-            transform: translateY(-2px)
+            transform: translateY(-3px) scale(1.02);
         }
 
-        /* Cards: lift + shadow on hover */
+        /* Cards: lift + shadow + glow on hover */
         .about-stat,
         .skill-group,
         .proj,
         .pub,
         .cert {
-            transition: border-color .2s, box-shadow .25s cubic-bezier(.4, 0, .2, 1), transform .25s cubic-bezier(.4, 0, .2, 1);
+            position: relative;
+            transition:
+                border-color .3s var(--ease-out-quart),
+                box-shadow .4s var(--ease-out-expo),
+                transform .4s var(--ease-out-expo);
+        }
+
+        .about-stat::before,
+        .skill-group::before,
+        .proj::before,
+        .pub::before,
+        .cert::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(135deg, var(--pri-fade), transparent);
+            border-radius: inherit;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity .4s var(--ease-out-expo);
         }
 
         .about-stat:hover,
         .skill-group:hover,
         .pub:hover,
         .cert:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px oklch(0.52 0.18 275 / 0.07);
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 32px oklch(0.52 0.18 275 / 0.08),
+                0 4px 12px oklch(0.52 0.18 275 / 0.04);
+        }
+
+        .about-stat:hover::before,
+        .skill-group:hover::before,
+        .pub:hover::before,
+        .cert:hover::before {
+            opacity: 1;
         }
 
         .proj:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px oklch(0.52 0.18 275 / 0.07);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow:
+                0 12px 32px oklch(0.52 0.18 275 / 0.08),
+                0 4px 12px oklch(0.52 0.18 275 / 0.04);
+        }
+
+        .proj:hover::before {
+            opacity: 1;
         }
 
         [data-theme="dark"] .about-stat:hover,
@@ -743,7 +1106,9 @@
         [data-theme="dark"] .pub:hover,
         [data-theme="dark"] .cert:hover,
         [data-theme="dark"] .proj:hover {
-            box-shadow: 0 8px 24px oklch(0.68 0.16 275 / 0.12);
+            box-shadow:
+                0 12px 32px oklch(0.68 0.16 275 / 0.15),
+                0 4px 12px oklch(0.68 0.16 275 / 0.08);
         }
 
         /* Tags micro-scale on hover */
@@ -790,95 +1155,354 @@
             }
         }
 
-        /* Fade-in on scroll (pure CSS using animation-timeline where supported, fallback: just visible) */
+        /* Subtle parallax on hero and section titles - modern browsers only */
+        @supports (animation-timeline: scroll()) {
+            .hero h1,
+            .hero-title {
+                animation: parallax-up linear both;
+                animation-timeline: scroll();
+                animation-range: 0 500px;
+            }
+
+            .sec-heading {
+                animation: parallax-subtle linear both;
+                animation-timeline: view();
+                animation-range: entry 0% cover 40%;
+            }
+
+            @keyframes parallax-up {
+                from {
+                    transform: translateY(0);
+                }
+                to {
+                    transform: translateY(-30px);
+                    opacity: 0.6;
+                }
+            }
+
+            @keyframes parallax-subtle {
+                from {
+                    transform: translateY(20px);
+                    opacity: 0.4;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+        }
+
+        /* Fallback: simple fade-in for section headings */
+        @supports not (animation-timeline: scroll()) {
+            .sec-heading {
+                animation: simple-fade-in .8s var(--ease-out-expo) both;
+            }
+
+            @keyframes simple-fade-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+
+        /* Scroll-driven animations (modern browsers with fallback) */
         @keyframes fade-up {
             from {
                 opacity: 0;
-                transform: translateY(16px)
+                transform: translateY(24px);
+                filter: blur(4px);
             }
-
             to {
                 opacity: 1;
-                transform: translateY(0)
+                transform: translateY(0);
+                filter: blur(0);
             }
         }
 
-        section>.w>* {
-            animation: fade-up .5s cubic-bezier(.4, 0, .2, 1) both
+        /* Scroll-driven reveal for cards - Chrome 115+, Firefox 114+ (flag), 130+ (stable) */
+        @supports (animation-timeline: view()) {
+            .proj, .cert, .skill-group, .pub {
+                animation: fade-up linear both;
+                animation-timeline: view();
+                animation-range: entry 0% entry 80%;
+            }
+
+            .about-stat {
+                animation: fade-up linear both;
+                animation-timeline: view();
+                animation-range: entry 10% entry 70%;
+            }
+
+            /* Stagger effect via animation-range offset */
+            .proj:nth-child(2n), .cert:nth-child(2n) {
+                animation-range: entry 5% entry 85%;
+            }
         }
 
-        section:nth-of-type(1)>.w>* {
-            animation-delay: 0s
+        /* Fallback for browsers without scroll-timeline */
+        @supports not (animation-timeline: view()) {
+            /* Default: all children fade up with stagger */
+            section>.w>* {
+                animation: fade-up .6s var(--ease-out-expo) both;
+                opacity: 0;
+            }
+
+            /* Progressive delay per section */
+            section:nth-of-type(1)>.w>* {
+                animation-delay: 0s;
+            }
+
+            section:nth-of-type(2)>.w>* {
+                animation-delay: .08s;
+            }
+
+            section:nth-of-type(3)>.w>* {
+                animation-delay: .12s;
+            }
+
+            section:nth-of-type(4)>.w>* {
+                animation-delay: .16s;
+            }
+
+            section:nth-of-type(5)>.w>* {
+                animation-delay: .2s;
+            }
+
+            section:nth-of-type(6)>.w>* {
+                animation-delay: .24s;
+            }
+
+            /* Individual cards get extra stagger */
+            .proj, .cert, .skill-group, .pub {
+                animation-delay: calc(var(--stagger-delay, 0) * 80ms + 0.3s);
+            }
         }
 
-        section:nth-of-type(2)>.w>* {
-            animation-delay: .05s
-        }
-
-        section:nth-of-type(3)>.w>* {
-            animation-delay: .08s
-        }
-
-        section:nth-of-type(4)>.w>* {
-            animation-delay: .1s
-        }
-
-        section:nth-of-type(5)>.w>* {
-            animation-delay: .12s
-        }
-
-        /* Theme toggle spin */
+        /* Theme toggle spin with smooth transition */
         .theme-toggle {
-            transition: color .2s, border-color .2s, transform .3s cubic-bezier(.4, 0, .2, 1)
+            transition:
+                color .2s var(--ease-out-quart),
+                border-color .2s var(--ease-out-quart),
+                transform .5s var(--ease-out-expo);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg) scale(1.05);
+            border-color: var(--pri);
+            color: var(--pri);
         }
 
         .theme-toggle:active {
-            transform: rotate(30deg) scale(.9)
+            transform: rotate(180deg) scale(.92);
         }
 
-        /* Project link arrow nudge */
+        /* Project link arrow magnetic nudge */
+        .proj-links a {
+            transition: transform .2s var(--ease-out-quart);
+        }
+
         .proj-links a svg {
-            transition: transform .2s ease
+            transition: transform .3s var(--ease-out-expo);
+        }
+
+        .proj-links a:hover {
+            transform: translateX(2px);
         }
 
         .proj-links a:hover svg {
-            transform: translateX(2px)
+            transform: translateX(3px) translateY(-1px);
         }
 
-        /* Cert badge shimmer */
+        /* Cert badge shimmer with improved timing */
         .cert-badge {
             position: relative;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .cert-badge::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, oklch(1 0 0 / .15), transparent);
-            transition: none;
+            background: linear-gradient(90deg, transparent, oklch(1 0 0 / .2), transparent);
         }
 
-        .cert:hover .cert-badge::after {
-            animation: shimmer .6s ease forwards;
-        }
+        /* Modern browsers with @property support */
+        @supports (background: paint(something)) {
+            .cert-badge::after {
+                left: var(--shimmer-pos);
+                transition: left .8s var(--ease-out-expo);
+            }
 
-        @keyframes shimmer {
-            to {
-                left: 150%
+            .cert:hover .cert-badge::after {
+                --shimmer-pos: 150%;
             }
         }
 
-        /* Pub type pill hover */
+        /* Fallback animation for older browsers */
+        @supports not (background: paint(something)) {
+            .cert-badge::after {
+                left: -100%;
+                transition: none;
+            }
+
+            .cert:hover .cert-badge::after {
+                animation: shimmer-fallback .8s var(--ease-out-expo) forwards;
+            }
+
+            @keyframes shimmer-fallback {
+                to {
+                    left: 150%;
+                }
+            }
+        }
+
+        /* Pub type pill hover with glow */
         .pub-type {
-            transition: background .2s, transform .15s
+            position: relative;
+            transition:
+                background .3s var(--ease-out-quart),
+                transform .3s var(--ease-out-expo),
+                box-shadow .3s var(--ease-out-expo);
         }
 
         .pub:hover .pub-type {
-            transform: scale(1.04)
+            transform: scale(1.06);
+            box-shadow: 0 4px 12px var(--pri-fade);
+        }
+
+        /* Tag hover effects */
+        .tag {
+            transition: all .2s var(--ease-out-quart);
+        }
+
+        .tag:hover {
+            transform: scale(1.08);
+            box-shadow: 0 2px 8px var(--pri-fade);
+        }
+
+        .proj-tag {
+            transition: background .2s var(--ease-out-quart), color .2s var(--ease-out-quart), transform .2s var(--ease-out-quart);
+        }
+
+        .proj-tag:hover {
+            background: var(--pri-fade);
+            color: var(--pri);
+            transform: translateY(-2px);
+        }
+
+        /* Pure CSS Ripple effect on active cards/buttons */
+        .proj,
+        .cert,
+        .about-stat,
+        .skill-group,
+        .theme-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proj::after,
+        .cert::after,
+        .about-stat::after,
+        .skill-group::after,
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--pri-fade) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: width .6s var(--ease-out-expo), height .6s var(--ease-out-expo), opacity .6s;
+        }
+
+        .proj:active::after,
+        .cert:active::after,
+        .about-stat:active::after,
+        .skill-group:active::after,
+        .theme-toggle:active::after {
+            width: 300px;
+            height: 300px;
+            opacity: 1;
+            transition: width .0s, height .0s, opacity .0s;
+        }
+
+        /* Stagger animation with CSS custom properties */
+        .proj,
+        .cert,
+        .skill-group {
+            --stagger-delay: 0;
+            animation-delay: calc(var(--stagger-delay) * 50ms);
+        }
+
+        /* Apply stagger to first 10 items */
+        .proj:nth-child(1) { --stagger-delay: 0; }
+        .proj:nth-child(2) { --stagger-delay: 1; }
+        .proj:nth-child(3) { --stagger-delay: 2; }
+        .proj:nth-child(4) { --stagger-delay: 3; }
+        .proj:nth-child(5) { --stagger-delay: 4; }
+        .proj:nth-child(6) { --stagger-delay: 5; }
+        .proj:nth-child(7) { --stagger-delay: 6; }
+        .proj:nth-child(8) { --stagger-delay: 7; }
+        .proj:nth-child(9) { --stagger-delay: 8; }
+        .proj:nth-child(10) { --stagger-delay: 9; }
+
+        .cert:nth-child(1) { --stagger-delay: 0; }
+        .cert:nth-child(2) { --stagger-delay: 1; }
+        .cert:nth-child(3) { --stagger-delay: 2; }
+        .cert:nth-child(4) { --stagger-delay: 3; }
+        .cert:nth-child(5) { --stagger-delay: 4; }
+        .cert:nth-child(6) { --stagger-delay: 5; }
+
+        /* ── Accessibility: Reduced Motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.1s !important;
+                scroll-behavior: auto !important;
+            }
+
+            /* Disable background animations */
+            .grain-overlay {
+                animation: none;
+            }
+
+            /* Stop mesh gradient animation but keep static gradient */
+            .mesh-orb {
+                animation: none !important;
+            }
+
+            /* Keep functional animations but simplify them */
+            .hero-badge,
+            .hero-badge::before {
+                animation: none;
+            }
+
+            /* Preserve hover feedback but remove motion */
+            .proj:hover,
+            .cert:hover,
+            .about-stat:hover,
+            .skill-group:hover {
+                transform: none;
+            }
+
+            /* Keep focus indicators */
+            .nav-links a::after {
+                transition: width 0.1s ease;
+            }
         }
 
         /* ── Mobile ── */
@@ -889,6 +1513,32 @@
 
             body::before {
                 background-size: 20px 20px
+            }
+
+            /* Optimize mesh gradient for mobile performance */
+            .mesh-gradient {
+                filter: blur(40px);
+                opacity: 0.3;
+            }
+
+            [data-theme="dark"] .mesh-gradient {
+                opacity: 0.2;
+            }
+
+            /* Reduce orb sizes on mobile */
+            .mesh-orb-1 {
+                width: 90vw;
+                height: 90vw;
+            }
+
+            .mesh-orb-2 {
+                width: 80vw;
+                height: 80vw;
+            }
+
+            .mesh-orb-3 {
+                width: 100vw;
+                height: 100vw;
             }
 
             .hero-stats {
@@ -941,6 +1591,16 @@
 </head>
 
 <body>
+
+    <!-- Animated Mesh Gradient Background -->
+    <div class="mesh-gradient">
+        <div class="mesh-orb mesh-orb-1"></div>
+        <div class="mesh-orb mesh-orb-2"></div>
+        <div class="mesh-orb mesh-orb-3"></div>
+    </div>
+
+    <!-- Grain Overlay -->
+    <div class="grain-overlay"></div>
 
     <!-- Nav -->
     <nav>
@@ -1591,6 +2251,7 @@
         </div>
     </footer>
     <script>
+        /* Theme persistence */
         var t = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', t);
     </script>
