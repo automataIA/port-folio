@@ -1,0 +1,85 @@
+<!-- @dsCard group="Explorations" viewport="1280x1000" name="Confronto direzioni" subtitle="A editoriale · B terminal · C evoluzione" -->
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Direzioni visive — confronto</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',system-ui,sans-serif;background:oklch(0.96 0.004 265);color:oklch(0.18 0.015 265);font-size:15px;line-height:1.6}
+.w{max-width:1240px;margin:0 auto;padding:48px 32px 96px}
+h1{font-size:34px;font-weight:700;letter-spacing:-.035em;margin-bottom:8px}
+.lede{color:oklch(0.42 0.015 265);max-width:70ch;margin-bottom:48px}
+.dir{background:white;border:1px solid oklch(0.89 0.008 265);border-radius:6px;overflow:hidden;margin-bottom:40px}
+.head{display:grid;grid-template-columns:1fr 300px;gap:32px;padding:24px 28px;border-bottom:1px solid oklch(0.89 0.008 265)}
+.head h2{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.head p{font-size:14px;color:oklch(0.42 0.015 265);text-wrap:pretty}
+.head p+p{margin-top:8px}
+.k{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:oklch(0.52 0.010 265);margin-bottom:10px}
+.tok{font-family:'DM Mono',monospace;font-size:11.5px;color:oklch(0.42 0.015 265);line-height:1.9}
+.tok b{color:oklch(0.18 0.015 265);font-weight:500}
+iframe{width:100%;height:780px;border:0;display:block;background:white}
+.bl{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:20px 28px;border-top:1px solid oklch(0.89 0.008 265);background:oklch(0.975 0.004 265);font-size:13.5px}
+.bl b{display:block;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.10em;text-transform:uppercase;color:oklch(0.52 0.010 265);margin-bottom:6px}
+a{color:oklch(0.47 0.20 274)}
+@media(max-width:900px){.head,.bl{grid-template-columns:1fr}}
+</style></head><body>
+<div class="w">
+<h1>Tre direzioni visive</h1>
+<p class="lede">Stessa struttura Hero + Projects, stessi contenuti, stessi font (DM Sans / DM Mono). Cambiano token e trattamento. Ogni variante ha light e dark: il bottone “theme” in alto a destra di ciascuna commuta il tema di quella variante.</p>
+
+<div class="dir">
+<div class="head">
+<div><div class="k">Direzione A</div><h2>Editoriale / accademico</h2>
+<p>Impaginazione da paper: colonna stretta (960px), regole orizzontali al posto delle card, contrasto di peso 300↔700 come unico strumento gerarchico, colore ridotto a un bruno d’inchiostro usato solo nei link in hover. I progetti diventano una lista numerata con metadati a lato, in mono, come riferimenti bibliografici.</p>
+<p>Cosa comunica: rigore, abitudine a scrivere e documentare, ricercatore prima che front-end. Cosa perde: impatto immediato — richiede lettura; e la densità penalizza lo scan a 5 secondi tipico di un primo screening.</p></div>
+<div><div class="k">Token modificati</div><div class="tok">
+<b>--pri</b> 0.52 0.18 275 → 0.34 0.045 40<br>
+<b>--bg</b> neutro 260 → carta calda 85<br>
+<b>--border</b> +<b>--rule</b> (nuovo, 0.72)<br>
+<b>--max</b> 1120 → 960<br>
+<b>--r</b> 10px → 0<br>
+rimossi: --card, --pri-fade, --acc*, dot-grid, ombre, hover-lift<br>
+pesi: aggiunto 300 (light)</div></div>
+</div>
+<iframe src="direction-a-editorial.html" title="Direzione A"></iframe>
+<div class="bl"><div><b>Guadagna</b>Autorevolezza, densità informativa, stampa-friendly. È l’unica delle tre che regge bene un PDF.</div><div><b>Rispetto a B e C</b>Meno “prodotto”, meno segnale di cura per l’interfaccia. Il dark mode è meno caratterizzato.</div></div>
+</div>
+
+<div class="dir">
+<div class="head">
+<div><div class="k">Direzione B</div><h2>Technical / terminal</h2>
+<p>Mono come font primario anche nei titoli, griglia 44px visibile sul fondo, contenitore con bordi laterali come una finestra di tool. I progetti sono una tabella ordinabile a colonne (#, repo, stack, description, src): i dati vengono prima della narrazione. Accento verde-teal desaturato, usato solo per stato e link.</p>
+<p>Cosa comunica: chi lavora vicino al sistema — Rust, WASM, CLI. Il portfolio sembra uno strumento, non una vetrina. Cosa perde: leggibilità sui paragrafi lunghi e una certa freddezza; è la variante più a rischio di sembrare un cliché se il recruiter ne ha già viste dieci.</p></div>
+<div><div class="k">Token modificati</div><div class="tok">
+<b>--pri</b> viola 275 → <b>--acc</b> 0.45 0.13 170<br>
+<b>--bg</b> hue 260 → 200 (freddo)<br>
+<b>--grid</b> (nuovo) linee 44px<br>
+<b>--max</b> 1120 → 1180<br>
+<b>--r</b> 10px → 0<br>
+default theme: <b>dark</b><br>
+mono promosso a font dei titoli</div></div>
+</div>
+<iframe src="direction-b-terminal.html" title="Direzione B"></iframe>
+<div class="bl"><div><b>Guadagna</b>Scan velocissimo: stack e link sono in colonna, confrontabili. Identità immediata.</div><div><b>Rispetto a A e C</b>Meno spazio per il racconto; testi lunghi soffrono. Meno adatto a ruoli di ricerca o lead.</div></div>
+</div>
+
+<div class="dir">
+<div class="head">
+<div><div class="k">Direzione C</div><h2>Evoluzione della direzione attuale</h2>
+<p>Stessa impronta di oggi, decisa. H1 fino a 84px con tracking −0.045em contro un sottotitolo in 300, spazi di sezione da 120–140px, card sostituite da una griglia a fughe di 1px (bordo condiviso, niente ombre). Il viola resta ma più profondo e usato in tre punti soli: kicker, CTA primaria, link progetto.</p>
+<p>Cosa comunica: designer-minded engineer, attenzione al dettaglio, continuità con quello che hai già. Cosa perde: è la meno distintiva — vicina a molti portfolio ML curati; non dichiara un mestiere come fanno A e B.</p></div>
+<div><div class="k">Token modificati</div><div class="tok">
+<b>--pri</b> 0.52 0.18 275 → 0.47 0.20 274<br>
+<b>--pri</b> dark 0.76 → 0.80 0.16 274<br>
+<b>--fg</b> 0.20 → 0.17 · <b>--bg</b> 0.985 → 0.99<br>
+<b>--max</b> 1120 → 1080<br>
+<b>--r</b> 10px → 4px<br>
+rimossi: --acc*, dot-grid, box-shadow, hover-lift, badge pulse<br>
+spaziatura sezione 72px → 120/140px</div></div>
+</div>
+<iframe src="direction-c-evolution.html" title="Direzione C"></iframe>
+<div class="bl"><div><b>Guadagna</b>Adozione a costo zero: è un cambio di token e spaziature sui componenti esistenti.</div><div><b>Rispetto a A e B</b>Nessuna posizione forte. Convince, non sorprende.</div></div>
+</div>
+
+</div>
+</body></html>

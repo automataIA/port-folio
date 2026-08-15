@@ -1,0 +1,68 @@
+[
+ {
+  "role": "Data Scientist & MLOps Engineer",
+  "company": "GeoDataLab Srls",
+  "period": "Oct 2024 — Present",
+  "bullets": [
+   "Built enterprise ML infrastructure with end-to-end MLOps services.",
+   "Automated dataset management on MinIO, with training and validation pipelines.",
+   "Delivered the RESTful API layer in FastAPI."
+  ],
+  "stack": ["Python", "FastAPI", "MinIO", "MLOps"]
+ },
+ {
+  "role": "AI Engineer",
+  "company": "GeoDataLab Srls",
+  "period": "Aug 2024 — Present",
+  "bullets": [
+   "Developed a REST API system for automatic image segmentation.",
+   "Implemented geographic localization of people and tree species classification from orthophotos.",
+   "Built the end-to-end object detection and segmentation pipeline."
+  ],
+  "stack": ["Computer Vision", "Segmentation", "Object Detection", "REST API"]
+ },
+ {
+  "role": "Back End Developer",
+  "company": "GeoDataLab Srls",
+  "period": "Mar 2024 — Present",
+  "bullets": [
+   "Built microservices for automated satellite monitoring of the Italian territory.",
+   "Developed an agronomic marker service on a scalable PostgreSQL/PostGIS architecture.",
+   "Processed 10TB+ of monthly satellite data at under 2s latency, combining multispectral rasters and georeferenced vector data in real time."
+  ],
+  "stack": ["PostgreSQL", "PostGIS", "Microservices", "Satellite Data"]
+ },
+ {
+  "role": "AI Engineer",
+  "company": "GeoDataLab Srls",
+  "period": "Dec 2023 — Present",
+  "bullets": [
+   "Built computer vision datasets from the ground up.",
+   "Designed and developed a web application automating auto-labeling and dataset construction.",
+   "Managed raster/vector time series so model quality improves as new imagery arrives."
+  ],
+  "stack": ["Computer Vision", "Auto-labeling", "Raster/Vector", "Web App"]
+ },
+ {
+  "role": "Contract Researcher (AI)",
+  "company": "Università di Cagliari",
+  "period": "Sep 2021 — Feb 2022",
+  "bullets": [
+   "Developed neural network techniques to identify events in the celestial vault from low-resolution imagery.",
+   "Built CNN object detection for celestial bodies at 85% accuracy.",
+   "Contributed a peer-reviewed publication in computational astrophysics."
+  ],
+  "stack": ["CNN", "Object Detection", "Astrophysics"]
+ },
+ {
+  "role": "Research Fellow",
+  "company": "Università di Cagliari",
+  "period": "Feb 2019 — Nov 2022",
+  "bullets": [
+   "Conducted multidisciplinary research on AI applications for engineering and astronomy.",
+   "Developed core skills across data science, machine learning and deep learning.",
+   "Moved from a traditional engineering background to full specialization in AI and data analysis."
+  ],
+  "stack": ["Deep Learning", "Neural Networks", "Research"]
+ }
+]

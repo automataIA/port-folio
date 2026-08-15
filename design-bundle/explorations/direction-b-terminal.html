@@ -1,0 +1,85 @@
+<!-- @dsCard group="Explorations" viewport="1280x900" name="B — Technical/terminal" subtitle="Mono dominante, griglie visibili, dati in primo piano" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme-b')||'light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Direction B — Terminal</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--fg:oklch(0.20 0.012 200);--fg2:oklch(0.40 0.012 200);--fg3:oklch(0.52 0.010 200);--bg:oklch(0.97 0.004 200);--bg2:oklch(0.94 0.006 200);--border:oklch(0.86 0.01 200);--grid:oklch(0.91 0.008 200);--acc:oklch(0.45 0.13 170);--acc-bg:oklch(0.45 0.13 170/0.10);--warn:oklch(0.50 0.13 60);--font:'DM Sans',system-ui,sans-serif;--mono:'DM Mono','SF Mono',monospace;--max:1180px}
+[data-theme="dark"]{--fg:oklch(0.93 0.012 200);--fg2:oklch(0.76 0.012 200);--fg3:oklch(0.64 0.010 200);--bg:oklch(0.145 0.012 200);--bg2:oklch(0.185 0.014 200);--border:oklch(0.30 0.015 200);--grid:oklch(0.23 0.014 200);--acc:oklch(0.80 0.15 170);--acc-bg:oklch(0.80 0.15 170/0.14);--warn:oklch(0.82 0.13 75)}
+html{color-scheme:light}[data-theme="dark"]{color-scheme:dark}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}
+.w{max-width:var(--max);margin:0 auto;padding:0 28px}
+.shell{border-left:1px solid var(--border);border-right:1px solid var(--border);background:var(--bg);max-width:var(--max);margin:0 auto}
+.bar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding:10px 28px;font-family:var(--mono);font-size:12px;color:var(--fg3)}
+.bar b{color:var(--fg);font-weight:500}
+.bar .dot{color:var(--acc)}
+button.t{font-family:var(--mono);font-size:11px;background:none;border:1px solid var(--border);color:var(--fg2);padding:3px 9px;cursor:pointer}
+button.t:hover{border-color:var(--acc);color:var(--acc)}
+.hero{padding:44px 28px 0}
+.prompt{font-family:var(--mono);font-size:12.5px;color:var(--fg3);margin-bottom:18px}
+.prompt em{font-style:normal;color:var(--acc)}
+.hero h1{font-family:var(--mono);font-size:clamp(30px,4.4vw,46px);font-weight:500;letter-spacing:-.02em;line-height:1.08;margin-bottom:10px}
+.hero .sub{font-family:var(--mono);font-size:14px;color:var(--acc);background:var(--acc-bg);display:inline-block;padding:3px 9px;margin-bottom:22px}
+.hero p{font-size:15px;color:var(--fg2);max-width:62ch;margin-bottom:8px;text-wrap:pretty}
+.hero p strong{color:var(--fg);font-weight:700}
+.quote{font-family:var(--mono);font-size:12.5px;color:var(--fg3);margin:16px 0 26px}
+.cta{display:flex;gap:10px;margin-bottom:34px;font-family:var(--mono);font-size:12.5px}
+.cta a{border:1px solid var(--border);padding:7px 14px;color:var(--fg)}
+.cta a:first-child{border-color:var(--acc);color:var(--acc);background:var(--acc-bg)}
+.cta a:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
+.readout{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 -28px}
+.cell{padding:14px 28px;border-right:1px solid var(--border);font-family:var(--mono)}
+.cell:last-child{border-right:none}
+.cell dt{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:2px}
+.cell dd{font-size:24px;font-weight:500;color:var(--fg)}
+section.p{padding:38px 28px 60px}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:12px;color:var(--fg3);margin-bottom:14px}
+.sec-head h2{font-family:var(--font);font-size:19px;font-weight:700;color:var(--fg);letter-spacing:-.015em}
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);border-bottom:1px solid var(--border);padding:8px 12px 8px 0}
+td{border-bottom:1px solid var(--grid);padding:14px 12px 14px 0;vertical-align:top;color:var(--fg2)}
+tr:hover td{background:var(--bg2)}
+td.id{color:var(--fg3);width:40px}
+td.name{color:var(--fg);width:230px}
+td.name span{display:block;font-family:var(--font);font-size:13px;color:var(--fg3);margin-top:4px;line-height:1.5}
+td.stack{width:220px;color:var(--acc)}
+td.desc{font-family:var(--font);font-size:13.5px;line-height:1.6;color:var(--fg2);text-wrap:pretty}
+td.lk{width:70px;text-align:right}
+@media(max-width:900px){.readout{grid-template-columns:repeat(2,1fr)}.cell{border-bottom:1px solid var(--border)}td.stack,th.stack{display:none}}
+@media(max-width:640px){td.desc,th.desc{display:none}}
+</style></head><body>
+<div class="shell">
+<div class="bar"><span><span class="dot">●</span> carlo@ml ~ /portfolio</span><span><b>Carlo Calledda</b> — ML Engineer <button class="t" onclick="var d=document.documentElement,n=d.getAttribute('data-theme')==='dark'?'light':'dark';d.setAttribute('data-theme',n);localStorage.setItem('theme-b',n)">theme</button></span></div>
+<header class="hero">
+<div class="prompt"><em>$</em> whoami --role</div>
+<h1>Carlo Calledda</h1>
+<div class="sub">AI &amp; ML Engineer</div>
+<p>Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of experience. From computer vision to NLP, I architect solutions that solve real-world problems at scale.</p>
+<div class="quote"># <span lang="grc">μηδὲν ἄγαν</span> — nothing in excess</div>
+<div class="cta"><a href="#contact">get in touch</a><a href="https://github.com/automataIA" target="_blank" rel="noopener">view github ↗</a></div>
+<dl class="readout">
+<div class="cell"><dt>years</dt><dd>5+</dd></div>
+<div class="cell"><dt>articles</dt><dd>100+</dd></div>
+<div class="cell"><dt>projects</dt><dd>20+</dd></div>
+<div class="cell"><dt>certs</dt><dd>6</dd></div>
+</dl>
+</header>
+<section class="p">
+<div class="sec-head"><h2>Featured Projects</h2><span>ls -l ./projects — 6 entries</span></div>
+<table>
+<thead><tr><th class="id">#</th><th>repo</th><th class="stack">stack</th><th class="desc">description</th><th></th></tr></thead>
+<tbody>
+<tr><td class="id">01</td><td class="name">graphrag-rs<span>Knowledge graphs</span></td><td class="stack">rust · graphrag</td><td class="desc">High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and enables natural language queries.</td><td class="lk"><a href="https://github.com/automataIA/graphrag-rs" target="_blank" rel="noopener">src ↗</a></td></tr>
+<tr><td class="id">02</td><td class="name">wasm-typst-studio-rs<span>Document tooling</span></td><td class="stack">rust · wasm · typst</td><td class="desc">WASM-powered Typst Studio with real-time compilation to SVG/PDF, IEEE template support, and dynamic bibliography management.</td><td class="lk"><a href="https://github.com/automataIA/wasm-typst-studio-rs" target="_blank" rel="noopener">src ↗</a></td></tr>
+<tr><td class="id">03</td><td class="name">wasm-knowledge-chatbot-rs<span>Local inference</span></td><td class="stack">rust · leptos · webllm</td><td class="desc">Blazingly fast chat interface built with Rust/WASM and Leptos, featuring local AI model execution via WebLLM. Privacy-first, no backend.</td><td class="lk"><a href="https://github.com/automataIA/wasm-knowledge-chatbot-rs" target="_blank" rel="noopener">src ↗</a></td></tr>
+<tr><td class="id">04</td><td class="name">dashboard-studio-rs<span>Data viz</span></td><td class="stack">rust · wasm · dataviz</td><td class="desc">Privacy-first, client-side data visualization powered by Rust + WebAssembly. 11 chart types, drag-and-drop layout, auto-save, undo/redo — all in-browser.</td><td class="lk"><a href="https://github.com/automataIA/dashboard-studio-rs" target="_blank" rel="noopener">src ↗</a></td></tr>
+<tr><td class="id">05</td><td class="name">lodviz-rs<span>Rendering library</span></td><td class="stack">rust · leptos · wasm</td><td class="desc">Pure-Rust data visualization library using Leptos and WebAssembly. Automatic Level of Detail management, rendering massive datasets via LTTB and M4 downsampling.</td><td class="lk"><a href="https://github.com/automataIA/lodviz-rs" target="_blank" rel="noopener">src ↗</a></td></tr>
+<tr><td class="id">06</td><td class="name">vecslide<span>Presentation format</span></td><td class="stack">rust · svg · audio</td><td class="desc">Vector presentation format with synced audio. A .vecslide ZIP contains SVGs and Opus audio via YAML manifest, compiling to standalone zero-dependency HTML.</td><td class="lk"><a href="https://github.com/automataIA/vecslide" target="_blank" rel="noopener">src ↗</a></td></tr>
+</tbody></table>
+</section>
+</div>
+</body></html>

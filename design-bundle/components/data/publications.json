@@ -1,0 +1,20 @@
+[
+ {
+  "title": "Optimal design of earthquake‑resistant buildings via neural network inversion",
+  "type": "Research Paper",
+  "year": "May 2021",
+  "summary": "Neural-network inversion framework to optimize structural parameters for seismic resilience. Combines simulated ground-motion data, sensitivity analysis and gradient-based search to minimize expected seismic demand."
+ },
+ {
+  "title": "Development of a CNN object‑detection algorithm for identifying celestial bodies",
+  "type": "Research Grant",
+  "year": "Sep 2021 – Feb 2022",
+  "summary": "Built an astronomy image dataset with Aladin, applied targeted data augmentation, and bootstrapped a detector from an image classifier. Optimized for low-power CubeSat hardware via pruning and quantization."
+ },
+ {
+  "title": "A SOM‑based method for detecting plastic patches in the sea",
+  "type": "Conference Paper",
+  "year": "Nov 2021",
+  "summary": "Self-Organizing Map approach on multi-spectral remote-sensing imagery to detect marine plastic aggregations, including atmospheric correction, texture features and spatial post-processing."
+ }
+]

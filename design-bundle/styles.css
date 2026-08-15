@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+:root{--pri:oklch(0.45 0.13 170);--pri-light:oklch(0.52 0.12 170);--pri-fade:oklch(0.45 0.13 170 / 0.10);--acc:oklch(0.50 0.13 60);--acc-light:oklch(0.50 0.13 60 / 0.12);--adv-fg:oklch(0.42 0.12 60);--fg:oklch(0.20 0.012 200);--fg2:oklch(0.40 0.012 200);--fg3:oklch(0.52 0.010 200);--bg:oklch(0.97 0.004 200);--bg2:oklch(0.94 0.006 200);--bg3:oklch(0.915 0.008 200);--border:oklch(0.86 0.01 200);--card:oklch(0.99 0.003 200);--grid:oklch(0.91 0.008 200);--font:'DM Sans',system-ui,-apple-system,sans-serif;--mono:'DM Mono','SF Mono',monospace/* @kind font */;--max:1180px;--r:0px;--ease:cubic-bezier(.22,.61,.36,1)/* @kind other */;--ease-exit:cubic-bezier(.4,0,1,1)/* @kind other */;--dur-1:120ms/* @kind other */;--dur-2:200ms/* @kind other */;--dur-3:320ms/* @kind other */;--dur-4:400ms/* @kind other */;--stagger:60ms/* @kind other */;--shift:14px}
+[data-theme="dark"]{--pri:oklch(0.80 0.15 170);--pri-light:oklch(0.86 0.12 170);--pri-fade:oklch(0.80 0.15 170 / 0.14);--acc:oklch(0.82 0.13 75);--acc-light:oklch(0.82 0.13 75 / 0.16);--adv-fg:oklch(0.86 0.12 75);--fg:oklch(0.93 0.012 200);--fg2:oklch(0.76 0.012 200);--fg3:oklch(0.64 0.010 200);--bg:oklch(0.145 0.012 200);--bg2:oklch(0.185 0.014 200);--bg3:oklch(0.225 0.014 200);--border:oklch(0.30 0.015 200);--card:oklch(0.175 0.013 200);--grid:oklch(0.23 0.014 200)}
+html{color-scheme:light}[data-theme="dark"]{color-scheme:dark}
+a{color:var(--pri);text-decoration:none;transition:color var(--dur-1) var(--ease)}
+a:hover{color:var(--pri-light);text-decoration:underline;text-underline-offset:3px}
+
+/* ── Row primitives ── */
+.row{background:var(--card);padding:22px 24px;display:flex;flex-direction:column;gap:10px;outline:1px solid transparent;outline-offset:-1px;transition:transform var(--dur-2) var(--ease),outline-color var(--dur-2) var(--ease),background-color var(--dur-2) var(--ease)}
+.row:hover{outline-color:var(--pri);background:var(--bg2)}
+.row-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.row-title{font-family:var(--mono);font-weight:500;font-size:15px;color:var(--fg);letter-spacing:-.01em;line-height:1.35;overflow-wrap:anywhere}
+.row-sub{font-size:13.5px;color:var(--fg2)}
+.row-meta{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.04em;white-space:nowrap}
+.row-desc{font-size:13.5px;color:var(--fg2);line-height:1.6;text-wrap:pretty;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.row-bullets{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--fg2);line-height:1.55}
+.row-bullets li{padding-left:16px;position:relative;text-wrap:pretty;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.row-bullets li::before{content:'—';position:absolute;left:0;color:var(--fg3);font-family:var(--mono)}
+.row-tags{display:flex;flex-wrap:wrap;gap:6px}
+.row-tag{font-family:var(--mono);font-size:11px;padding:3px 8px;background:var(--bg3);color:var(--fg2);border-radius:var(--r);transition:background-color var(--dur-1) var(--ease),color var(--dur-1) var(--ease)}
+.row-tag:hover{background:var(--pri-fade);color:var(--pri)}
+.row-links{display:flex;gap:14px;font-family:var(--mono);font-size:12px}
+.row-metric{font-family:var(--mono);font-size:11.5px;color:var(--adv-fg);background:var(--acc-light);padding:3px 9px;align-self:flex-start;border-radius:var(--r)}
+.row-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pri);border:1px solid var(--pri);padding:2px 8px;border-radius:var(--r);align-self:flex-start;display:inline-block;width:fit-content;white-space:nowrap}
+
+/* ── Lists & grids: no holes on odd counts ── */
+.stack-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)}
+.card-grid{display:flex;flex-wrap:wrap;gap:1px;background:var(--border);border:1px solid var(--border)}
+.card-grid>*{flex:1 1 320px;min-width:min(320px,100%)}
+
+/* ── Empty state ── */
+.empty{background:var(--card);border:1px dashed var(--border);padding:40px 24px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--fg3);line-height:1.8}
+.empty b{display:block;color:var(--fg2);font-weight:500;font-size:13px;margin-bottom:4px}
+
+@media (prefers-reduced-motion: reduce){.row,.row-tag{transition:none}.row:hover{transform:none}}

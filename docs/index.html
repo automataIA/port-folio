@@ -7,9 +7,9 @@
     <title>Carlo Calledda — ML Engineer</title>
     <meta name="description" content="Portfolio of Carlo Calledda, AI & Machine Learning Engineer">
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%235b4bd6'/><text x='50' y='68' font-size='58' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'>C</text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23157a63'/><text x='50' y='68' font-size='58' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'>C</text></svg>">
     <script>
-        // Apply persisted theme before paint to avoid flash
+        // Applica il tema salvato prima del paint per evitare il flash
         document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,49 +34,59 @@
 
         /* ── Palette LLM — Light (default) ── */
         :root {
-            --pri: oklch(0.52 0.18 275);
-            --pri-light: oklch(0.62 0.14 275);
-            --pri-fade: oklch(0.52 0.18 275 / 0.08);
-            --sec: oklch(0.45 0.04 250);
-            --acc: oklch(0.58 0.12 195);
-            --acc-light: oklch(0.58 0.12 195 / 0.10);
-            --adv-fg: oklch(0.40 0.10 195);
-            --proj-tag-fg: oklch(0.47 0.01 260);
-            --btn: oklch(0.52 0.18 275);
-            --btn-hover: oklch(0.46 0.19 275);
-            --fg: oklch(0.20 0.02 260);
-            --fg2: oklch(0.40 0.02 260);
-            --fg3: oklch(0.55 0.01 260);
-            --bg: oklch(0.985 0.003 260);
-            --bg2: oklch(0.97 0.005 260);
-            --bg3: oklch(0.95 0.007 260);
-            --border: oklch(0.90 0.01 260);
-            --card: white;
-            --nav-bg: oklch(0.985 0.003 260 / 0.85);
+            --pri: oklch(0.45 0.13 170);
+            --pri-light: oklch(0.52 0.12 170);
+            --pri-fade: oklch(0.45 0.13 170 / 0.10);
+            --sec: oklch(0.42 0.03 200);
+            --acc: oklch(0.50 0.13 60);
+            --acc-light: oklch(0.50 0.13 60 / 0.12);
+            --adv-fg: oklch(0.42 0.12 60);
+            --proj-tag-fg: oklch(0.45 0.012 200);
+            --btn: oklch(0.45 0.13 170);
+            --btn-hover: oklch(0.38 0.12 170);
+            --fg: oklch(0.20 0.012 200);
+            --fg2: oklch(0.40 0.012 200);
+            --fg3: oklch(0.52 0.010 200);
+            --bg: oklch(0.97 0.004 200);
+            --bg2: oklch(0.94 0.006 200);
+            --bg3: oklch(0.915 0.008 200);
+            --border: oklch(0.86 0.01 200);
+            --card: oklch(0.99 0.003 200);
+            --grid: oklch(0.91 0.008 200);
+            --ease: cubic-bezier(.22,.61,.36,1);
+            --ease-exit: cubic-bezier(.4,0,1,1);
+            --dur-1: 120ms;
+            --dur-2: 200ms;
+            --dur-3: 320ms;
+            --dur-4: 400ms;
+            --stagger: 60ms;
+            --shift: 14px;
+            --nav-bg: oklch(0.97 0.004 200 / 0.92);
             --font: 'DM Sans', system-ui, -apple-system, sans-serif;
             --mono: 'DM Mono', 'SF Mono', monospace;
-            --max: 1120px;
-            --r: 10px;
+            --max: 1180px;
+            --r: 0px;
         }
 
         /* ── Dark mode ── */
         [data-theme="dark"] {
-            --pri: oklch(0.76 0.15 275);
-            --pri-light: oklch(0.82 0.11 275);
-            --pri-fade: oklch(0.76 0.15 275 / 0.14);
-            --acc: oklch(0.68 0.12 195);
-            --acc-light: oklch(0.68 0.12 195 / 0.16);
-            --adv-fg: oklch(0.84 0.10 195);
-            --proj-tag-fg: oklch(0.70 0.01 260);
-            --fg: oklch(0.93 0.005 260);
-            --fg2: oklch(0.78 0.01 260);
-            --fg3: oklch(0.70 0.01 260);
-            --bg: oklch(0.13 0.01 260);
-            --bg2: oklch(0.16 0.012 260);
-            --bg3: oklch(0.19 0.014 260);
-            --border: oklch(0.24 0.015 260);
-            --card: oklch(0.17 0.012 260);
-            --nav-bg: oklch(0.13 0.01 260 / 0.88);
+            --pri: oklch(0.80 0.15 170);
+            --pri-light: oklch(0.86 0.12 170);
+            --pri-fade: oklch(0.80 0.15 170 / 0.14);
+            --acc: oklch(0.82 0.13 75);
+            --acc-light: oklch(0.82 0.13 75 / 0.16);
+            --adv-fg: oklch(0.86 0.12 75);
+            --proj-tag-fg: oklch(0.68 0.012 200);
+            --fg: oklch(0.93 0.012 200);
+            --fg2: oklch(0.76 0.012 200);
+            --fg3: oklch(0.64 0.010 200);
+            --bg: oklch(0.145 0.012 200);
+            --bg2: oklch(0.185 0.014 200);
+            --bg3: oklch(0.225 0.014 200);
+            --border: oklch(0.30 0.015 200);
+            --card: oklch(0.175 0.013 200);
+            --grid: oklch(0.23 0.014 200);
+            --nav-bg: oklch(0.145 0.012 200 / 0.92);
         }
 
         html {
@@ -450,13 +460,13 @@
         .tag.expert {
             background: var(--pri-fade);
             color: var(--pri);
-            border-color: oklch(0.52 0.18 275 / 0.15)
+            border-color: oklch(0.45 0.13 170 / 0.22)
         }
 
         .tag.adv {
             background: var(--acc-light);
             color: var(--adv-fg);
-            border-color: oklch(0.58 0.12 195 / 0.25)
+            border-color: oklch(0.50 0.13 60 / 0.30)
         }
 
         /* ── Projects ── */
@@ -479,7 +489,7 @@
 
         .proj:hover {
             border-color: var(--pri-light);
-            box-shadow: 0 2px 16px oklch(0.52 0.18 275 / 0.06)
+            box-shadow: 0 2px 16px oklch(0.45 0.13 170 / 0.05)
         }
 
         .proj h3 {
@@ -752,12 +762,12 @@
         .pub:hover,
         .cert:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px oklch(0.52 0.18 275 / 0.07);
+            box-shadow: 0 8px 24px oklch(0.45 0.13 170 / 0.05);
         }
 
         .proj:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 24px oklch(0.52 0.18 275 / 0.07);
+            box-shadow: 0 8px 24px oklch(0.45 0.13 170 / 0.05);
         }
 
         [data-theme="dark"] .about-stat:hover,
@@ -765,7 +775,7 @@
         [data-theme="dark"] .pub:hover,
         [data-theme="dark"] .cert:hover,
         [data-theme="dark"] .proj:hover {
-            box-shadow: 0 8px 24px oklch(0.68 0.16 275 / 0.12);
+            box-shadow: 0 8px 24px oklch(0.80 0.15 170 / 0.10);
         }
 
         /* Tags micro-scale on hover */
@@ -1109,19 +1119,101 @@
                 gap: 16px
             }
         }
+    
+        /* ── Direction B — Technical / terminal ── */
+        body::before{background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;opacity:1}
+        [data-theme="dark"] body::before{opacity:1}
+        .nav-logo,.hero h1,.sec-heading,.hero-stat-num,.about-stat-num{font-family:var(--mono);font-weight:500;letter-spacing:-.02em}
+        .hero h1{font-size:clamp(28px,4.4vw,44px)}
+        .nav-links a,.nav-logo{font-family:var(--mono)}
+        .hero-badge,.pub-type,.cert-badge{border-radius:0;font-family:var(--mono)}
+        .hero-badge{animation:none;box-shadow:none;border:1px solid var(--pri)}
+        .hero-title,.hero-quote{font-family:var(--mono);font-size:14px;font-style:normal}
+        .hero-quote{border-left:none;padding-left:0}
+        .hero-quote::before{content:'# '}
+        .hero-stat-label,.about-stat-label,.sec-title,.cert-issuer{font-family:var(--mono);letter-spacing:.08em}
+        .sec-title{padding-left:0}
+        .sec-title::before{display:none}
+        .btn{border-radius:0;font-family:var(--mono);font-weight:400}
+        .btn-secondary{border-color:var(--border)}
+        .tag,.proj-tag{border-radius:0;font-family:var(--mono)}
+        .tag:hover{transform:none}
+        .proj,.pub,.cert,.skill-group,.about-stat{border-radius:0}
+        .proj:hover,.pub:hover,.cert:hover,.skill-group:hover,.about-stat:hover{transform:none;box-shadow:none;border-color:var(--pri);background:var(--bg2)}
+        [data-theme="dark"] .proj:hover,[data-theme="dark"] .pub:hover,[data-theme="dark"] .cert:hover,[data-theme="dark"] .skill-group:hover,[data-theme="dark"] .about-stat:hover{box-shadow:none}
+        .hero-stat:hover{transform:none}
+        .theme-toggle,.nav-toggle,.skip-link{border-radius:0}
+        .cert-badge::after{display:none}
+        .projects-grid,.certs-grid,.skills-grid{gap:1px;background:var(--border);border:1px solid var(--border)}
+        .proj,.cert,.skill-group{border:none}
+        .proj-links a,.proj-stars{font-family:var(--mono);font-weight:400}
+        .more-projects-heading{font-family:var(--mono);font-weight:500}
+    
+        /* ── Direction B — Motion tokens in :root (--ease, --dur-*, --stagger, --shift) ── */
+        section>.w>*:not([data-enter]){animation:none}
+        @keyframes b-enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+        section>.w>[data-enter],[data-enter]{opacity:0;animation:b-enter var(--dur-4) var(--ease) both;animation-delay:calc(var(--i,0)*var(--stagger))}
+        [data-reveal]{opacity:0;transform:translateY(var(--shift));transition:opacity var(--dur-3) var(--ease),transform var(--dur-3) var(--ease);transition-delay:calc(var(--i,0)*var(--stagger))}
+        [data-reveal].is-in{opacity:1;transform:none}
+        nav{transition:background-color var(--dur-2) var(--ease),border-color var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease)}
+        nav.is-scrolled{border-bottom-color:var(--pri);box-shadow:0 1px 0 0 var(--border)}
+        .proj,.skill-group,.pub,.cert,.about-stat{transition:transform var(--dur-2) var(--ease),outline-color var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease),background-color var(--dur-2) var(--ease);outline:1px solid transparent;outline-offset:-1px}
+        .proj:hover{transform:translateY(-2px);outline-color:var(--pri);box-shadow:0 6px 18px oklch(0.20 0.012 200 / 0.10)}
+        [data-theme="dark"] .proj:hover{box-shadow:0 6px 18px oklch(0 0 0 / 0.35)}
+        .skill-group:hover,.pub:hover,.cert:hover,.about-stat:hover{outline-color:var(--pri)}
+        .btn,.tag,.proj-tag,.nav-links a,.theme-toggle{transition:color var(--dur-1) var(--ease),background-color var(--dur-1) var(--ease),border-color var(--dur-1) var(--ease),transform var(--dur-1) var(--ease)}
+        .btn-primary:hover,.btn-secondary:hover{transform:translateY(-1px)}
+        .hero-stat-num[data-count]{font-variant-numeric:tabular-nums}
+        @media (prefers-reduced-motion: reduce){
+            [data-enter],[data-reveal]{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+            .proj:hover,.btn-primary:hover,.btn-secondary:hover{transform:none!important}
+        }
+    
+:root{--pri:oklch(0.45 0.13 170);--pri-light:oklch(0.52 0.12 170);--pri-fade:oklch(0.45 0.13 170 / 0.10);--acc:oklch(0.50 0.13 60);--acc-light:oklch(0.50 0.13 60 / 0.12);--adv-fg:oklch(0.42 0.12 60);--fg:oklch(0.20 0.012 200);--fg2:oklch(0.40 0.012 200);--fg3:oklch(0.52 0.010 200);--bg:oklch(0.97 0.004 200);--bg2:oklch(0.94 0.006 200);--bg3:oklch(0.915 0.008 200);--border:oklch(0.86 0.01 200);--card:oklch(0.99 0.003 200);--grid:oklch(0.91 0.008 200);--font:'DM Sans',system-ui,-apple-system,sans-serif;--mono:'DM Mono','SF Mono',monospace/* @kind font */;--max:1180px;--r:0px;--ease:cubic-bezier(.22,.61,.36,1)/* @kind other */;--ease-exit:cubic-bezier(.4,0,1,1)/* @kind other */;--dur-1:120ms/* @kind other */;--dur-2:200ms/* @kind other */;--dur-3:320ms/* @kind other */;--dur-4:400ms/* @kind other */;--stagger:60ms/* @kind other */;--shift:14px}
+[data-theme="dark"]{--pri:oklch(0.80 0.15 170);--pri-light:oklch(0.86 0.12 170);--pri-fade:oklch(0.80 0.15 170 / 0.14);--acc:oklch(0.82 0.13 75);--acc-light:oklch(0.82 0.13 75 / 0.16);--adv-fg:oklch(0.86 0.12 75);--fg:oklch(0.93 0.012 200);--fg2:oklch(0.76 0.012 200);--fg3:oklch(0.64 0.010 200);--bg:oklch(0.145 0.012 200);--bg2:oklch(0.185 0.014 200);--bg3:oklch(0.225 0.014 200);--border:oklch(0.30 0.015 200);--card:oklch(0.175 0.013 200);--grid:oklch(0.23 0.014 200)}
+html{color-scheme:light}[data-theme="dark"]{color-scheme:dark}
+a{color:var(--pri);text-decoration:none;transition:color var(--dur-1) var(--ease)}
+a:hover{color:var(--pri-light);text-decoration:underline;text-underline-offset:3px}
+
+/* ── Row primitives ── */
+.row{background:var(--card);padding:22px 24px;display:flex;flex-direction:column;gap:10px;outline:1px solid transparent;outline-offset:-1px;transition:transform var(--dur-2) var(--ease),outline-color var(--dur-2) var(--ease),background-color var(--dur-2) var(--ease)}
+.row:hover{outline-color:var(--pri);background:var(--bg2)}
+.row-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.row-title{font-family:var(--mono);font-weight:500;font-size:15px;color:var(--fg);letter-spacing:-.01em;line-height:1.35;overflow-wrap:anywhere}
+.row-sub{font-size:13.5px;color:var(--fg2)}
+.row-meta{font-family:var(--mono);font-size:11.5px;color:var(--fg3);letter-spacing:.04em;white-space:nowrap}
+.row-desc{font-size:13.5px;color:var(--fg2);line-height:1.6;text-wrap:pretty;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.row-bullets{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--fg2);line-height:1.55}
+.row-bullets li{padding-left:16px;position:relative;text-wrap:pretty;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.row-bullets li::before{content:'—';position:absolute;left:0;color:var(--fg3);font-family:var(--mono)}
+.row-tags{display:flex;flex-wrap:wrap;gap:6px}
+.row-tag{font-family:var(--mono);font-size:11px;padding:3px 8px;background:var(--bg3);color:var(--fg2);border-radius:var(--r);transition:background-color var(--dur-1) var(--ease),color var(--dur-1) var(--ease)}
+.row-tag:hover{background:var(--pri-fade);color:var(--pri)}
+.row-links{display:flex;gap:14px;font-family:var(--mono);font-size:12px}
+.row-metric{font-family:var(--mono);font-size:11.5px;color:var(--adv-fg);background:var(--acc-light);padding:3px 9px;align-self:flex-start;border-radius:var(--r)}
+.row-badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pri);border:1px solid var(--pri);padding:2px 8px;border-radius:var(--r);align-self:flex-start;display:inline-block;width:fit-content;white-space:nowrap}
+
+/* ── Lists & grids: no holes on odd counts ── */
+.stack-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)}
+.card-grid{display:flex;flex-wrap:wrap;gap:1px;background:var(--border);border:1px solid var(--border)}
+.card-grid>*{flex:1 1 320px;min-width:min(320px,100%)}
+
+/* ── Empty state ── */
+.empty{background:var(--card);border:1px dashed var(--border);padding:40px 24px;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--fg3);line-height:1.8}
+.empty b{display:block;color:var(--fg2);font-weight:500;font-size:13px;margin-bottom:4px}
+
+@media (prefers-reduced-motion: reduce){.row,.row-tag{transition:none}.row:hover{transform:none}}
+
     </style>
 </head>
 
 <body>
-
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-
-    <!-- Nav -->
     <nav>
         <div class="w nav-inner">
             <span class="nav-logo">Carlo Calledda</span>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#publications">Publications</a></li>
@@ -1186,19 +1278,18 @@
             </div>
         </div>
     </nav>
+    
 
     <main id="main-content">
-
-    <!-- Hero -->
     <section class="hero-section">
         <header class="w hero">
-            <div class="hero-badge">● AI &amp; ML Engineer</div>
-            <h1>Carlo Calledda</h1>
-            <span class="hero-title">Machine Learning Engineer</span>
-            <div class="hero-quote"><span lang="grc">μηδὲν ἄγαν</span> — nothing in excess</div>
-            <p>Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of experience.
+            <div class="hero-badge" data-enter style="--i:0">● AI &amp; ML Engineer</div>
+            <h1 data-enter style="--i:1">Carlo Calledda</h1>
+            <span class="hero-title" data-enter style="--i:2">Machine Learning Engineer</span>
+            <div class="hero-quote" data-enter style="--i:3"><span lang="grc">μηδὲν ἄγαν</span> — nothing in excess</div>
+            <p data-enter style="--i:4">Specialized in developing cutting-edge ML/DL architectures with <strong>5+ years</strong> of experience.
                 From computer vision to NLP, I architect solutions that solve real-world problems at scale.</p>
-            <div class="hero-cta">
+            <div class="hero-cta" data-enter style="--i:5">
                 <a class="btn btn-primary" href="#contact">
                     <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1216,7 +1307,7 @@
                     View GitHub
                 </a>
             </div>
-            <div class="hero-stats">
+            <div class="hero-stats" data-enter style="--i:6">
                 <div class="hero-stat">
                     <div class="hero-stat-num">5+</div>
                     <div class="hero-stat-label">Years</div>
@@ -1237,8 +1328,6 @@
             </div>
         </header>
     </section>
-
-    <!-- About -->
     <section id="about">
         <div class="w">
             <div class="sec-title">About</div>
@@ -1258,19 +1347,19 @@
                         combine my MLOps background with emerging ML/NLP/LLM technologies.</p>
                 </div>
                 <div class="about-sidebar">
-                    <div class="about-stat">
+                    <div class="about-stat" data-reveal>
                         <div class="about-stat-num">5+</div>
                         <div class="about-stat-label">Years experience</div>
                     </div>
-                    <div class="about-stat">
+                    <div class="about-stat" data-reveal>
                         <div class="about-stat-num">100+</div>
                         <div class="about-stat-label">Articles</div>
                     </div>
-                    <div class="about-stat">
+                    <div class="about-stat" data-reveal>
                         <div class="about-stat-num">20+</div>
                         <div class="about-stat-label">Projects</div>
                     </div>
-                    <div class="about-stat">
+                    <div class="about-stat" data-reveal>
                         <div class="about-stat-num">6</div>
                         <div class="about-stat-label">Certifications</div>
                     </div>
@@ -1278,14 +1367,19 @@
             </div>
         </div>
     </section>
-
-    <!-- Skills -->
+    <section id="experience">
+        <div class="w">
+            <div class="sec-title">Career</div>
+            <h2 class="sec-heading">Work Experience</h2>
+            <div id="experience-list" class="stack-list"><article class="row"><div class="row-head"><div><div class="row-title">Data Scientist &amp; MLOps Engineer</div><div class="row-sub">GeoDataLab Srls</div></div><div class="row-meta">Oct 2024 — Present</div></div><ul class="row-bullets"><li>Built enterprise ML infrastructure with end-to-end MLOps services.</li><li>Automated dataset management on MinIO, with training and validation pipelines.</li><li>Delivered the RESTful API layer in FastAPI.</li></ul><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">FastAPI</span><span class="row-tag">MinIO</span><span class="row-tag">MLOps</span></div></article><article class="row"><div class="row-head"><div><div class="row-title">AI Engineer</div><div class="row-sub">GeoDataLab Srls</div></div><div class="row-meta">Aug 2024 — Present</div></div><ul class="row-bullets"><li>Developed a REST API system for automatic image segmentation.</li><li>Implemented geographic localization of people and tree species classification from orthophotos.</li><li>Built the end-to-end object detection and segmentation pipeline.</li></ul><div class="row-tags"><span class="row-tag">Computer Vision</span><span class="row-tag">Segmentation</span><span class="row-tag">Object Detection</span><span class="row-tag">REST API</span></div></article><article class="row"><div class="row-head"><div><div class="row-title">Back End Developer</div><div class="row-sub">GeoDataLab Srls</div></div><div class="row-meta">Mar 2024 — Present</div></div><ul class="row-bullets"><li>Built microservices for automated satellite monitoring of the Italian territory.</li><li>Developed an agronomic marker service on a scalable PostgreSQL/PostGIS architecture.</li><li>Processed 10TB+ of monthly satellite data at under 2s latency, combining multispectral rasters and georeferenced vector data in real time.</li></ul><div class="row-tags"><span class="row-tag">PostgreSQL</span><span class="row-tag">PostGIS</span><span class="row-tag">Microservices</span><span class="row-tag">Satellite Data</span></div></article><article class="row"><div class="row-head"><div><div class="row-title">AI Engineer</div><div class="row-sub">GeoDataLab Srls</div></div><div class="row-meta">Dec 2023 — Present</div></div><ul class="row-bullets"><li>Built computer vision datasets from the ground up.</li><li>Designed and developed a web application automating auto-labeling and dataset construction.</li><li>Managed raster/vector time series so model quality improves as new imagery arrives.</li></ul><div class="row-tags"><span class="row-tag">Computer Vision</span><span class="row-tag">Auto-labeling</span><span class="row-tag">Raster/Vector</span><span class="row-tag">Web App</span></div></article><article class="row"><div class="row-head"><div><div class="row-title">Contract Researcher (AI)</div><div class="row-sub">Università di Cagliari</div></div><div class="row-meta">Sep 2021 — Feb 2022</div></div><ul class="row-bullets"><li>Developed neural network techniques to identify events in the celestial vault from low-resolution imagery.</li><li>Built CNN object detection for celestial bodies at 85% accuracy.</li><li>Contributed a peer-reviewed publication in computational astrophysics.</li></ul><div class="row-tags"><span class="row-tag">CNN</span><span class="row-tag">Object Detection</span><span class="row-tag">Astrophysics</span></div></article><article class="row"><div class="row-head"><div><div class="row-title">Research Fellow</div><div class="row-sub">Università di Cagliari</div></div><div class="row-meta">Feb 2019 — Nov 2022</div></div><ul class="row-bullets"><li>Conducted multidisciplinary research on AI applications for engineering and astronomy.</li><li>Developed core skills across data science, machine learning and deep learning.</li><li>Moved from a traditional engineering background to full specialization in AI and data analysis.</li></ul><div class="row-tags"><span class="row-tag">Deep Learning</span><span class="row-tag">Neural Networks</span><span class="row-tag">Research</span></div></article></div>
+        </div>
+    </section>
     <section id="skills">
         <div class="w">
             <div class="sec-title">Expertise</div>
             <h2 class="sec-heading">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-group">
+                <div class="skill-group" data-reveal>
                     <h3>Machine Learning &amp; AI</h3>
                     <div class="tags">
                         <span class="tag expert">Deep Learning</span>
@@ -1299,7 +1393,7 @@
                         <span class="tag">Reinforcement Learning</span>
                     </div>
                 </div>
-                <div class="skill-group">
+                <div class="skill-group" data-reveal>
                     <h3>Programming &amp; Frameworks</h3>
                     <div class="tags">
                         <span class="tag expert">Python</span>
@@ -1316,7 +1410,7 @@
                         <span class="tag">WebAssembly</span>
                     </div>
                 </div>
-                <div class="skill-group">
+                <div class="skill-group" data-reveal>
                     <h3>Cloud &amp; DevOps</h3>
                     <div class="tags">
                         <span class="tag expert">Docker</span>
@@ -1331,7 +1425,7 @@
                         <span class="tag">Terraform</span>
                     </div>
                 </div>
-                <div class="skill-group">
+                <div class="skill-group" data-reveal>
                     <h3>Data Engineering</h3>
                     <div class="tags">
                         <span class="tag expert">SQL</span>
@@ -1346,7 +1440,7 @@
                         <span class="tag">Redis</span>
                     </div>
                 </div>
-                <div class="skill-group">
+                <div class="skill-group" data-reveal>
                     <h3>Tools &amp; Ecosystem</h3>
                     <div class="tags">
                         <span class="tag expert">Git / GitHub</span>
@@ -1365,459 +1459,40 @@
             </div>
         </div>
     </section>
-
-    <!-- Projects -->
     <section id="projects">
         <div class="w">
             <div class="sec-title">Work</div>
             <h2 class="sec-heading">Featured Projects</h2>
-            <div class="projects-grid">
-
-                <div class="proj">
-                    <h3>graphrag-rs</h3>
-                    <span class="proj-stars" data-repo="graphrag-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">GraphRAG</span><span
-                            class="proj-tag">Knowledge Graph</span></div>
-                    <p>High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and
-                        enables natural language queries.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/graphrag-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>wasm-typst-studio-rs</h3>
-                    <span class="proj-stars" data-repo="wasm-typst-studio-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span
-                            class="proj-tag">Typst</span><span class="proj-tag">PDF</span></div>
-                    <p>WASM-powered Typst Studio with real-time compilation to SVG/PDF, IEEE template support, and
-                        dynamic bibliography management.</p>
-                    <div class="proj-links">
-                        <a href="https://github.com/automataIA/wasm-typst-studio-rs" target="_blank" rel="noopener"><svg
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a>
-                        <a href="https://automataia.github.io/wasm-typst-studio-rs/" target="_blank" rel="noopener"><svg
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                <polyline points="15 3 21 3 21 9" />
-                                <line x1="10" y1="14" x2="21" y2="3" />
-                            </svg> Demo</a>
-                    </div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>wasm-knowledge-chatbot-rs</h3>
-                    <span class="proj-stars" data-repo="wasm-knowledge-chatbot-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span
-                            class="proj-tag">Leptos</span><span class="proj-tag">WebLLM</span></div>
-                    <p>Blazingly fast chat interface built with Rust/WASM and Leptos, featuring local AI model execution
-                        via WebLLM. Privacy-first, no backend.</p>
-                    <div class="proj-links">
-                        <a href="https://github.com/automataIA/wasm-knowledge-chatbot-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a>
-                        <a href="https://automataia.github.io/wasm-knowledge-chatbot-rs/" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                <polyline points="15 3 21 3 21 9" />
-                                <line x1="10" y1="14" x2="21" y2="3" />
-                            </svg> Demo</a>
-                    </div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>dashboard-studio-rs</h3>
-                    <span class="proj-stars" data-repo="dashboard-studio-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span
-                            class="proj-tag">Data Viz</span><span class="proj-tag">Drag &amp; Drop</span></div>
-                    <p>Privacy-first, client-side data visualization powered by Rust + WebAssembly. 11 chart types,
-                        drag-and-drop layout, auto-save, undo/redo — all in-browser.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/dashboard-studio-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-            
-
-
-                <div class="proj">
-                    <h3>lodviz-rs</h3>
-                    <span class="proj-stars" data-repo="lodviz-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Leptos</span><span
-                            class="proj-tag">WASM</span><span class="proj-tag">Data Viz</span></div>
-                    <p>Pure-Rust data visualization library using Leptos and WebAssembly. Automatic Level of Detail
-                        management, rendering massive datasets via LTTB and M4 downsampling.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/lodviz-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>vecslide</h3>
-                    <span class="proj-stars" data-repo="vecslide" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">SVG</span><span
-                            class="proj-tag">Presentation</span><span class="proj-tag">Audio</span></div>
-                    <p>Vector presentation format with synced audio. A .vecslide ZIP contains SVGs and Opus audio via
-                        YAML manifest, compiling to standalone zero-dependency HTML.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/vecslide" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-            </div>
-
+            <div id="featured-projects" class="card-grid"><article class="row"><div class="row-title">graphrag-rs</div><p class="row-desc">High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and enables natural language queries.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">GraphRAG</span><span class="row-tag">Knowledge Graph</span></div><div class="row-links"><a href="https://github.com/automataIA/graphrag-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">wasm-typst-studio-rs</div><p class="row-desc">WASM-powered Typst Studio with real-time compilation to SVG/PDF, IEEE template support, and dynamic bibliography management.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WASM</span><span class="row-tag">Typst</span><span class="row-tag">PDF</span></div><div class="row-links"><a href="https://github.com/automataIA/wasm-typst-studio-rs" target="_blank" rel="noopener">repo ↗</a><a href="https://automataia.github.io/wasm-typst-studio-rs/" target="_blank" rel="noopener">demo ↗</a></div></article><article class="row"><div class="row-title">wasm-knowledge-chatbot-rs</div><p class="row-desc">Blazingly fast chat interface built with Rust/WASM and Leptos, featuring local AI model execution via WebLLM. Privacy-first, no backend.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WASM</span><span class="row-tag">Leptos</span><span class="row-tag">WebLLM</span></div><div class="row-links"><a href="https://github.com/automataIA/wasm-knowledge-chatbot-rs" target="_blank" rel="noopener">repo ↗</a><a href="https://automataia.github.io/wasm-knowledge-chatbot-rs/" target="_blank" rel="noopener">demo ↗</a></div></article><article class="row"><div class="row-title">dashboard-studio-rs</div><p class="row-desc">Privacy-first, client-side data visualization powered by Rust + WebAssembly. 11 chart types, drag-and-drop layout, auto-save, undo/redo — all in-browser.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WASM</span><span class="row-tag">Data Viz</span><span class="row-tag">Drag &amp; Drop</span></div><div class="row-links"><a href="https://github.com/automataIA/dashboard-studio-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">lodviz-rs</div><p class="row-desc">Pure-Rust data visualization library using Leptos and WebAssembly. Automatic Level of Detail management, rendering massive datasets via LTTB and M4 downsampling.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">Leptos</span><span class="row-tag">WASM</span><span class="row-tag">Data Viz</span></div><div class="row-links"><a href="https://github.com/automataIA/lodviz-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">vecslide</div><p class="row-desc">Vector presentation format with synced audio. A .vecslide ZIP contains SVGs and Opus audio via YAML manifest, compiling to standalone zero-dependency HTML.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">SVG</span><span class="row-tag">Presentation</span><span class="row-tag">Audio</span></div><div class="row-links"><a href="https://github.com/automataIA/vecslide" target="_blank" rel="noopener">repo ↗</a></div></article></div>
             <h3 class="more-projects-heading">More Projects</h3>
-            <div class="projects-grid">
-
-                <div class="proj">
-                    <h3>mcp-rustdoc-parser</h3>
-                    <span class="proj-stars" data-repo="mcp-rustdoc-parser" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">MCP</span><span
-                            class="proj-tag">Rustdoc</span><span class="proj-tag">Parser</span></div>
-                    <p>MCP server for parsing and querying Rust documentation. Extracts details about functions,
-                        structs, and enums via a programmable interface.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/mcp-rustdoc-parser" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>rust-relations-explorer</h3>
-                    <span class="proj-stars" data-repo="rust-relations-explorer" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">Static
-                            Analysis</span><span class="proj-tag">Visualization</span></div>
-                    <p>Fast tool to parse Rust projects into a knowledge graph, run queries over code structure, and
-                        generate DOT/SVG visualizations.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/rust-relations-explorer"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>wasm-image-studio-rs</h3>
-                    <span class="proj-stars" data-repo="wasm-image-studio-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span
-                            class="proj-tag">WebAssembly</span><span class="proj-tag">Image Processing</span></div>
-                    <p>Web-based image editor built with Rust &amp; WebAssembly. Apply filters, adjust colors, and
-                        process images in real-time with near-native performance.</p>
-                    <div class="proj-links">
-                        <a href="https://github.com/automataIA/wasm-image-studio-rs" target="_blank" rel="noopener"><svg
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a>
-                        <a href="https://automataia.github.io/wasm-image-studio-rs/" target="_blank" rel="noopener"><svg
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                <polyline points="15 3 21 3 21 9" />
-                                <line x1="10" y1="14" x2="21" y2="3" />
-                            </svg> Demo</a>
-                    </div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>agentic-graphrag-rl-trainer</h3>
-                    <span class="proj-stars" data-repo="agentic-graphrag-rl-trainer" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">RL</span><span
-                            class="proj-tag">GRPO</span><span class="proj-tag">QLoRA</span><span
-                            class="proj-tag">LLM</span></div>
-                    <p>Reinforcement Learning trainer for LLM function calling using GRPO. AST-based reward functions,
-                        QLoRA quantization optimized for consumer GPUs.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/agentic-graphrag-rl-trainer"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>mcp-py-json-doc</h3>
-                    <span class="proj-stars" data-repo="mcp-py-json-doc" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">MCP</span><span
-                            class="proj-tag">Knowledge Graph</span></div>
-                    <p>MCP server that transforms Rust documentation into a queryable knowledge graph, enabling semantic
-                        search and AI-assisted discovery.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/mcp-py-json-doc" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>wasm-plugin-runtime</h3>
-                    <span class="proj-stars" data-repo="wasm-plugin-runtime" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASI</span><span
-                            class="proj-tag">FaaS</span><span class="proj-tag">Docker</span></div>
-                    <p>Production-grade mini-FaaS/Lambda system with WASI 0.2 and Component Model. ~450 LOC delivering
-                        hot-reload, Prometheus metrics, Redis/PostgreSQL integration.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/wasm-plugin-runtime" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>Rust-MLOps-predictor-RestAPI</h3>
-                    <span class="proj-stars" data-repo="Rust-MLOps-predictor-RestAPI" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span
-                            class="proj-tag">Actix-Web</span><span class="proj-tag">MLOps</span><span
-                            class="proj-tag">Object Detection</span></div>
-                    <p>High-performance object detection service built with Rust and Actix-Web, focused on robustness
-                        and production-ready APIs.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/Rust-MLOps-predictor-RestAPI"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>agent-conductor-rs</h3>
-                    <span class="proj-stars" data-repo="agent-conductor-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span
-                            class="proj-tag">Actix-Web</span><span class="proj-tag">AI Agents</span><span
-                            class="proj-tag">WASM</span></div>
-                    <p>Lightweight AI agent orchestrator built in Rust. High-performance Actix-web backend for agent
-                        lifecycle management and a real-time WASM dashboard.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/agent-conductor-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>agentic-devops-assistant</h3>
-                    <span class="proj-stars" data-repo="agentic-devops-assistant" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span
-                            class="proj-tag">PydanticAI</span><span class="proj-tag">DuckDB</span><span
-                            class="proj-tag">Iceberg</span></div>
-                    <p>Agentic SRE Assistant: local-first AI for log analysis, doc RAG, and YAML validation. Built with
-                        PydanticAI, DuckDB, and Apache Iceberg.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/agentic-devops-assistant"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>api-llm-dataset-generator</h3>
-                    <span class="proj-stars" data-repo="api-llm-dataset-generator" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span
-                            class="proj-tag">OpenAPI</span><span class="proj-tag">Ollama</span><span
-                            class="proj-tag">Synthetic Data</span></div>
-                    <p>Automates creation of production-grade synthetic datasets for function-calling LLMs by ingesting
-                        OpenAPI schemas and utilizing local inference via Ollama.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/api-llm-dataset-generator"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>python-project-analyzer-mcp</h3>
-                    <span class="proj-stars" data-repo="python-project-analyzer-mcp" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">MCP</span><span
-                            class="proj-tag">Static Analysis</span></div>
-                    <p>MCP server that analyzes Python projects, extracts library signatures, and surfaces project
-                        information to help AI assistants understand codebases.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/python-project-analyzer-mcp"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>devops-assistant-rs</h3>
-                    <span class="proj-stars" data-repo="devops-assistant-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">WASM</span><span
-                            class="proj-tag">Chrome Extension</span><span class="proj-tag">DevOps</span></div>
-                    <p>Chrome extension (MV3) and multi-agent SRE/DevOps copilot. Offline YAML validation and
-                        auto-repair for Kubernetes, Docker Compose, GitLab CI, GitHub Actions, Prometheus.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/devops-assistant-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>graph-librarian-rs</h3>
-                    <span class="proj-stars" data-repo="graph-librarian-rs" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Rust</span><span class="proj-tag">GraphRAG</span><span
-                            class="proj-tag">Offline</span><span class="proj-tag">Privacy</span></div>
-                    <p>100% offline, privacy-focused GraphRAG system built in Rust for local document intelligence on
-                        consumer hardware.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/graph-librarian-rs" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-
-                <div class="proj">
-                    <h3>multilora-hub</h3>
-                    <span class="proj-stars" data-repo="multilora-hub" hidden></span>
-                    <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">LoRA</span><span
-                            class="proj-tag">QLoRA</span><span class="proj-tag">IBM Granite</span></div>
-                    <p>Multi-LoRA fine-tuning of IBM Granite 4.0: 3 specialized adapters (graphrag/synthesizer/agent) on
-                        a single 3B base with zero-cost adapter swapping.</p>
-                    <div class="proj-links"><a href="https://github.com/automataIA/multilora-hub" target="_blank"
-                            rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                                <path d="M9 18c-4.51 2-5-2-7-2" />
-                            </svg> Code</a></div>
-                </div>
-
-            </div>
+            <div id="more-projects" class="card-grid"><article class="row"><div class="row-title">mcp-rustdoc-parser</div><p class="row-desc">MCP server for parsing and querying Rust documentation. Extracts details about functions, structs, and enums via a programmable interface.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">MCP</span><span class="row-tag">Rustdoc</span><span class="row-tag">Parser</span></div><div class="row-links"><a href="https://github.com/automataIA/mcp-rustdoc-parser" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">rust-relations-explorer</div><p class="row-desc">Fast tool to parse Rust projects into a knowledge graph, run queries over code structure, and generate DOT/SVG visualizations.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">Static Analysis</span><span class="row-tag">Visualization</span></div><div class="row-links"><a href="https://github.com/automataIA/rust-relations-explorer" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">wasm-image-studio-rs</div><p class="row-desc">Web-based image editor built with Rust &amp; WebAssembly. Apply filters, adjust colors, and process images in real-time with near-native performance.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WebAssembly</span><span class="row-tag">Image Processing</span></div><div class="row-links"><a href="https://github.com/automataIA/wasm-image-studio-rs" target="_blank" rel="noopener">repo ↗</a><a href="https://automataia.github.io/wasm-image-studio-rs/" target="_blank" rel="noopener">demo ↗</a></div></article><article class="row"><div class="row-title">agentic-graphrag-rl-trainer</div><p class="row-desc">Reinforcement Learning trainer for LLM function calling using GRPO. AST-based reward functions, QLoRA quantization optimized for consumer GPUs.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">RL</span><span class="row-tag">GRPO</span><span class="row-tag">QLoRA</span><span class="row-tag">LLM</span></div><div class="row-links"><a href="https://github.com/automataIA/agentic-graphrag-rl-trainer" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">mcp-py-json-doc</div><p class="row-desc">MCP server that transforms Rust documentation into a queryable knowledge graph, enabling semantic search and AI-assisted discovery.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">MCP</span><span class="row-tag">Knowledge Graph</span></div><div class="row-links"><a href="https://github.com/automataIA/mcp-py-json-doc" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">wasm-plugin-runtime</div><p class="row-desc">Production-grade mini-FaaS/Lambda system with WASI 0.2 and Component Model. ~450 LOC delivering hot-reload, Prometheus metrics, Redis/PostgreSQL integration.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WASI</span><span class="row-tag">FaaS</span><span class="row-tag">Docker</span></div><div class="row-links"><a href="https://github.com/automataIA/wasm-plugin-runtime" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">Rust-MLOps-predictor-RestAPI</div><p class="row-desc">High-performance object detection service built with Rust and Actix-Web, focused on robustness and production-ready APIs.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">Actix-Web</span><span class="row-tag">MLOps</span><span class="row-tag">Object Detection</span></div><div class="row-links"><a href="https://github.com/automataIA/Rust-MLOps-predictor-RestAPI" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">agent-conductor-rs</div><p class="row-desc">Lightweight AI agent orchestrator built in Rust. High-performance Actix-web backend for agent lifecycle management and a real-time WASM dashboard.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">Actix-Web</span><span class="row-tag">AI Agents</span><span class="row-tag">WASM</span></div><div class="row-links"><a href="https://github.com/automataIA/agent-conductor-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">agentic-devops-assistant</div><p class="row-desc">Agentic SRE Assistant: local-first AI for log analysis, doc RAG, and YAML validation. Built with PydanticAI, DuckDB, and Apache Iceberg.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">PydanticAI</span><span class="row-tag">DuckDB</span><span class="row-tag">Iceberg</span></div><div class="row-links"><a href="https://github.com/automataIA/agentic-devops-assistant" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">api-llm-dataset-generator</div><p class="row-desc">Automates creation of production-grade synthetic datasets for function-calling LLMs by ingesting OpenAPI schemas and utilizing local inference via Ollama.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">OpenAPI</span><span class="row-tag">Ollama</span><span class="row-tag">Synthetic Data</span></div><div class="row-links"><a href="https://github.com/automataIA/api-llm-dataset-generator" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">python-project-analyzer-mcp</div><p class="row-desc">MCP server that analyzes Python projects, extracts library signatures, and surfaces project information to help AI assistants understand codebases.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">MCP</span><span class="row-tag">Static Analysis</span></div><div class="row-links"><a href="https://github.com/automataIA/python-project-analyzer-mcp" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">devops-assistant-rs</div><p class="row-desc">Chrome extension (MV3) and multi-agent SRE/DevOps copilot. Offline YAML validation and auto-repair for Kubernetes, Docker Compose, GitLab CI, GitHub Actions, Prometheus.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">WASM</span><span class="row-tag">Chrome Extension</span><span class="row-tag">DevOps</span></div><div class="row-links"><a href="https://github.com/automataIA/devops-assistant-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">graph-librarian-rs</div><p class="row-desc">100% offline, privacy-focused GraphRAG system built in Rust for local document intelligence on consumer hardware.</p><div class="row-tags"><span class="row-tag">Rust</span><span class="row-tag">GraphRAG</span><span class="row-tag">Offline</span><span class="row-tag">Privacy</span></div><div class="row-links"><a href="https://github.com/automataIA/graph-librarian-rs" target="_blank" rel="noopener">repo ↗</a></div></article><article class="row"><div class="row-title">multilora-hub</div><p class="row-desc">Multi-LoRA fine-tuning of IBM Granite 4.0: 3 specialized adapters (graphrag/synthesizer/agent) on a single 3B base with zero-cost adapter swapping.</p><div class="row-tags"><span class="row-tag">Python</span><span class="row-tag">LoRA</span><span class="row-tag">QLoRA</span><span class="row-tag">IBM Granite</span></div><div class="row-links"><a href="https://github.com/automataIA/multilora-hub" target="_blank" rel="noopener">repo ↗</a></div></article></div>
         </div>
     </section>
-
-    <!-- Publications -->
+    
     <section id="publications">
         <div class="w">
             <div class="sec-title">Research</div>
-            <h2 class="sec-heading">Scientific Publications</h2>
-            <div class="pubs">
-                <div class="pub">
-                    <div class="pub-meta"><span class="pub-type">Research Paper</span><span class="pub-date">May
-                            2021</span></div>
-                    <h3>Optimal design of earthquake‑resistant buildings via neural network inversion</h3>
-                    <p>Neural-network inversion framework to optimize structural parameters for seismic resilience.
-                        Combines simulated ground-motion data, sensitivity analysis and gradient-based search to
-                        minimize expected seismic demand.</p>
-                </div>
-                <div class="pub">
-                    <div class="pub-meta"><span class="pub-type">Research Grant</span><span class="pub-date">Sep 2021 –
-                            Feb 2022</span></div>
-                    <h3>Development of a CNN object‑detection algorithm for identifying celestial bodies</h3>
-                    <p>Built an astronomy image dataset with Aladin, applied targeted data augmentation, and
-                        bootstrapped a detector from an image classifier. Optimized for low-power CubeSat hardware via
-                        pruning and quantization.</p>
-                </div>
-                <div class="pub">
-                    <div class="pub-meta"><span class="pub-type">Conference Paper</span><span class="pub-date">Nov
-                            2021</span></div>
-                    <h3>A SOM‑based method for detecting plastic patches in the sea</h3>
-                    <p>Self-Organizing Map approach on multi-spectral remote-sensing imagery to detect marine plastic
-                        aggregations, including atmospheric correction, texture features and spatial post-processing.
-                    </p>
-                </div>
-            </div>
+            <h2 class="sec-heading">Publications</h2>
+            <div id="publications-list" class="stack-list"><article class="row"><div class="row-badge">Research Paper</div><div class="row-head"><div class="row-title">Optimal design of earthquake‑resistant buildings via neural network inversion</div><div class="row-meta">May 2021</div></div><p class="row-desc">Neural-network inversion framework to optimize structural parameters for seismic resilience. Combines simulated ground-motion data, sensitivity analysis and gradient-based search to minimize expected seismic demand.</p></article><article class="row"><div class="row-badge">Research Grant</div><div class="row-head"><div class="row-title">Development of a CNN object‑detection algorithm for identifying celestial bodies</div><div class="row-meta">Sep 2021 – Feb 2022</div></div><p class="row-desc">Built an astronomy image dataset with Aladin, applied targeted data augmentation, and bootstrapped a detector from an image classifier. Optimized for low-power CubeSat hardware via pruning and quantization.</p></article><article class="row"><div class="row-badge">Conference Paper</div><div class="row-head"><div class="row-title">A SOM‑based method for detecting plastic patches in the sea</div><div class="row-meta">Nov 2021</div></div><p class="row-desc">Self-Organizing Map approach on multi-spectral remote-sensing imagery to detect marine plastic aggregations, including atmospheric correction, texture features and spatial post-processing.</p></article></div>
         </div>
     </section>
-
-    <!-- Certifications -->
+    
     <section id="certifications">
         <div class="w">
             <div class="sec-title">Credentials</div>
             <h2 class="sec-heading">Certifications</h2>
-            <div class="certs-grid">
-                <div class="cert">
-                    <span class="cert-badge">Analytics</span>
-                    <h3>Google Data Analytics Professional Certificate</h3>
-                    <div class="cert-issuer">Google · Coursera</div>
-                    <p>Job-ready training in spreadsheets, SQL, R, and data visualization.</p>
-                </div>
-                <div class="cert">
-                    <span class="cert-badge">Python</span>
-                    <h3>Google IT Automation with Python</h3>
-                    <div class="cert-issuer">Google · Coursera</div>
-                    <p>Python scripting, Git/GitHub, troubleshooting, and automation of IT tasks.</p>
-                </div>
-                <div class="cert">
-                    <span class="cert-badge">BI</span>
-                    <h3>Google Business Intelligence Professional Certificate</h3>
-                    <div class="cert-issuer">Google · Coursera</div>
-                    <p>Data modeling, ETL, SQL, and dashboarding for business-ready insights.</p>
-                </div>
-                <div class="cert">
-                    <span class="cert-badge">ML</span>
-                    <h3>Machine Learning Specialization</h3>
-                    <div class="cert-issuer">DeepLearning.AI &amp; Stanford · Coursera</div>
-                    <p>Supervised ML, classification, regression and neural networks.</p>
-                </div>
-                <div class="cert">
-                    <span class="cert-badge">NLP</span>
-                    <h3>Natural Language Processing Specialization</h3>
-                    <div class="cert-issuer">DeepLearning.AI · Coursera</div>
-                    <p>RNNs, attention, transformers and sequence-to-sequence models.</p>
-                </div>
-                <div class="cert">
-                    <span class="cert-badge">MLOps</span>
-                    <h3>ML Engineering for Production (MLOps)</h3>
-                    <div class="cert-issuer">DeepLearning.AI · Coursera</div>
-                    <p>End-to-end ML systems: data pipelines, deployment, monitoring, and CI/CD.</p>
-                </div>
-            </div>
+            <div id="certifications-list" class="card-grid"><article class="row"><div class="row-badge">Analytics</div><div class="row-head"><div class="row-title">Google Data Analytics Professional Certificate</div></div><div class="row-sub">Google · Coursera</div><p class="row-desc">Job-ready training in spreadsheets, SQL, R, and data visualization.</p></article><article class="row"><div class="row-badge">Python</div><div class="row-head"><div class="row-title">Google IT Automation with Python</div></div><div class="row-sub">Google · Coursera</div><p class="row-desc">Python scripting, Git/GitHub, troubleshooting, and automation of IT tasks.</p></article><article class="row"><div class="row-badge">BI</div><div class="row-head"><div class="row-title">Google Business Intelligence Professional Certificate</div></div><div class="row-sub">Google · Coursera</div><p class="row-desc">Data modeling, ETL, SQL, and dashboarding for business-ready insights.</p></article><article class="row"><div class="row-badge">ML</div><div class="row-head"><div class="row-title">Machine Learning Specialization</div></div><div class="row-sub">DeepLearning.AI &amp; Stanford · Coursera</div><p class="row-desc">Supervised ML, classification, regression and neural networks.</p></article><article class="row"><div class="row-badge">NLP</div><div class="row-head"><div class="row-title">Natural Language Processing Specialization</div></div><div class="row-sub">DeepLearning.AI · Coursera</div><p class="row-desc">RNNs, attention, transformers and sequence-to-sequence models.</p></article><article class="row"><div class="row-badge">MLOps</div><div class="row-head"><div class="row-title">ML Engineering for Production (MLOps)</div></div><div class="row-sub">DeepLearning.AI · Coursera</div><p class="row-desc">End-to-end ML systems: data pipelines, deployment, monitoring, and CI/CD.</p></article></div>
         </div>
     </section>
-
-    <!-- Contact -->
+    
+    <section id="background">
+        <div class="w">
+            <div class="sec-title">Background</div>
+            <h2 class="sec-heading">Education &amp; Languages</h2>
+            <div id="education-list" class="stack-list"><article class="row"><div class="row-head"><div><div class="row-title">MSc Civil Structural Engineering</div><div class="row-sub">University of Cagliari · Italy</div></div><div class="row-meta">Feb 2020</div></div><p class="row-desc">Thesis: structural optimization using artificial neural networks for automatic anti-seismic design.</p></article></div>
+            <div class="row-tags" style="margin-top:20px"><span class="row-tag">Italian — Native</span><span class="row-tag">English — B2</span></div>
+        </div>
+    </section>
     <section id="contact">
         <div class="w">
             <div class="sec-title">Get in touch</div>
@@ -1843,105 +1518,66 @@
             </div>
         </div>
     </section>
-
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="w">
             <p>&copy; <span id="year">2026</span> Carlo Calledda</p>
         </div>
     </footer>
+    
+
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Theme toggle with accessible state
         (function () {
-            var root = document.documentElement;
-            var btn = document.getElementById('theme-toggle');
-            function sync() {
-                var dark = root.getAttribute('data-theme') === 'dark';
-                btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-                btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-            }
-            sync();
-            btn.addEventListener('click', function () {
-                var dark = root.getAttribute('data-theme') === 'dark';
-                root.setAttribute('data-theme', dark ? 'light' : 'dark');
-                localStorage.setItem('theme', dark ? 'light' : 'dark');
-                sync();
-            });
-        })();
+            var y = document.getElementById('year');
+            if (y) y.textContent = new Date().getFullYear();
 
-        // Mobile nav disclosure
-        (function () {
-            var toggle = document.getElementById('nav-toggle');
-            var menu = document.getElementById('nav-links');
-            function close() {
-                menu.classList.remove('open');
-                toggle.setAttribute('aria-expanded', 'false');
-                toggle.setAttribute('aria-label', 'Open menu');
-            }
-            function open() {
-                menu.classList.add('open');
-                toggle.setAttribute('aria-expanded', 'true');
-                toggle.setAttribute('aria-label', 'Close menu');
-            }
-            toggle.addEventListener('click', function () {
-                menu.classList.contains('open') ? close() : open();
-            });
-            menu.addEventListener('click', function (e) {
-                if (e.target.tagName === 'A') close();
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && menu.classList.contains('open')) {
-                    close();
-                    toggle.focus();
-                }
-            });
-        })();
-
-        // Active section in nav (aria-current)
-        (function () {
-            var links = {};
-            document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
-                links[a.getAttribute('href').slice(1)] = a;
-            });
-            var sections = Object.keys(links)
-                .map(function (id) { return document.getElementById(id); })
-                .filter(Boolean);
-            if (!('IntersectionObserver' in window) || !sections.length) return;
-            var current = null;
-            var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (en) {
-                    if (en.isIntersecting) {
-                        if (current) current.removeAttribute('aria-current');
-                        current = links[en.target.id];
-                        if (current) current.setAttribute('aria-current', 'location');
-                    }
+            var root = document.documentElement, btn = document.getElementById('theme-toggle');
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    var dark = root.getAttribute('data-theme') === 'dark';
+                    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+                    localStorage.setItem('theme', dark ? 'light' : 'dark');
                 });
-            }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-            sections.forEach(function (s) { obs.observe(s); });
-        })();
+            }
 
-        // Live GitHub stars for project cards (accurate, degrades gracefully)
-        (function () {
-            var badges = document.querySelectorAll('.proj-stars[data-repo]');
-            if (!badges.length) return;
-            fetch('https://api.github.com/users/automataIA/repos?per_page=100')
-                .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-                .then(function (repos) {
-                    var map = {};
-                    repos.forEach(function (r) { map[r.name.toLowerCase()] = r.stargazers_count; });
-                    badges.forEach(function (b) {
-                        var n = map[b.getAttribute('data-repo').toLowerCase()];
-                        if (typeof n === 'number' && n > 0) {
-                            b.textContent = '★ ' + n;
-                            b.hidden = false;
+            var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var rev = document.querySelectorAll('[data-reveal]');
+            if (reduce) { rev.forEach(function (e) { e.classList.add('is-in') }) }
+            else if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (es) {
+                    es.forEach(function (e) {
+                        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target) }
+                    })
+                }, { rootMargin: '0px 0px -8% 0px', threshold: .15 });
+                rev.forEach(function (e, i) { e.style.setProperty('--i', i % 4); io.observe(e) });
+            } else { rev.forEach(function (e) { e.classList.add('is-in') }) }
+
+            var nums = document.querySelectorAll('.hero-stat-num,.about-stat-num');
+            if (nums.length && !reduce && 'IntersectionObserver' in window) {
+                var io2 = new IntersectionObserver(function (es) {
+                    es.forEach(function (e) {
+                        if (!e.isIntersecting) return; io2.unobserve(e.target);
+                        var el = e.target, txt = el.textContent.trim(), m = txt.match(/^(\d+)(.*)$/); if (!m) return;
+                        var end = +m[1], suf = m[2], t0 = null, d = 400;
+                        el.setAttribute('data-count', '');
+                        function step(t) {
+                            if (!t0) t0 = t; var p = Math.min((t - t0) / d, 1);
+                            var e2 = 1 - Math.pow(1 - p, 3);
+                            el.textContent = Math.round(end * e2) + suf;
+                            if (p < 1) requestAnimationFrame(step)
                         }
-                    });
-                })
-                .catch(function () { /* leave star badges hidden on failure */ });
+                        el.textContent = '0' + suf; requestAnimationFrame(step);
+                    })
+                }, { threshold: .6 });
+                nums.forEach(function (n) { io2.observe(n) });
+            }
+
+            var nav = document.querySelector('nav');
+            if (nav) {
+                var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8) };
+                onScroll(); addEventListener('scroll', onScroll, { passive: true });
+            }
         })();
     </script>
 </body>

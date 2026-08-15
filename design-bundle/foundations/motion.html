@@ -1,0 +1,67 @@
+<!-- @dsCard group="Foundations" viewport="1280x760" name="Motion" subtitle="Durate, easing, stagger — token riutilizzabili" -->
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Motion tokens</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--pri:oklch(0.45 0.13 170);--fg:oklch(0.20 0.012 200);--fg2:oklch(0.40 0.012 200);--fg3:oklch(0.52 0.010 200);--bg:oklch(0.97 0.004 200);--bg2:oklch(0.94 0.006 200);--border:oklch(0.86 0.01 200);--card:oklch(0.99 0.003 200);--grid:oklch(0.91 0.008 200);--font:'DM Sans',system-ui,sans-serif;--mono:'DM Mono','SF Mono',monospace;--max:1180px;
+--ease:cubic-bezier(.22,.61,.36,1);--ease-exit:cubic-bezier(.4,0,1,1);--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--dur-4:400ms;--stagger:60ms;--shift:14px}
+[data-theme="dark"]{--pri:oklch(0.80 0.15 170);--fg:oklch(0.93 0.012 200);--fg2:oklch(0.76 0.012 200);--fg3:oklch(0.64 0.010 200);--bg:oklch(0.145 0.012 200);--bg2:oklch(0.185 0.014 200);--border:oklch(0.30 0.015 200);--card:oklch(0.175 0.013 200);--grid:oklch(0.23 0.014 200)}
+html{color-scheme:light}[data-theme="dark"]{color-scheme:dark}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);font-size:15px;line-height:1.6;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+.w{max-width:var(--max);margin:0 auto;padding:40px 28px 72px}
+h2{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.lede{color:var(--fg2);max-width:70ch;margin-bottom:32px;font-size:14px}
+h3{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--fg3);margin:32px 0 10px}
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px;background:var(--card);border:1px solid var(--border)}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);border-bottom:1px solid var(--border);padding:9px 14px}
+td{border-bottom:1px solid var(--grid);padding:11px 14px;color:var(--fg2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.t{color:var(--pri);width:130px}
+td.v{color:var(--fg);width:210px}
+td.u{font-family:var(--font);font-size:13px}
+.demo{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:8px}
+.box{background:var(--card);padding:18px 20px;flex:1;font-family:var(--mono);font-size:11.5px;color:var(--fg3);cursor:default;transition:transform var(--dur-2) var(--ease),outline-color var(--dur-2) var(--ease);outline:1px solid transparent;outline-offset:-1px}
+.box:hover{transform:translateY(-2px);outline-color:var(--pri)}
+.box b{display:block;color:var(--fg);font-weight:500;font-size:13px;margin-bottom:4px}
+@media (prefers-reduced-motion: reduce){.box:hover{transform:none}}
+</style></head><body>
+<div class="w">
+<h2>Motion</h2>
+<p class="lede">Un solo easing per tutto il sistema, quattro durate, uno stagger. I token vivono nel <code>:root</code> accanto a colori e tipografia: i componenti non contengono numeri.</p>
+
+<h3>Token</h3>
+<table>
+<thead><tr><th>token</th><th>valore</th><th>uso</th></tr></thead>
+<tbody>
+<tr><td class="t">--ease</td><td class="v">cubic-bezier(.22,.61,.36,1)</td><td class="u">Easing standard: entrate, reveal, hover. Decelerazione secca, nessun overshoot.</td></tr>
+<tr><td class="t">--ease-exit</td><td class="v">cubic-bezier(.4,0,1,1)</td><td class="u">Uscite e stati che scompaiono.</td></tr>
+<tr><td class="t">--dur-1</td><td class="v">120ms</td><td class="u">Micro-stati: tag, link di nav, bottoni.</td></tr>
+<tr><td class="t">--dur-2</td><td class="v">200ms</td><td class="u">Hover card, cambio stato nav allo scroll.</td></tr>
+<tr><td class="t">--dur-3</td><td class="v">320ms</td><td class="u">Reveal on scroll di progetti, skill, publications, certs.</td></tr>
+<tr><td class="t">--dur-4</td><td class="v">400ms</td><td class="u">Entrata dell'hero e count-up delle statistiche.</td></tr>
+<tr><td class="t">--stagger</td><td class="v">60ms</td><td class="u">Ritardo per indice (<code>--i</code>) nelle sequenze.</td></tr>
+<tr><td class="t">--shift</td><td class="v">14px</td><td class="u">Offset verticale del reveal. Asse singolo, sempre Y.</td></tr>
+</tbody></table>
+
+<h3>Regole</h3>
+<table>
+<tbody>
+<tr><td class="t">proprietà</td><td class="u">Solo <code>transform</code> e <code>opacity</code>. Mai width/height/top/left.</td></tr>
+<tr><td class="t">durata max</td><td class="u">400ms. Nulla nel sistema supera <code>--dur-4</code>.</td></tr>
+<tr><td class="t">sequenza hero</td><td class="u">badge → h1 → sottotitolo → citazione → paragrafo → CTA → stats, <code>--i</code> da 0 a 6.</td></tr>
+<tr><td class="t">reveal</td><td class="u">IntersectionObserver, threshold .15, unobserve al primo ingresso. Stagger a gruppi di 4.</td></tr>
+<tr><td class="t">nav</td><td class="u">Solo colore del bordo e ombra oltre 8px di scroll. Nessuna variazione di altezza, quindi nessun layout shift.</td></tr>
+<tr><td class="t">reduced motion</td><td class="u">Tutto disattivato; elementi allo stato finale, opacity 1, transform none. Nessun contenuto resta invisibile.</td></tr>
+</tbody></table>
+
+<h3>Hover card (--dur-2 / --ease)</h3>
+<div class="demo">
+<div class="box"><b>translateY(-2px)</b>outline: 1px solid var(--pri)</div>
+<div class="box"><b>200ms</b>var(--ease)</div>
+<div class="box"><b>no shift</b>outline-offset: -1px</div>
+</div>
+</div>
+</body></html>

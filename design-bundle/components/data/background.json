@@ -1,0 +1,15 @@
+{
+ "education": [
+  {
+   "degree": "MSc Civil Structural Engineering",
+   "institution": "University of Cagliari",
+   "location": "Italy",
+   "year": "Feb 2020",
+   "note": "Thesis: structural optimization using artificial neural networks for automatic anti-seismic design."
+  }
+ ],
+ "languages": [
+  {"name": "Italian", "level": "Native"},
+  {"name": "English", "level": "B2"}
+ ]
+}

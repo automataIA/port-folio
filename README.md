@@ -1,128 +1,100 @@
-# Carlo Calledda - AI & Machine Learning Engineer Portfolio
- 
- ![Portfolio Preview](docs/assets/images/port.png)
+# AI & Machine Learning Engineer Portfolio
 
-> A modern, responsive portfolio website showcasing expertise in Artificial Intelligence, Data Science, and Machine Learning Engineering.
+![Portfolio Preview](docs/assets/images/port.png)
 
-## Table of Contents
+> Portfolio site for an AI / Machine Learning Engineer. Static single-file output, no runtime dependencies, deployed to GitHub Pages.
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Customization](#customization)
-- [Theme System](#theme-system)
-- [Project Structure](#-project-structure)
+**Live:** https://automataia.github.io/port-folio/
 
-## ✨ Features
+## How this repo works
 
-### **Theme System**
-- **Dark/Light Mode Toggle** - Seamless switching between themes
-- **Persistent Settings** - Theme preferences saved in localStorage
-- **Smooth Transitions** - Elegant animations between theme changes
+`docs/index.html` is **generated**, not hand-edited. Content lives in JSON, design lives in a component library, and a build script assembles the two into one static file.
 
-### **Interactive Elements**
-- **Animated Mesh Gradient Background** - Premium floating orb effects
-- **Responsive Design** - Optimized for all devices and screen sizes
-- **Smooth Scrolling** - Enhanced navigation experience
-- **SVG Icons** - Custom icon system with animations
+```
+design-bundle/          design system (synced with Claude Design)
+  styles.css              design tokens + row primitives
+  foundations/            colors, typography, motion specs
+  components/
+    data/*.json           ← content lives here
+    */*.jsx               row components (reference implementation)
+    *.html                page sections
+        │
+        │  uv run scripts/build_site.py
+        ▼
+docs/index.html         single static file, deployed
+```
 
-### **Content Sections**
-- **Hero Section** - Eye-catching introduction with animated badge
-- **About** - Professional background and expertise
-- **Skills** - Technical competencies organized by category
-- **Projects** - Featured work with descriptions and technologies
-- **Publications** - Scientific publications and research
-- **Certifications** - Professional achievements and credentials
+The row components are ported to Python inside the build script and rendered at build time. The published page ships **no third-party JavaScript** — no React, no CDN. Only Google Fonts is fetched externally.
 
-### **Technical Highlights**
-- **Single File Architecture** - All CSS and JavaScript inline in HTML
-- **Modern CSS Features** - CSS Grid, Flexbox, Custom Properties, @property
-- **Vanilla JavaScript** - No framework dependencies, pure performance
-- **SEO Optimized** - Proper meta tags and semantic HTML
-- **Accessibility** - ARIA labels and keyboard navigation support
+## Adding content
 
-## 🛠️ Technologies Used
+Edit the relevant JSON, then rebuild:
 
-### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS Grid, Flexbox, and Custom Properties
-- **JavaScript (ES6+)** - Interactive functionality
-- **SVG Icons** - Custom icon system with animations
+```bash
+uv run scripts/build_site.py
+```
 
-### Design & UX
-- **DM Sans & DM Mono** - Modern typography from Google Fonts
-- **CSS Custom Properties** - Dynamic theming system
-- **Responsive Design** - Mobile-first approach
-- **Modern Animations** - Hardware-accelerated with prefers-reduced-motion respect
+| To add | Edit |
+|---|---|
+| a job | `design-bundle/components/data/experience.json` |
+| a project | `design-bundle/components/data/projects.json` (`featured` or `more`) |
+| a publication | `design-bundle/components/data/publications.json` |
+| a certification | `design-bundle/components/data/certifications.json` |
+| a degree or language | `design-bundle/components/data/background.json` |
 
-### Tools & Deployment
-- **GitHub Pages** - Static site hosting
-- **Git** - Version control
+Optional fields may be omitted — the components skip them. `ProjectCard` accepts `title`, `description`, `tags[]`, `repo`, `demo`, `metric`; `ExperienceItem` accepts `role`, `company`, `period`, `bullets[]` (max 4 rendered), `stack[]`. Empty arrays render an empty state rather than a blank section.
 
-## 🎨 Customization
+Hero, About, Skills and Contact are markup, not data: edit them in `design-bundle/components/<section>.html` and rebuild.
 
-### Personal Information
-Edit the content in `docs/index.html`:
-- Update personal details in the hero section
-- Modify skills, projects, and experience sections
-- Add your own projects and achievements
+## Changing the design
 
-### Styling
-Customize the appearance by editing the CSS directly in `docs/index.html`:
-- All styles are inline in the `<style>` section
-- CSS Custom Properties are defined in `:root` for easy theming
-- Responsive breakpoints are included in the same stylesheet
+Design tokens are in `design-bundle/styles.css`:
 
-### Theme System
-Modify theme colors by editing CSS Custom Properties in `docs/index.html`:
 ```css
 :root {
-    --pri: oklch(0.52 0.18 275);  /* Primary color */
-    --sec: oklch(0.45 0.04 250);  /* Secondary color */
-    --acc: oklch(0.58 0.12 195);  /* Accent color */
-    /* Add more custom colors */
+  --pri: oklch(0.45 0.13 170);   /* primary — teal */
+  --acc: oklch(0.50 0.13 60);    /* accent */
+  --bg:  oklch(0.97 0.004 200);  /* background */
+  --r: 0px;                      /* corner radius */
+  --dur-2: 200ms;                /* motion durations */
+  --ease: cubic-bezier(.22,.61,.36,1);
 }
 ```
 
-## Theme System
+Dark mode overrides the same tokens under `[data-theme="dark"]`. The theme is applied before first paint from `localStorage` to avoid a flash, and toggled from the nav.
 
-This portfolio features a modern theming system with:
+Motion is CSS transforms plus one `IntersectionObserver`. Under `prefers-reduced-motion: reduce` every reveal resolves immediately — no content is left at `opacity: 0`.
 
-### Theme Persistence
-- Settings saved to localStorage
-- Manual theme toggle with smooth transitions
-- Light theme as default with proper dark mode support
+## Deployment
 
-### Visual Effects
-- Animated mesh gradient background with floating orbs
-- Theme-adaptive colors and opacity
-- Hardware-accelerated animations with performance optimization
-- Cross-browser compatibility with graceful degradation
+Pushing to `main` with changes under `docs/` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which uploads `docs/` and deploys it to GitHub Pages.
 
-## Project Structure
+One-time setup: **Settings → Pages → Source: GitHub Actions**.
+
+## Local preview
+
+```bash
+uv run scripts/build_site.py
+python -m http.server -d docs 8000   # http://localhost:8000
+```
+
+Opening `docs/index.html` directly via `file://` also works — the page has no fetches or module imports.
+
+## Project structure
 
 ```
 portfolio/
-├── docs/                          # Main website files
-│   ├── index.html                 # Single HTML file with inline CSS/JS
-│   ├── assets/                    # Images and media
-│   │   └── images/                # Portfolio screenshots
-│   │       └── port.png          # Preview image
-│   └── .nojekyll                  # GitHub Pages configuration
-├── .gitignore                     # Git ignore rules
-└── README.md                      # This file
+├── docs/                       # deployed site (generated — do not edit by hand)
+│   ├── index.html
+│   ├── assets/images/port.png
+│   └── .nojekyll
+├── design-bundle/              # design system, synced with Claude Design
+├── scripts/build_site.py       # design-bundle/ → docs/index.html
+├── .github/workflows/deploy.yml
+├── others/                     # drafts, audits, earlier versions (not deployed)
+└── README.md
 ```
 
+## Stack
 
-## Updates & Maintenance
-
-### Adding New Projects
-1. Edit the projects section in `index.html`
-2. Add project images to `assets/images/`
-3. Update project cards with your information
-
-### Performance Optimization
-- Single file architecture for optimal loading
-- Modern CSS with hardware acceleration
-- Efficient JavaScript with minimal DOM manipulation
-- Optimized animations with `prefers-reduced-motion` support
+Vanilla HTML, CSS and JavaScript. DM Sans + DM Mono. Colors in `oklch`. Build script is Python, run with [uv](https://docs.astral.sh/uv/). No bundler, no framework, no package manifest.

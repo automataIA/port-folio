@@ -1,0 +1,32 @@
+<!-- @dsCard group="Rows" viewport="1280x500" name="Empty state" subtitle="Sezione senza elementi" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<title>Empty state</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);font-size:15px;line-height:1.6;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+.w{max-width:var(--max);margin:0 auto;padding:36px 28px 80px}
+h1{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.lede{color:var(--fg2);font-size:14px;max-width:74ch;margin-bottom:8px}
+h2{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--fg3);margin:34px 0 10px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.note{font-size:12.5px;color:var(--fg3);margin:-4px 0 10px}
+</style></head><body>
+<div class="w">
+<h1>Empty state</h1>
+<p class="lede">Sezione senza elementi</p>
+<h2>Con hint</h2><div id="a"></div><h2>Solo label</h2><div id="b"></div>
+</div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="../demo-harness.js"></script>
+<script>
+var DS=window.Portfolio_53aeaf;
+var Empty=DS.EmptyState;
+dsMount('#a',h(Empty,{label:'No projects yet',hint:'Repositories appear here once published.'}));
+dsMount('#b',h(Empty,{}));
+</script>
+</body></html>

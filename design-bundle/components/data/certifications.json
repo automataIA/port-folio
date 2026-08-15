@@ -1,0 +1,38 @@
+[
+ {
+  "name": "Google Data Analytics Professional Certificate",
+  "badge": "Analytics",
+  "issuer": "Google · Coursera",
+  "summary": "Job-ready training in spreadsheets, SQL, R, and data visualization."
+ },
+ {
+  "name": "Google IT Automation with Python",
+  "badge": "Python",
+  "issuer": "Google · Coursera",
+  "summary": "Python scripting, Git/GitHub, troubleshooting, and automation of IT tasks."
+ },
+ {
+  "name": "Google Business Intelligence Professional Certificate",
+  "badge": "BI",
+  "issuer": "Google · Coursera",
+  "summary": "Data modeling, ETL, SQL, and dashboarding for business-ready insights."
+ },
+ {
+  "name": "Machine Learning Specialization",
+  "badge": "ML",
+  "issuer": "DeepLearning.AI & Stanford · Coursera",
+  "summary": "Supervised ML, classification, regression and neural networks."
+ },
+ {
+  "name": "Natural Language Processing Specialization",
+  "badge": "NLP",
+  "issuer": "DeepLearning.AI · Coursera",
+  "summary": "RNNs, attention, transformers and sequence-to-sequence models."
+ },
+ {
+  "name": "ML Engineering for Production (MLOps)",
+  "badge": "MLOps",
+  "issuer": "DeepLearning.AI · Coursera",
+  "summary": "End-to-end ML systems: data pipelines, deployment, monitoring, and CI/CD."
+ }
+]

@@ -1,0 +1,49 @@
+<!-- @dsCard group="Rows" viewport="1280x1700" name="Project card" subtitle="Titolo, descrizione, tag variabili, link repo/demo, metrica opzionale" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||'light');</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<title>Project card</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);font-size:15px;line-height:1.6;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+.w{max-width:var(--max);margin:0 auto;padding:36px 28px 80px}
+h1{font-family:var(--mono);font-weight:500;font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.lede{color:var(--fg2);font-size:14px;max-width:74ch;margin-bottom:8px}
+h2{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--fg3);margin:34px 0 10px;border-bottom:1px solid var(--border);padding-bottom:6px}
+.note{font-size:12.5px;color:var(--fg3);margin:-4px 0 10px}
+</style></head><body>
+<div class="w">
+<h1>Project card</h1>
+<p class="lede">Titolo, descrizione, tag variabili, link repo/demo, metrica opzionale</p>
+<h2>Tre lunghezze</h2><div id="len"></div>
+<h2>Campi opzionali assenti</h2><p class="note">Nessun link, nessuna metrica, nessun tag.</p><div id="min"></div>
+<h2>Troncamento</h2><p class="note">La descrizione si ferma a 4 righe, così le card della stessa riga restano allineate.</p><div id="trunc"></div>
+<h2>Griglia — 1 / 3 / 8 elementi</h2><p class="note">Flex-wrap con basis 320px: le card dell'ultima riga si allargano, nessun buco sui numeri dispari.</p><div id="n1"></div><div style="height:20px"></div><div id="n3"></div><div style="height:20px"></div><div id="n8"></div>
+<h2>Sezione vuota</h2><div id="empty"></div>
+</div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="../demo-harness.js"></script>
+<script>
+var DS=window.Portfolio_53aeaf;
+var P=DS.ProjectCard, Empty=DS.EmptyState;
+dsMount('#len',wrap('card-grid',[
+ h(P,{key:1,title:'vecslide',description:'Retrieval service in Rust.',tags:['Rust'],repo:'https://github.com/automataIA/vecslide'}),
+ h(P,{key:2,title:'graphrag-rs',description:'High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and enables natural language queries.',tags:['Rust','GraphRAG','Knowledge Graph'],repo:'https://github.com/automataIA/graphrag-rs',metric:'1.2k stars'}),
+ h(P,{key:3,title:'lodviz-rs — level-of-detail rendering for very large series',description:'Pure-Rust data visualization library using Leptos and WebAssembly, with automatic Level of Detail management that renders datasets of tens of millions of points through LTTB and M4 downsampling, an incremental layout engine that recomputes only the viewport that changed, worker-based decoding so the main thread never blocks, and a plugin surface for custom marks, scales and interaction handlers — designed so a dashboard with forty live series stays at sixty frames per second on a laptop without a discrete GPU.',tags:['Rust','Leptos','WASM','Data Viz','LTTB','M4','Workers'],repo:'https://github.com/automataIA/lodviz-rs',demo:'https://example.com',metric:'60fps @ 40 series'})
+]));
+dsMount('#min',wrap('card-grid',[h(P,{key:1,title:'mcp-rustdoc-parser',description:'MCP server for parsing and querying Rust documentation.'})]));
+dsMount('#trunc',wrap('card-grid',[
+ h(P,{key:1,title:'dashboard-studio-rs',description:'Pure-Rust data visualization library using Leptos and WebAssembly, with automatic Level of Detail management that renders datasets of tens of millions of points through LTTB and M4 downsampling, an incremental layout engine that recomputes only the viewport that changed, worker-based decoding so the main thread never blocks, and a plugin surface for custom marks, scales and interaction handlers — designed so a dashboard with forty live series stays at sixty frames per second on a laptop without a discrete GPU.',tags:['Rust','WASM'],repo:'#'}),
+ h(P,{key:2,title:'short one',description:'Retrieval service in Rust.',tags:['Rust'],repo:'#'})
+]));
+var one=function(i){return h(P,{key:i,title:'project-'+(i+1)+'-rs',description:'High-performance Rust implementation of GraphRAG that builds knowledge graphs from documents and enables natural language queries.',tags:['Rust','WASM','Data Viz'],repo:'#',metric:i%2?null:(120+i*30)+' stars'})};
+dsMount('#n1',wrap('card-grid',repeat(1,one)));
+dsMount('#n3',wrap('card-grid',repeat(3,one)));
+dsMount('#n8',wrap('card-grid',repeat(8,one)));
+dsMount('#empty',h(Empty,{label:'No projects yet',hint:'Repositories appear here once published.'}));
+</script>
+</body></html>
